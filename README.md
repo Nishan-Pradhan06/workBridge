@@ -14,7 +14,7 @@ WorkBridge is a freelancing platform designed specifically for Nepali students w
 
 ## Tech Stack
 
-- **Frontend**: React
+- **Frontend**: HTML,CSS,Bootstrap,JS
 - **Backend**: Laravel
 - **Database**: MySQL
 
