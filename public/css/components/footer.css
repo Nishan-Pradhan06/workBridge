@@ -46,3 +46,8 @@
     color: #6c757d;
     font-weight: bold;
 }
+
+.footer-logo {
+    height: 200px;
+    width: 200px;
+}
