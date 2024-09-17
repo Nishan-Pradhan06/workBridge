@@ -10,7 +10,10 @@
 </head>
 
 <body>
-    <div class="bg-light">
+    <!-- navbar component -->
+    @include('components.navigation_bar');
+
+    <div class="bg-light pt-40">
         <section class="pt-12 pb-12 pb-sm-16 pt-lg-8">
             <div class="container">
                 <div class="row align-items-center">
