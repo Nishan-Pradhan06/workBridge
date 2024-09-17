@@ -7,13 +7,18 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
     <title>WorkBridge - Freelancing</title>
+    <style>
+        .hero-section {
+            padding: 100px 0;
+        }
+    </style>
 </head>
 
 <body>
     <!-- navbar component -->
     @include('components.navigation_bar');
 
-    <div class="bg-light pt-40">
+    <div class="bg-light pt-40 hero-section">
         <section class="pt-12 pb-12 pb-sm-16 pt-lg-8">
             <div class="container">
                 <div class="row align-items-center">
