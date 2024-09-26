@@ -11,6 +11,25 @@
         .hero-section {
             padding: 100px 0;
         }
+
+        .stats-section {
+            background-color: #00A4EF;
+            color: white;
+            padding: 20px 0;
+        }
+
+        .stats-number {
+            font-size: 2.5em;
+            font-weight: bold;
+        }
+
+        .stats-label {
+            font-size: 1em;
+        }
+
+        .stats-divider {
+            border-right: 1px solid white;
+        }
     </style>
 </head>
 
@@ -37,6 +56,30 @@
                 </div>
             </div>
         </section>
+    </div>
+    <!-- hero section ends here -->
+
+
+    <!-- statatics started here -->
+    <div class="container-fluid stats-section">
+        <div class="row text-center">
+            <div class="col-md-3 stats-divider">
+                <div class="stats-number">1200</div>
+                <div class="stats-label">PROJECTS COMPLETED</div>
+            </div>
+            <div class="col-md-3 stats-divider">
+                <div class="stats-number">500+</div>
+                <div class="stats-label">REGISTERED FREELANCERS</div>
+            </div>
+            <div class="col-md-3 stats-divider">
+                <div class="stats-number">900</div>
+                <div class="stats-label">SATISFIED CLIENTS</div>
+            </div>
+            <div class="col-md-3">
+                <div class="stats-number">10</div>
+                <div class="stats-label">YEARS IN OPERATION</div>
+            </div>
+        </div>
     </div>
 
 
