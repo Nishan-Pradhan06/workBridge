@@ -13,4 +13,9 @@ class PageController extends Controller
     {
         return view('auth.login');
     }
+
+    function signup()
+    {
+        return view('auth.signup');
+    }
 }
