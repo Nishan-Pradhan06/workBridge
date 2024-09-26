@@ -61,6 +61,7 @@
 
 
     <!-- statatics started here -->
+    <h2 class="text-center my-4">Our Platform's Achievements</h2>
     <div class="container-fluid stats-section">
         <div class="row text-center">
             <div class="col-md-3 stats-divider">
