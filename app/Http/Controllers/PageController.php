@@ -8,4 +8,9 @@ class PageController extends Controller
     {
         return view('welcome');
     }
+
+    function login()
+    {
+        return view('auth.login');
+    }
 }
