@@ -18,7 +18,7 @@
             </ul>
             <div class="nab-btn">
 
-                <a href="#" class="btn btn-primary ml-auto d-none d-lg-block">Login</a>
+                <a href="#" class="btn btn-outline-primary ml-auto d-none d-lg-block">Login</a>
                 <a href="#" class="btn btn-primary ml-auto d-none d-lg-block">Sign Up</a>
             </div>
         </div>
@@ -33,10 +33,10 @@
                 <li class="nav-item">
                     <a class="nav-link" href="#">Works</a>
                 </li>
-               
+
             </ul>
             <div>
-                <a href="#" class="btn btn-primary mt-3 w-100">Login</a>
+                <a href="#" class="btn btn-outline-primary mt-3 w-100">Login</a>
                 <a href="#" class="btn btn-primary mt-3 w-100">Sign Up</a>
             </div>
         </div>
