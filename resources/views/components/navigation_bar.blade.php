@@ -18,8 +18,8 @@
             </ul>
             <div class="nab-btn">
 
-                <a href="#" class="btn btn-outline-primary ml-auto d-none d-lg-block">Login</a>
-                <a href="#" class="btn btn-primary ml-auto d-none d-lg-block">Sign Up</a>
+                <a href="/login" class="btn btn-outline-primary ml-auto d-none d-lg-block">Login</a>
+                <a href="/get-started" class="btn btn-primary ml-auto d-none d-lg-block">Sign Up</a>
             </div>
         </div>
     </nav>
@@ -36,8 +36,8 @@
 
             </ul>
             <div>
-                <a href="#" class="btn btn-outline-primary mt-3 w-100">Login</a>
-                <a href="#" class="btn btn-primary mt-3 w-100">Sign Up</a>
+                <a href="/login" class="btn btn-outline-primary mt-3 w-100">Login</a>
+                <a href="/get-started" class="btn btn-primary mt-3 w-100">Sign Up</a>
             </div>
         </div>
     </nav>
