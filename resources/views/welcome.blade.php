@@ -35,7 +35,7 @@
 
 <body>
     <!-- navbar component -->
-    @include('components.navigation_bar');
+    @include('components.navigation_bar')
 
     <div class="bg-light pt-40 hero-section">
         <section class="pt-12 pb-12 pb-sm-16 pt-lg-8">
