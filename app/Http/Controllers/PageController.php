@@ -18,6 +18,10 @@ class PageController extends Controller
     {
         return view('auth.signup');
     }
+    function signupAsClient(){
+        return view('auth.signup-as-client');
+
+    }
 
     function getStarted()
     {

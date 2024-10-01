@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [PageController::class, 'index']);
 Route::get('/login',[PageController::class,'login']);
 Route::get('/signup',[PageController::class,'signup']);
+Route::get('/signup-client',[PageController::class,'signupAsClient']);
 Route::get('/get-started',[PageController::class,'getStarted']);
 
 //route for job

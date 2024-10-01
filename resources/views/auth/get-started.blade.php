@@ -31,7 +31,7 @@
                         <h2 class="card-title">Client</h2>
                         <p class="card-text">Post jobs, find top
                             freelancers, and grow your business.</p>
-                        <a href="/signup" class="btn btn-success w-100">Join as a
+                        <a href="/signup-client" class="btn btn-success w-100">Join as a
                             Client</a>
                     </div>
                 </div>
