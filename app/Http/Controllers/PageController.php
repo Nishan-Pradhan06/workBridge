@@ -14,9 +14,9 @@ class PageController extends Controller
         return view('auth.login');
     }
 
-    function signup()
+    function signupAsFreelancer()
     {
-        return view('auth.signup');
+        return view('auth.signup-as-freelancer');
     }
     function signupAsClient(){
         return view('auth.signup-as-client');

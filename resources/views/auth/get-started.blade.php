@@ -43,7 +43,7 @@
                         <h2 class="card-title">Freelancer</h2>
                         <p class="card-text">Find jobs, grow your skills,
                             and get hired by top companies.</p>
-                        <a href="/signup" class="btn btn-primary w-100">Apply as a
+                        <a href="/signup-freelancer" class="btn btn-primary w-100">Apply as a
                             Freelancer</a>
                     </div>
                 </div>
