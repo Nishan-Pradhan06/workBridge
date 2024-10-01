@@ -47,7 +47,7 @@
                             Join thousands of developers and designers who have already started their freelancing journey on WorkBridge. Whether you're looking for short-term gigs or long-term projects, we connect you with clients worldwide and help you build a career on your own terms.
                         </p>
                         <div class="text-left">
-                            <a href="#" class="btn btn-primary btn-lg active " role="button" aria-pressed="true">Get Started</a>
+                            <a href="/signup" class="btn btn-primary btn-lg active " role="button" aria-pressed="true">Get Started</a>
                         </div>
                     </div>
                     <div class="col-lg-6">
@@ -85,7 +85,7 @@
 
 
     <!-- footer components -->
-    @include('components.footer');
+    @include('components.footer')
 </body>
 
 </html>
