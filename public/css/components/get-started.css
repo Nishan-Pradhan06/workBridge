@@ -1,0 +1,54 @@
+.logo{
+    margin: 20px;
+    height: 40px;
+}
+
+h1,
+h2 {
+    color: #333;
+}
+
+p {
+    color: #666;
+}
+
+/* Freelancer Card Styling */
+.freelancer {
+    background-color: #e0f7fa;
+}
+
+.client {
+    background-color: #e8f5e9;
+}
+
+/* Icons in Card */
+.icon {
+    font-size: 50px;
+    color: #007bff;
+}
+
+/* Client-specific Icons */
+.client .icon {
+    color: #28a745;
+}
+
+
+/* Button Styling */
+.btn {
+    margin-top: 50px;
+    padding: 15px;
+    font-size: 18px;
+    border-radius: 8px;
+    transition: background-color 0.3s ease;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .card {
+        margin-bottom: 30px;
+    }
+}
+
+.custom-card .card-body {
+    height: 250px;
+}
