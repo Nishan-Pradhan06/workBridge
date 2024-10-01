@@ -18,4 +18,9 @@ class PageController extends Controller
     {
         return view('auth.signup');
     }
+
+    function getStarted()
+    {
+        return view('auth.get-started');
+    }
 }
