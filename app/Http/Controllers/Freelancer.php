@@ -14,4 +14,9 @@ class Freelancer extends Controller
     {
         return view('users.profile');
     }
+
+    function setting()
+    {
+        return view('users.setting');
+    }
 }
