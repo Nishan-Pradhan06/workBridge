@@ -1,3 +1,4 @@
+
 <!doctype html>
 <html lang="en">
 
@@ -17,6 +18,7 @@
             background-color: #00A4EF;
             color: white;
             padding: 20px 0;
+            overflow-x: hidden;
         }
 
         .stats-number {
@@ -64,22 +66,24 @@
     <!-- statatics started here -->
     <h2 class="text-center my-4">Our Platform's Achievements</h2>
     <div class="container-fluid stats-section">
-        <div class="row text-center">
-            <div class="col-md-3 stats-divider">
-                <div class="stats-number">1200</div>
-                <div class="stats-label">PROJECTS COMPLETED</div>
-            </div>
-            <div class="col-md-3 stats-divider">
-                <div class="stats-number">500+</div>
-                <div class="stats-label">REGISTERED FREELANCERS</div>
-            </div>
-            <div class="col-md-3 stats-divider">
-                <div class="stats-number">900</div>
-                <div class="stats-label">SATISFIED CLIENTS</div>
-            </div>
-            <div class="col-md-3">
-                <div class="stats-number">10</div>
-                <div class="stats-label">YEARS IN OPERATION</div>
+        <div class="container">
+            <div class="row text-center">
+                <div class="col-md-3 stats-divider">
+                    <div class="stats-number">1200</div>
+                    <div class="stats-label">PROJECTS COMPLETED</div>
+                </div>
+                <div class="col-md-3 stats-divider">
+                    <div class="stats-number">500+</div>
+                    <div class="stats-label">REGISTERED FREELANCERS</div>
+                </div>
+                <div class="col-md-3 stats-divider">
+                    <div class="stats-number">900</div>
+                    <div class="stats-label">SATISFIED CLIENTS</div>
+                </div>
+                <div class="col-md-3">
+                    <div class="stats-number">10</div>
+                    <div class="stats-label">YEARS IN OPERATION</div>
+                </div>
             </div>
         </div>
     </div>
