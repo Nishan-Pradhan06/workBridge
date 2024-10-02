@@ -13,9 +13,9 @@
 </head>
 
 <body>
-    <div id="logo" class="text-left" >
+    <a class="navbar-brand" href="/">
         <img src="{{asset('logo.png')}}" alt="logo" class="logo">
-    </div>
+    </a>
     <div class="container mt-5">
         <!-- Logo Section -->
 

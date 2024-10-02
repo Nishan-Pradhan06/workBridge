@@ -1,7 +1,7 @@
 <header class="bg-white header">
     <link rel="stylesheet" href="{{ asset('css/components/navbar.css') }}">
     <nav class="navbar navbar-expand-lg navbar-light">
-        <a class="navbar-brand" href="#">
+        <a class="navbar-brand" href="/">
             <img src="{{asset('logo.png')}}" alt="logo" class="logo">
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
