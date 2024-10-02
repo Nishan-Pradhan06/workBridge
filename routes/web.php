@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Client;
 use App\Http\Controllers\Freelancer;
 use App\Http\Controllers\JobPostController;
 use App\Http\Controllers\PageController;
@@ -15,6 +16,16 @@ Route::get('/get-started',[PageController::class,'getStarted']);
 Route::get('/find-job', [JobPostController::class, 'show']);
 Route::get('/freelancer/profile',[Freelancer::class,'profile']);
 Route::get('freelancer/setting/contactInfo',[Freelancer::class,'contactInfo']);
+
+//client
+Route::get('/client/Dashboard',[Client::class,'Dashboard']);
+Route::post('/job-post', [JobPostController::class, 'store']);
+Route::get('/edit/{id}', [JobPostController::class, 'edit']);
+Route::get('/delete/{id}', [JobPostController::class, 'destroy']);
+Route::post('/all-jobs', [Client::class, 'allJobs']);
+Route::post('/contracts', [Client::class, 'contracts']);
+Route::post('/client-info', [Client::class, 'clientInfo']);
+Route::post('/payments/deposit-methods', [Client::class, 'clientInfo']);
 
 //route for job
 Route::get('/job',[JobPostController::class,'index']);
