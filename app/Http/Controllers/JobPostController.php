@@ -57,9 +57,18 @@ class JobPostController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(JobPost $jobPost)
+    public function edit($id)
     {
-        //
+        try {
+            $jobPost = JobPost::find($id);
+            if (!$jobPost) {
+                return redirect()->back()->with('error', 'Job not found');
+            } else {
+                return view('job.edit-job', compact('jobPost'));
+            }
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error', 'Failed to edit job');
+        }   
     }
 
     /**
