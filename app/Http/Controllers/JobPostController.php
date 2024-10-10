@@ -74,9 +74,22 @@ class JobPostController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, JobPost $jobPost)
+    public function update(Request $request, $id)
     {
-        //
+        try {
+            $jobPost = JobPost::find($id); 
+            $jobPost->title = $request->title;
+            $jobPost->description = $request->des;
+            $jobPost->budget = $request->budget;
+            $jobPost->skills = $request->skill;
+            $jobPost->deadline = $request->duration;
+            $jobPost->update();
+            ///database  bata aako ------- form bata aako nam
+
+            return redirect()->back()->with('success', 'Job updated successfully');
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error', 'Failed to update job');
+        }
     }
 
     /**
