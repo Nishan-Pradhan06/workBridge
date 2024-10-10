@@ -50,8 +50,15 @@ class JobPostController extends Controller
      */
     public function show(JobPost $jobPost)
     {
-        $jobPost = JobPost::OrderBY('created_at', 'desc')->get(); //orderby descending order ma list hunxa
-        return view('job.all-jobs', compact('jobPost'));
+        try {
+            if (!$jobPost) {
+                return view('<h1>no job available</h1>');
+            }
+            $jobPost = JobPost::OrderBY('created_at', 'desc')->get(); //orderby descending order ma list hunxa
+            return view('job.all-jobs', compact('jobPost'));
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error', 'Failed to load jobs');
+        }
     }
 
     /**
@@ -68,7 +75,7 @@ class JobPostController extends Controller
             }
         } catch (\Exception $e) {
             return redirect()->back()->with('error', 'Failed to edit job');
-        }   
+        }
     }
 
     /**
@@ -77,7 +84,7 @@ class JobPostController extends Controller
     public function update(Request $request, $id)
     {
         try {
-            $jobPost = JobPost::find($id); 
+            $jobPost = JobPost::find($id);
             $jobPost->title = $request->title;
             $jobPost->description = $request->des;
             $jobPost->budget = $request->budget;
