@@ -22,7 +22,6 @@ Route::get('/contract', [Freelancer::class, 'contractProject']);
 
 //client
 Route::get('/client/dashboard', [Client::class, 'Dashboard']);
-Route::get('/all-jobs', [JobPostController::class, 'show']);
 Route::post('/contracts', [Client::class, 'contracts']);
 Route::post('/client-info', [Client::class, 'clientInfo']);
 Route::post('/payments/deposit-methods', [Client::class, 'clientInfo']);
@@ -30,7 +29,6 @@ Route::post('/payments/deposit-methods', [Client::class, 'clientInfo']);
 //route for job
 Route::get('/job-post', [JobPostController::class, 'index']);
 Route::post('/save-job', [JobPostController::class, 'store']);
+Route::get('/all-jobs', [JobPostController::class, 'show']);
 Route::get('/edit/{id}', [JobPostController::class, 'edit']);
-Route::get('/delete/{id}', [JobPostController::class, 'destroy']);
-Route::get('/find-job', [JobPostController::class, 'show']);
 Route::get('/delete/{id}', [JobPostController::class, 'destroy']);
