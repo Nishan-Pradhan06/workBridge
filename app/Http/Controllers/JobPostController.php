@@ -50,7 +50,9 @@ class JobPostController extends Controller
      */
     public function show(JobPost $jobPost)
     {
-        //
+        $jobPost = JobPost::OrderBY('created_at','desc')->get(); //orderby descending order ma list hunxa
+        return view('job.all-jobs',compact('jobPost'));
+
     }
 
     /**

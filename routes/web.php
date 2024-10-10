@@ -22,7 +22,7 @@ Route::get('/contract', [Freelancer::class, 'contractProject']);
 
 //client
 Route::get('/client/dashboard', [Client::class, 'Dashboard']);
-Route::post('/all-jobs', [Client::class, 'allJobs']);
+Route::get('/all-jobs', [JobPostController::class, 'show']);
 Route::post('/contracts', [Client::class, 'contracts']);
 Route::post('/client-info', [Client::class, 'clientInfo']);
 Route::post('/payments/deposit-methods', [Client::class, 'clientInfo']);
