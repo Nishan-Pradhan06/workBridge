@@ -17,6 +17,7 @@ return new class extends Migration
             $table->text('description');
             $table->string('budget');
             $table->date('deadline');
+            $table->string('skills');
             $table->timestamps();
         });
     }

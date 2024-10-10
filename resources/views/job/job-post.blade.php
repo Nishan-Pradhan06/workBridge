@@ -3,9 +3,6 @@
     <div class="form-group">
         <label for="title">Title</label>
         <input type="text" class="form-control" id="title" placeholder="Enter Job Title" required name="title">
-        <div class="valid-feedback">
-            Looks good!
-        </div>
     </div>
     <div class="form-group">
         <label for="des">Description</label>
@@ -21,8 +18,8 @@
         <input type="text" class="form-control" id="budget" placeholder="12k" name="budget">
     </div>
     <div class="form-group">
-        <label for="req">Requirement</label>
-        <input type="text" class="form-control" id="req" placeholder="Enter tech requirements" name="req">
+        <label for="skill">Skills</label>
+        <input type="text" class="form-control" id="skill" placeholder="Enter skill" name="skill">
     </div>
 
     <button type="submit" class="btn btn-primary">Submit</button>

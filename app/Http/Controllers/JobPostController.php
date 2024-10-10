@@ -28,7 +28,12 @@ class JobPostController extends Controller
      */
     public function store(Request $request)
     {
-        
+        try {
+            $jobPost = new JobPost(); //naya object banako
+            $jobPost->title = $request->title;
+        } catch (\Throwable $th) {
+            //throw $th;
+        }
     }
 
     /**
