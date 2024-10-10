@@ -50,9 +50,8 @@ class JobPostController extends Controller
      */
     public function show(JobPost $jobPost)
     {
-        $jobPost = JobPost::OrderBY('created_at','desc')->get(); //orderby descending order ma list hunxa
-        return view('job.all-jobs',compact('jobPost'));
-
+        $jobPost = JobPost::OrderBY('created_at', 'desc')->get(); //orderby descending order ma list hunxa
+        return view('job.all-jobs', compact('jobPost'));
     }
 
     /**
@@ -74,8 +73,18 @@ class JobPostController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(JobPost $jobPost)
+    public function destroy($id)
     {
-        //
+        try {
+            $jobPost = JobPost::find($id);
+            if (!$jobPost) {
+                return redirect()->back()->with('error', 'Job not found');
+            } else {
+                $jobPost->delete();
+                return redirect()->back()->with('success', 'Job deleted successfully');
+            }
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error', 'Failed to delete job post!');
+        }
     }
 }
