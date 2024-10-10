@@ -7,33 +7,30 @@ use App\Http\Controllers\PageController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [PageController::class, 'index']);
-Route::get('/login',[PageController::class,'login']);
-Route::get('/signup-freelancer',[PageController::class,'signupAsFreelancer']);
-Route::get('/signup-client',[PageController::class,'signupAsClient']);
-Route::get('/get-started',[PageController::class,'getStarted']);
+Route::get('/login', [PageController::class, 'login']);
+Route::get('/signup-freelancer', [PageController::class, 'signupAsFreelancer']);
+Route::get('/signup-client', [PageController::class, 'signupAsClient']);
+Route::get('/get-started', [PageController::class, 'getStarted']);
 
 //freelancer
 Route::get('/find-job', [JobPostController::class, 'show']);
-Route::get('/create-profile',[Freelancer::class,'createProfile']);
-Route::get('/freelancer/profile',[Freelancer::class,'profile']);
-Route::get('freelancer/setting/contactInfo',[Freelancer::class,'contactInfo']);
+Route::get('/create-profile', [Freelancer::class, 'createProfile']);
+Route::get('/freelancer/profile', [Freelancer::class, 'profile']);
+Route::get('freelancer/setting/contactInfo', [Freelancer::class, 'contactInfo']);
 Route::get('/send-proposal', [Freelancer::class, 'sendProposal']);
-Route::get('/contract',[Freelancer::class,'contractProject']);
+Route::get('/contract', [Freelancer::class, 'contractProject']);
 
 //client
-Route::get('/client/Dashboard',[Client::class,'Dashboard']);
-Route::post('/job-post', [JobPostController::class, 'store']);
-Route::get('/edit/{id}', [JobPostController::class, 'edit']);
-Route::get('/delete/{id}', [JobPostController::class, 'destroy']);
+Route::get('/client/Dashboard', [Client::class, 'Dashboard']);
 Route::post('/all-jobs', [Client::class, 'allJobs']);
 Route::post('/contracts', [Client::class, 'contracts']);
 Route::post('/client-info', [Client::class, 'clientInfo']);
 Route::post('/payments/deposit-methods', [Client::class, 'clientInfo']);
 
 //route for job
-Route::get('/job',[JobPostController::class,'index']);
-Route::post('/job-post',[JobPostController::class,'store']);
-Route::get('/edit/{id}',[JobPostController::class,'edit']);
-Route::post('/update{id}',[JobPostController::class,'update']);
-Route::get('/find-job',[JobPostController::class,'show']);
-Route::get('/delete/{id}',[JobPostController::class,'destroy']);
+Route::get('/job-post', [JobPostController::class, 'index']);
+Route::post('/save-job', [JobPostController::class, 'store']);
+Route::get('/edit/{id}', [JobPostController::class, 'edit']);
+Route::get('/delete/{id}', [JobPostController::class, 'destroy']);
+Route::get('/find-job', [JobPostController::class, 'show']);
+Route::get('/delete/{id}', [JobPostController::class, 'destroy']);

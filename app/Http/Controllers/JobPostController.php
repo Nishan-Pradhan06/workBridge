@@ -12,7 +12,7 @@ class JobPostController extends Controller
      */
     public function index()
     {
-        return view('users.users');
+        return view('job.job-post');
     }
 
     /**
@@ -28,7 +28,7 @@ class JobPostController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
     }
 
     /**
