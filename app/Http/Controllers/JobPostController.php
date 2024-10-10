@@ -28,11 +28,20 @@ class JobPostController extends Controller
      */
     public function store(Request $request)
     {
+        // dd($request->all()); check the data is 
         try {
             $jobPost = new JobPost(); //naya object banako
             $jobPost->title = $request->title;
-        } catch (\Throwable $th) {
-            //throw $th;
+            $jobPost->description = $request->des;
+            $jobPost->budget = $request->budget;
+            $jobPost->skills = $request->skill;
+            $jobPost->deadline = $request->duration;
+            $jobPost->save();
+            ///database  bata aako ------- form bata aako nam
+
+            return redirect()->back()->with('success', 'Job posted successfully');
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error', 'Failed to post job');
         }
     }
 
