@@ -19,4 +19,9 @@ class Freelancer extends Controller
     {
         return view('users.setting');
     }
+
+    function createProfile()
+    {
+        return view('auth.create-freelancer-profile');
+    }
 }
