@@ -14,8 +14,11 @@ Route::get('/get-started',[PageController::class,'getStarted']);
 
 //freelancer
 Route::get('/find-job', [JobPostController::class, 'show']);
+Route::get('/create-profile',[Freelancer::class,'createProfile']);
 Route::get('/freelancer/profile',[Freelancer::class,'profile']);
 Route::get('freelancer/setting/contactInfo',[Freelancer::class,'contactInfo']);
+Route::get('/send-proposal', [Freelancer::class, 'sendProposal']);
+Route::get('/contract',[Freelancer::class,'contractProject']);
 
 //client
 Route::get('/client/Dashboard',[Client::class,'Dashboard']);
