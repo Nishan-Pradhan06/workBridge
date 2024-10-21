@@ -14,7 +14,7 @@
                 <p class="card-text">Budget: Rs. {{$jobPosts->budget}}</p>
                 <p class="card-text">Tech Stack: {{$jobPosts->skills}}</p>
                 <a href="{{ url('/edit/' . $jobPosts->id) }}" class="btn btn-primary">edit</a>
-                <a href="/proposal" class="btn btn-primary">delete</a>
+                <a href="{{ url('/delete/' . $jobPosts->id) }}" class="btn btn-primary">delete</a>
             </div>
         </div>
         @endforeach
