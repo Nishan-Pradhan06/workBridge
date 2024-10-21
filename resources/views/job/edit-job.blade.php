@@ -6,7 +6,7 @@
     </div>
     <div class="form-group">
         <label for="des">Description</label>
-        <textarea class="form-control" id="editor" rows="3" placeholder="Enter job description" name="des" value="{{$jobPost->description}}"></textarea>
+        <textarea class="form-control" id="editor" rows="3" placeholder="Enter job description" name="des" >{{$jobPost->description}}</textarea>
     </div>
 
     <div class="form-group">
