@@ -13,7 +13,7 @@
                 <p class="card-text">Duration: {{$jobPosts->duration}}</p>
                 <p class="card-text">Budget: Rs. {{$jobPosts->budget}}</p>
                 <p class="card-text">Tech Stack: {{$jobPosts->skill}}</p>
-                <a href="/proposal" class="btn btn-primary">edit</a>
+                <a href="{{ url('/edit/' . $jobPosts->id) }}" class="btn btn-primary">edit</a>
                 <a href="/proposal" class="btn btn-primary">delete</a>
             </div>
         </div>
