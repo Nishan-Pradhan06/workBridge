@@ -1,4 +1,4 @@
-<form action="" method="post">
+<form action="{{ url('/update/' . $jobPost->id) }}" method="post">
     @csrf
     <div class="form-group">
         <label for="title">Title</label>
@@ -6,7 +6,7 @@
     </div>
     <div class="form-group">
         <label for="des">Description</label>
-        <textarea class="form-control" id="editor" rows="3" placeholder="Enter job description" name="des" >{{$jobPost->description}}</textarea>
+        <textarea class="form-control" id="editor" rows="3" placeholder="Enter job description" name="des">{{$jobPost->description}}</textarea>
     </div>
 
     <div class="form-group">
@@ -22,6 +22,6 @@
         <input type="text" class="form-control" id="skill" placeholder="Enter skill" name="skill" value="{{$jobPost->skills}}">
     </div>
 
-    <button type="submit" class="btn btn-primary">Submit</button>
+    <button type="submit" class="btn btn-primary">Update</button>
 
 </form>

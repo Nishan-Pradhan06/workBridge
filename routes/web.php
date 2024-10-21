@@ -31,5 +31,5 @@ Route::get('/job-post', [JobPostController::class, 'index']);
 Route::post('/save-job', [JobPostController::class, 'store']);
 Route::get('/all-jobs', [JobPostController::class, 'show']);
 Route::get('/edit/{id}', [JobPostController::class, 'edit']);
-Route::get('/update/{id}', [JobPostController::class, 'update']);
+Route::post('/update/{id}', [JobPostController::class, 'update']);
 Route::get('/delete/{id}', [JobPostController::class, 'destroy']);
