@@ -10,4 +10,9 @@ class Client extends Controller
     {
         return view('clients.clients');
     }
+
+    function ContractsPage()
+    {
+        return view('clients.contracts');
+    }
 }
