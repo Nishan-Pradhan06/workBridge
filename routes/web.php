@@ -21,7 +21,7 @@ Route::get('/send-proposal', [Freelancer::class, 'sendProposal']);
 Route::get('/contract', [Freelancer::class, 'contractProject']);
 
 //client
-Route::get('/client/dashboard', [Client::class, 'Dashboard']);
+Route::get(' /client/dashboard', [Client::class, 'Dashboard']);
 Route::post('/contracts', [Client::class, 'contracts']);
 Route::post('/client-info', [Client::class, 'clientInfo']);
 Route::post('/payments/deposit-methods', [Client::class, 'clientInfo']);
