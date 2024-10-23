@@ -25,6 +25,7 @@ Route::get('/client/dashboard', [Client::class, 'Dashboard']);
 Route::post('/contracts', [Client::class, 'contracts']);
 Route::post('/client-info', [Client::class, 'clientInfo']);
 Route::post('/payments/deposit-methods', [Client::class, 'clientInfo']);
+Route::post('/password-and-security', [Client::class, 'clientInfo']);
 
 //route for job
 Route::get('/job-post', [JobPostController::class, 'index']);
