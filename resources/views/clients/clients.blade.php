@@ -17,6 +17,7 @@
                      </a>
                      <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                          <a class="dropdown-item" href="/job-post">Post a Job</a>
+                         <a class="dropdown-item" href="/client/dashboard">Your Dashboard</a>
                          <a class="dropdown-item" href="/all-jobs">All Jobs Post</a>
                          <a class="dropdown-item" href="/contracts">All Contracts</a>
                      </div>
@@ -34,6 +35,7 @@
                  <li class="nav-item dropdown">
                      <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                          <a class="dropdown-item" href="/job-post">Post a Job</a>
+                         <a class="dropdown-item" href="/client/dashboard">Post a Job</a>
                          <a class="dropdown-item" href="/all-jobs">All Jobs Post</a>
                          <a class="dropdown-item" href="/contracts">All Contracts</a>
                      </div>
@@ -43,7 +45,7 @@
      </nav>
  </header>
  <div class="dropdown-divider"></div>
- <a href="/get-started" class="btn btn-primary">Post a Job</a>
+ <a href="/job-post" class="btn btn-primary">Post a Job</a>
 
 
 
