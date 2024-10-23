@@ -8,11 +8,11 @@ class Client extends Controller
 {
     function Dashboard()
     {
-        return view('clients.clients');
+        return view('users.clients.clients');
     }
 
     function ContractsPage()
     {
-        return view('clients.contracts');
+        return view('users.clients.contracts');
     }
 }
