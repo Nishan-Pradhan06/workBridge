@@ -12,7 +12,7 @@ class JobPostController extends Controller
      */
     public function index()
     {
-        return view('job.job-post');
+        return view('features.job.job-post');
     }
 
     /**
@@ -55,7 +55,7 @@ class JobPostController extends Controller
                 return view('<h1>no job available</h1>');
             }
             $jobPost = JobPost::OrderBY('created_at', 'desc')->get(); //orderby descending order ma list hunxa
-            return view('job.all-jobs', compact('jobPost'));
+            return view('features.job.all-jobs', compact('jobPost'));
         } catch (\Exception $e) {
             return redirect()->back()->with('error', 'Failed to load jobs');
         }
@@ -71,7 +71,7 @@ class JobPostController extends Controller
             if (!$jobPost) {
                 return redirect()->back()->with('error', 'Job not found');
             } else {
-                return view('job.edit-job', compact('jobPost'));
+                return view('features.job.edit-job', compact('jobPost'));
             }
         } catch (\Exception $e) {
             return redirect()->back()->with('error', 'Failed to edit job');
