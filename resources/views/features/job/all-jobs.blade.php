@@ -1,5 +1,6 @@
 @extends('components/clients/client_nav')
 @section('content')
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 <style>
     .custom-card {
         cursor: pointer;
@@ -23,6 +24,16 @@
     .mid {
         text-align: center;
     }
+
+    .icons {
+        font-size: 20px;
+        color: black;
+    }
+
+    .dropdown-toggle::after {
+        display: none !important;
+        /* Hide the default arrow */
+    }
 </style>
 <div class="container">
     <div class="px-5">
@@ -39,21 +50,21 @@
                 <div class="mid">
                     <p style="font-size: 24px;">0</p>
                     <h6>Proposals</h6>
-
                 </div>
                 <div class="right">
-                    @if($jobPosts->deleted_at)
-                    <!-- Soft deleted, show restore and permanently delete options -->
-                    <a href="{{ url('/restore/' . $jobPosts->id) }}" class="btn btn-success">Reuse Posting</a>
-                    <a href="{{ url('/delete/' . $jobPosts->id) }}" class="btn btn-danger">Delete</a>
-                    @else
-                    <!-- Active job, show edit, soft delete, and delete options -->
-                    <a href="{{ url('/edit/' . $jobPosts->id) }}" class="btn btn-primary">Edit</a>
-                    <a href="{{ url('/remove/' . $jobPosts->id) }}" class="btn btn-warning">Remove Posting</a>
-                    <a href="{{ url('/delete/' . $jobPosts->id) }}" class="btn btn-danger">Delete</a>
-                    @endif
+                    <div class="right">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true">
+                            <i class="fas fa-ellipsis-h icons" style="font-size: 20px;"></i>
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="{{ url('/edit/' . $jobPosts->id) }}">Edit</a>
+                            <a class="dropdown-item" href="{{ url('/remove/' . $jobPosts->id) }}">Remove Posting</a>
+                            <a class="dropdown-item" href="{{ url('/restore/' . $jobPosts->id) }}">Reuse Posting</a>
+                            <a class="dropdown-item" href="/proposals">View Proposal</a>
+                            <a class="dropdown-item" href="{{ url('/delete/' . $jobPosts->id) }}">Permanent Delete</a>
+                        </div>
+                    </div>
                 </div>
-
             </div>
         </div>
         @endforeach
