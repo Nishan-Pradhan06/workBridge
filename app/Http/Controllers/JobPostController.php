@@ -43,7 +43,7 @@ class JobPostController extends Controller
         try {
             //only fetch jobs that are not soft deleted
             $jobPost = JobPost::whereNull('deleted_at')->OrderBY('created_at', 'desc')->get(); //orderby descending order ma list hunxa
-            return view('features.job.all-jobs', compact('jobPost'));
+            return view('users.freelancers.index', compact('jobPost'));
         } catch (\Exception $e) {
             return redirect()->back()->with('error', 'Failed to load jobs');
         }
@@ -110,7 +110,7 @@ class JobPostController extends Controller
             if (!$jobPost) {
                 return redirect()->back()->with('error', 'Job not found');
             } else {
-                $jobPost->delete();
+                $jobPost->forceDelete();
                 return redirect()->back()->with('success', 'Job deleted successfully');
             }
         } catch (\Exception $e) {
