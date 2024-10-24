@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@yield('title')</title>
+    <title>@yield('title','WorkBridge')</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 </head>
 
@@ -21,7 +21,6 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item dropdown">
-                        @if(request()->is('/client/dashboard'))
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Jobs
                         </a>
@@ -31,16 +30,6 @@
                             <a class="dropdown-item" href="/all-jobs">All Jobs Post</a>
                             <a class="dropdown-item" href="/contracts">All Contracts</a>
                         </div>
-                        @elseif(request()->is('/find-job'))
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Find Jobs
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="/job-post">Find Work</a>
-                            <a class="dropdown-item" href="/find-job">Your Dashboard</a>
-                            <a class="dropdown-item" href="/proposals">Proposal and offers</a>
-                        </div>
-                        @endif
                     </li>
                 </ul>
                 <div class="nab-btn">
@@ -53,20 +42,12 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
                     <li class="nav-item dropdown">
-                        @if(request()->is('/client/dashboard'))
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item" href="/job-post">Post a Job</a>
                             <a class="dropdown-item" href="/client/dashboard">Post a Job</a>
                             <a class="dropdown-item" href="/all-jobs">All Jobs Post</a>
                             <a class="dropdown-item" href="/contracts">All Contracts</a>
                         </div>
-                        @elseif(request()->is('/find-job'))
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="/job-post">Find Work</a>
-                            <a class="dropdown-item" href="/find-job">Your Dashboard</a>
-                            <a class="dropdown-item" href="/proposals">Proposal and offers</a>
-                        </div>
-                        @endif
                     </li>
                 </ul>
             </div>
