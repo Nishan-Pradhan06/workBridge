@@ -14,15 +14,6 @@ class JobPostController extends Controller
     {
         return view('features.job.job-post');
     }
-
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
-
     /**
      * Store a newly created resource in storage.
      */
@@ -44,17 +35,27 @@ class JobPostController extends Controller
             return redirect()->back()->with('error', 'Failed to post job');
         }
     }
-
     /**
-     * Display the specified resource.
+     * Display only non-deleted jobs.
      */
-    public function show(JobPost $jobPost)
+    public function showActiveJobs()
     {
         try {
-            if (!$jobPost) {
-                return view('<h1>no job available</h1>');
-            }
-            $jobPost = JobPost::OrderBY('created_at', 'desc')->get(); //orderby descending order ma list hunxa
+            //only fetch jobs that are not soft deleted
+            $jobPost = JobPost::whereNull('deleted_at')->OrderBY('created_at', 'desc')->get(); //orderby descending order ma list hunxa
+            return view('features.job.all-jobs', compact('jobPost'));
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error', 'Failed to load jobs');
+        }
+    }
+    /**
+     * Display all jobs, including soft-deleted ones.
+     */
+    public function showAllJobs()
+    {
+        try {
+            // fetch all jobs, including soft deleted
+            $jobPost = JobPost::withTrashed()->OrderBY('created_at', 'desc')->get(); //orderby descending order ma list hunxa
             return view('features.job.all-jobs', compact('jobPost'));
         } catch (\Exception $e) {
             return redirect()->back()->with('error', 'Failed to load jobs');
@@ -105,7 +106,7 @@ class JobPostController extends Controller
     public function destroy($id)
     {
         try {
-            $jobPost = JobPost::find($id);
+            $jobPost = JobPost::withTrashed()->find($id);/**withTrashed le softdelete gareko post jiob ni permanenlty delete hunca ya */
             if (!$jobPost) {
                 return redirect()->back()->with('error', 'Job not found');
             } else {
@@ -114,6 +115,37 @@ class JobPostController extends Controller
             }
         } catch (\Exception $e) {
             return redirect()->back()->with('error', 'Failed to delete job post!');
+        }
+    }
+
+    /**
+     * Removing posting /soft delete gareko.
+     */
+    public function softDelete($id)
+    {
+        try {
+            $jobPost = JobPost::find($id);
+            if (!$jobPost) {
+                return redirect()->back()->with('error', 'Job not found');
+            }
+            $jobPost->delete();
+            return redirect()->back()->with('success', 'Job soft deleted successfully');
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error', 'Failed to soft delete job post');
+        }
+    }
+    // restore/ repost garne function soft deleted gareko post
+    public function restore($id)
+    {
+        try {
+            $jobPost = JobPost::withTrashed()->find($id);
+            if (!$jobPost) {
+                return redirect()->back()->with('error', 'Job not found');
+            }
+            $jobPost->restore(); //restore the soft deleted job
+            return redirect()->back()->with('success', 'Job restore successfully');
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error', 'Failed to restore job');
         }
     }
 }
