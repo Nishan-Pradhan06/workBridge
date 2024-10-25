@@ -25,8 +25,7 @@
                             Find Jobs
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="/job-post">Find Work</a>
-                            <a class="dropdown-item" href="/find-job">Your Dashboard</a>
+                            <a class="dropdown-item" href="/find-job">Find Work</a>
                             <a class="dropdown-item" href="/proposals">Proposal and offers</a>
                         </div>
                     </li>
