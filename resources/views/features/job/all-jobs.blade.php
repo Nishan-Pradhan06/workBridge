@@ -2,6 +2,14 @@
 @section('content')
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 <style>
+    /* for job not found css */
+
+
+
+
+
+
+    /* ui for job post */
     .custom-card {
         cursor: pointer;
     }
@@ -40,6 +48,8 @@
         <br>
         <h3>All Jobs</h3>
         @if($jobPost->isEmpty())
+
+        <!-- add some ui here -->
         <h3>No Jobs Found</h3>
         @else
 
