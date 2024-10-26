@@ -39,6 +39,9 @@
     <div class="px-5">
         <br>
         <h3>All Jobs</h3>
+        @if($jobPost->isEmpty())
+        <h3>No Jobs Found</h3>
+        @else
 
         @foreach($jobPost as $jobPosts)
         <div class="card mb-4 custom-card">
@@ -68,6 +71,7 @@
             </div>
         </div>
         @endforeach
+        @endif
     </div>
 </div>
 @endsection
