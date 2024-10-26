@@ -12,7 +12,7 @@ class JobProposalController extends Controller
      */
     public function index()
     {
-        
+        return view('features.proposal.submit_proposal');
     }
 
     /**

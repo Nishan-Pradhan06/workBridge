@@ -3,6 +3,7 @@
 use App\Http\Controllers\Client;
 use App\Http\Controllers\Freelancer;
 use App\Http\Controllers\JobPostController;
+use App\Http\Controllers\JobProposalController;
 use App\Http\Controllers\PageController;
 use Illuminate\Support\Facades\Route;
 
@@ -17,7 +18,7 @@ Route::get('/find-job', [JobPostController::class, 'showActiveJobs']);
 Route::get('/create-profile', [Freelancer::class, 'createProfile']);
 Route::get('/freelancer/profile', [Freelancer::class, 'profile']);
 Route::get('freelancer/setting/contactInfo', [Freelancer::class, 'contactInfo']);
-Route::get('/send-proposal', [Freelancer::class, 'sendProposal']);
+Route::get('/apply/{id}', [JobProposalController::class, 'index']);
 Route::get('/contract', [Freelancer::class, 'contractProject']);
 
 //client
