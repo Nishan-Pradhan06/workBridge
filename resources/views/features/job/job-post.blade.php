@@ -1,3 +1,8 @@
+@extends('components.clients.client_nav') <!--IMPORTING THE FILES FROM COMPOENTS/NAVBAR.BLADE.PHP-->
+@section('title','Dashboard') <!--SETTINGUP THE TITLE-->
+@section('content') <!--START THE CONTENT FROM HERE-->
+
+
 <form action="/save-job" method="post">
     @csrf
     <div class="form-group">
@@ -25,3 +30,4 @@
     <button type="submit" class="btn btn-primary">Submit</button>
 
 </form>
+@endsection <!--END THE CONTENT FROM HERE-->
