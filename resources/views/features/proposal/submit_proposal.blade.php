@@ -62,7 +62,7 @@
 <div class="form-container">
     <h2>submit proposal</h2>
     <form action="/submit_proposal" method="POST">
-
+        @cfrs
         <label for="due_date">Due Date:</label>
         <input type="date" id="due_date" name="due_date" required>
 
