@@ -1,3 +1,22 @@
+@extends('components.clients.client_nav') <!--IMPORTING THE FILES FROM COMPOENTS/NAVBAR.BLADE.PHP-->
+@section('title','Dashboard') <!--SETTINGUP THE TITLE-->
+@section('content') <!--START THE CONTENT FROM HERE-->
+<style>
+    .container{
+        padding:10px 50px
+    }
+    label{
+        font-size:20px;
+    }
+    form input{
+        height:60px !important;
+    }
+
+</style>
+
+
+<div class="container">
+<h2>Edit a Job Post</h2>
 <form action="{{ url('/update/' . $jobPost->id) }}" method="post">
     @csrf
     <div class="form-group">
@@ -25,3 +44,21 @@
     <button type="submit" class="btn btn-primary">Update</button>
 
 </form>
+</div>
+<!-- using editor cdn for description -->
+<script src="https://cdn.ckeditor.com/4.20.0/standard/ckeditor.js"></script>
+<script>
+    CKEDITOR.replace('editor', {
+        toolbar: [{
+                name: 'basicstyles',
+                items: ['Bold', 'Italic']
+            },
+            {
+                name: 'paragraph',
+                items: ['NumberedList', 'BulletedList']
+            },
+        ],
+        height: 300
+    });
+</script>
+@endsection <!--END THE CONTENT FROM HERE-->
