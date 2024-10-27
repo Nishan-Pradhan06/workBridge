@@ -86,8 +86,19 @@ class JobProposalController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(JobProposal $jobProposal)
+    public function destroy($id)
     {
-        //
+        try {
+            $jobProposal = JobProposal::find($id);
+            if (!$jobProposal) {
+                return redirect()->back()->with('error', 'Proposal not found');
+            }
+            else {
+                $jobProposal->delete();
+                return redirect()->back()->with('sucess','JobProposal delete Sucessfully');
+            }
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error', 'Failed to delete job Proposal');
+        }
     }
 }
