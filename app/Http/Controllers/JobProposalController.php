@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\JobProposal;
 use Illuminate\Http\Request;
+use PHPUnit\Architecture\Storage\ObjectsStorage;
 
 class JobProposalController extends Controller
 {
@@ -16,19 +17,13 @@ class JobProposalController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
     {
-        //
+        $jobProposal= new JobProposal(); //new objects
+        $jobProposal->title = $request->title;
+        $jobProposal->description = $request->description;
     }
 
     /**
