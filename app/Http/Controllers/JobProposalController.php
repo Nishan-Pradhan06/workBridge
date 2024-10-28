@@ -21,7 +21,7 @@ class JobProposalController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request->all());
+        // dd($request->all());
         try {
             $jobProposal = new JobProposal(); //new objects
             $jobProposal->due_date = $request->due_date;

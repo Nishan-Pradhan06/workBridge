@@ -37,3 +37,7 @@ Route::post('/update/{id}', [JobPostController::class, 'update']);
 Route::get('/delete/{id}', [JobPostController::class, 'destroy']);
 Route::get('/remove/{id}', [JobPostController::class, 'softDelete']);
 Route::get('/restore/{id}', [JobPostController::class, 'restore']);
+
+
+//route for job proposal
+Route::post('/submit-proposal', [JobProposalController::class, 'store']);
