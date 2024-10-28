@@ -61,19 +61,19 @@
 </style>
 <div class="form-container">
     <h2>submit proposal</h2>
-    <form action="/submit_proposal" method="POST">
-        @cfrs
+    <form action="/submit-proposal" method="post">
+        @csrf
         <label for="due_date">Due Date:</label>
-        <input type="date" id="due_date" name="due_date" required>
+        <input type="date" id="due_date" name="due_date" >
 
         <label for="amount">Amount:</label>
-        <input type="text" id="amount" name="amount" placeholder="Enter amount" required>
+        <input type="text" id="amount" name="amount" placeholder="Enter amount" >
 
         <label for="project_duration">Project Duration:</label>
-        <input type="date" id="project_duration" name="project_duration" required>
+        <input type="date" id="project_duration" name="project_duration" >
 
         <label for="cover_letter">Cover Letter:</label>
-        <textarea id="cover_letter" name="cover_letter" rows="4" placeholder="Write your cover letter" required></textarea>
+        <textarea id="cover_letter" name="cover_letter" rows="4" placeholder="Write your cover letter" ></textarea>
 
         <button type="submit" class="btn btn-primary">Submit Proposal</button>
     </form>
