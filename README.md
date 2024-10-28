@@ -26,5 +26,7 @@ WorkBridge is a freelancing platform designed specifically for Nepali students w
 
 ## Developers
 
+
+
 - **Nishan Pradhan** - Backend & Database
 - **Nabin Basnet** - Frontend
