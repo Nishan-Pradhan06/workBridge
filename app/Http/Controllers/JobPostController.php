@@ -22,6 +22,7 @@ class JobPostController extends Controller
         // dd($request->all()); check the data is 
         try {
             $jobPost = new JobPost(); //naya object banako
+            $jobPost->client_id = 2; //mannually setting user id deu to cookies auth not complete
             $jobPost->title = $request->title;
             $jobPost->description = $request->des;
             $jobPost->budget = $request->budget;
