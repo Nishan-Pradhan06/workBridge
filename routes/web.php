@@ -41,4 +41,5 @@ Route::get('/restore/{id}', [JobPostController::class, 'restore']);
 
 //route for job proposal
 Route::post('/submit-proposal', [JobProposalController::class, 'store']);
-Route::get('/applicants', [JobProposalController::class, 'show']);
+Route::get('/applicants/{jobId}', [JobProposalController::class, 'show'])->name('proposals.show');
+

@@ -41,13 +41,13 @@ class JobProposalController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(JobProposal $jobProposal)
+    public function show($jobId)
     {
         try {
-            $jobProposal = JobProposal::all();
-            return view('features.proposal.proposal_list', compact('jobProposal'));
+            $jobProposals = JobProposal::where('job_id', $jobId)->get();
+            return view('features.proposal.proposal_list', compact('jobProposals'));
         } catch (\Exception $e) {
-            return redirect()->back()->with('error', 'Failed to fetch proposal');
+            return redirect()->back()->with('error', 'Failed to fetch proposals');
         }
     }
 

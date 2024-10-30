@@ -1,13 +1,14 @@
 @extends('components/clients/client_nav') <!--IMPORT THE COMPONENTS-->
 @section('content')
 <style>
-    .applicant-container
-    {
+    .applicant-container {
         padding: 0 140px;
     }
-    .job-details{
+
+    .job-details {
         padding-left: 40px;
     }
+
     .headers {
         display: flex;
         justify-content: center;
@@ -125,6 +126,7 @@
         color: #666;
     }
 </style>
+@forelse ($jobProposals as $jobProposal)
 <div class="applicant-container">
     <div class="job-details">
         <h2>
@@ -163,41 +165,19 @@
                 </div>
                 <div class="rate-details">
                     <p class="rate"><strong>$20.00</strong>/hr</p>
-                    <p>Cover letter - flutter developer</p>
+
+                    <p>{{ $jobProposal->cover_letter }}</p>
+
                 </div>
+
+
             </div>
         </div>
     </div>
-    <div class="applicants-details">
-        <div class="freelancer-card">
-            <div class="freelancer-info">
-                <div class="profile">
-                    <img src="" alt="Profile Picture" class="profile-pic" width="100" height="100">
-                    <div class="info">
-                        <h3>Nishan P.</h3>
-                        <p>Application Development | Flutter</p>
-                    </div>
-                </div>
-                <div class="actions">
-                    <button class="btn btn-success">Hire</button>
-                </div>
-            </div>
-            <div class="freelancer-details">
-                <div class="qualifications">
-                    <div class="skills">
-                        <span>Web Development</span>
-                        <span>Typing</span>
-                        <span>Data Entry</span>
-                        <span>Canva</span>
-                    </div>
-                </div>
-                <div class="rate-details">
-                    <p class="rate"><strong>$20.00</strong>/hr</p>
-                    <p>Cover letter - flutter developer</p>
-                </div>
-            </div>
-        </div>
-    </div>
+
 </div>
+@empty
+<p>No proposals found.</p>
+@endforelse
 
 @endsection
