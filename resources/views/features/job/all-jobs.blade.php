@@ -73,7 +73,7 @@
                             <a class="dropdown-item" href="{{ url('/edit/' . $jobPosts->id) }}">Edit</a>
                             <a class="dropdown-item" href="{{ url('/remove/' . $jobPosts->id) }}">Remove Posting</a>
                             <a class="dropdown-item" href="{{ url('/restore/' . $jobPosts->id) }}">Reuse Posting</a>
-                            <a class="dropdown-item" href="/proposals">View Proposal</a>
+                            <a class="dropdown-item" href="/applicants">View Proposal</a>
                             <a class="dropdown-item" href="{{ url('/delete/' . $jobPosts->id) }}">Permanent Delete</a>
                         </div>
                     </div>
