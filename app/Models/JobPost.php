@@ -10,7 +10,17 @@ class JobPost extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'client_id',
+        'title',
+        'description',
+        'budget',
+        'skills',
+        'deadline'
+    ];
     use SoftDeletes;
 
     protected $dates = ['deleted_at']; //register the deleted_at column for soft deletes
+
+
 }

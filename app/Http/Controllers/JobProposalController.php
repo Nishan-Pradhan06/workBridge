@@ -24,6 +24,8 @@ class JobProposalController extends Controller
         // dd($request->all());
         try {
             $jobProposal = new JobProposal(); //new objects
+            $jobProposal->job_id=1;
+            $jobProposal->user_id=1;
             $jobProposal->due_date = $request->due_date;
             $jobProposal->amount = $request->amount;
             $jobProposal->project_duration = $request->project_duration;
