@@ -6,6 +6,47 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@yield('title','WorkBridge')</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        .profile {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .profile-pic {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            /* border: 2px solid #0f0; */
+        }
+
+        .profle-dropdown-toggle::after {
+            display: none !important;
+            /* Hide the default arrow */
+        }
+
+        .info h5 {
+            margin-top: 10px;
+            font-size: 15px;
+        }
+
+        .info p {
+            font-size: 12px;
+            text-align: center;
+        }
+
+        hr {
+            margin-top: -10px;
+            width: 150px;
+        }
+
+        .items {
+            display: flex;
+            align-items: center;
+        }
+    </style>
 </head>
 
 <body>
@@ -33,7 +74,31 @@
                     </li>
                 </ul>
                 <div class="nab-btn">
-                    <section>profile</section>
+                    <a class="nav-link profle-dropdown-toggle profile" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true">
+                        <img src="{{asset('profile.jpg')}}" alt="Profile Picture" class="profile-pic">
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                        <div class="profile">
+                            <img src="{{asset('profile.jpg')}}" alt="Profile Picture" class="profile-pic">
+                            <div class="info">
+                                <h5>Nishan Pradhan</h5>
+                                <p>Client</p>
+                            </div>
+                            <hr>
+                        </div>
+                        <div class="items dropdown-item">
+                            <i class="fas fa-user-circle icons" style="font-size: 20px;"></i>
+                            <a class="dropdown-item" href="">Profile</a>
+                        </div>
+                        <div class="items dropdown-item">
+                            <i class="fas fa-cog icons" style="font-size: 20px;"></i>
+                            <a class="dropdown-item" href="">Setting</a>
+                        </div>
+                        <div class="items dropdown-item">
+                            <i class="fas fa-sign-out-alt icons" style="font-size: 20px;"></i>
+                            <a class="dropdown-item" href="">Logout</a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </nav>
