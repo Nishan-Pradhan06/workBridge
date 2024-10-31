@@ -87,12 +87,8 @@
                             <hr>
                         </div>
                         <div class="items dropdown-item">
-                            <i class="fas fa-user-circle icons" style="font-size: 20px;"></i>
-                            <a class="dropdown-item" href="">Profile</a>
-                        </div>
-                        <div class="items dropdown-item">
                             <i class="fas fa-cog icons" style="font-size: 20px;"></i>
-                            <a class="dropdown-item" href="">Setting</a>
+                            <a class="dropdown-item" href="/client-info">Setting</a>
                         </div>
                         <div class="items dropdown-item">
                             <i class="fas fa-sign-out-alt icons" style="font-size: 20px;"></i>
