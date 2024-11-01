@@ -12,12 +12,12 @@ class Freelancer extends Controller
     }
     function profile()
     {
-        return view('users.profile');
+        return view('users.freelancers.profile');
     }
 
-    function setting()
+    function contactInfo()
     {
-        return view('users.setting');
+        return view('users.freelancers.setting');
     }
 
     function createProfile()
