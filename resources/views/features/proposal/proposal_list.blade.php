@@ -14,23 +14,21 @@
         justify-content: center;
         font-weight: bold;
         color: #333;
-
     }
 
     .headers p {
-        flex: 0.5;
+        flex: 0.17; 
         text-align: center;
         font-size: 14px;
     }
 
     .applicants-details {
-        padding: 10px 50px;
-        display: flex;
-        justify-content: center;
+        padding: 8px 50px;
     }
 
     .freelancer-card {
         display: flex;
+        align-items: center;
         justify-content: space-between;
         width: 74vw;
         border: 1px solid #ddd;
@@ -39,30 +37,28 @@
         padding: 20px;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     }
-
-    .freelancer-info {
+    .freelancer-info{
         display: flex;
         flex-direction: column;
-        align-items: flex-end;
-        ;
-        width: 25%;
-        padding-right: 20px;
+        align-self: center;
+        justify-content: end;
     }
-
-    .profile {
+    .profiles {
         display: flex;
+        justify-content: center;
         align-items: center;
         gap: 20px;
     }
 
     .profile-pic {
-        width: 80px;
-        height: 80px;
+        width: 70px;
+        height: 70px;
         border-radius: 50%;
         margin-bottom: 10px;
         border: 2px solid #0f0;
     }
 
+    
     .info h3 {
         margin: 5px 0;
         font-size: 16px;
@@ -77,7 +73,7 @@
 
     .btn {
         width: 100px;
-    }
+    } 
 
     .freelancer-details {
         display: flex;
@@ -124,9 +120,9 @@
     .rate-details p {
         font-size: 14px;
         color: #666;
-    }
+    } 
 </style>
-@forelse ($jobProposals as $jobProposal)
+
 <div class="applicant-container">
     <div class="job-details">
         <h2>
@@ -136,23 +132,24 @@
     <div class="headers">
         <p></p>
         <p>Qualifications</p>
+        <p>Amount</p>
+        <p>Duration</p>
         <p>Details</p>
     </div>
+    @forelse ($jobProposals as $jobProposal)
     <div class="applicants-details">
         <div class="freelancer-card">
             <div class="freelancer-info">
-                <div class="profile">
+                <div class="profiles">
                     <img src="" alt="Profile Picture" class="profile-pic" width="100" height="100">
                     <div class="info">
                         <h3>Nishan Pradhan</h3>
                         <p>Application Development | Flutter</p>
                     </div>
-
                 </div>
                 <div class="actions">
                     <button class="btn btn-success">Hire</button>
                 </div>
-
             </div>
             <div class="freelancer-details">
                 <div class="qualifications">
@@ -174,10 +171,10 @@
             </div>
         </div>
     </div>
-
+    @empty
+    <p>No proposals found.</p>
+    @endforelse
 </div>
-@empty
-<p>No proposals found.</p>
-@endforelse
+
 
 @endsection
