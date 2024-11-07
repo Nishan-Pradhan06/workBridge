@@ -17,7 +17,7 @@
     }
 
     .headers p {
-        flex: 0.17; 
+        flex: 0.17;
         text-align: center;
         font-size: 14px;
     }
@@ -37,12 +37,14 @@
         padding: 20px;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     }
-    .freelancer-info{
+
+    .freelancer-info {
         display: flex;
         flex-direction: column;
         align-self: center;
         justify-content: end;
     }
+
     .profiles {
         display: flex;
         justify-content: center;
@@ -58,7 +60,7 @@
         border: 2px solid #0f0;
     }
 
-    
+
     .info h3 {
         margin: 5px 0;
         font-size: 16px;
@@ -73,19 +75,20 @@
 
     .btn {
         width: 100px;
-    } 
+    }
 
     .freelancer-details {
         display: flex;
-        flex: 1;
-        justify-content: space-between;
-        padding-left: 60px;
+        justify-content: space-around;
+        /* justify-content: space-between; */
+        padding-left: 30px;
+        word-wrap: wordwrap;
     }
 
     .stats,
     .qualifications,
     .rate-details {
-        text-align: left;
+        text-align: center;
     }
 
     .stats p,
@@ -120,7 +123,7 @@
     .rate-details p {
         font-size: 14px;
         color: #666;
-    } 
+    }
 </style>
 
 <div class="applicant-container">
@@ -160,14 +163,17 @@
                         <span>Canva</span>
                     </div>
                 </div>
-                <div class="rate-details">
-                    <p class="rate"><strong>$20.00</strong>/hr</p>
-
-                    <p>{{ $jobProposal->cover_letter }}</p>
-
-                </div>
-
-
+            </div>
+            <div class="rate-details">
+                <p class="rate"><strong>$20.00</strong>/hr</p>
+            </div>
+            <div class="rate-details">
+                <p class="rate"><strong>$20.00</strong>/hr</p>
+                <p class="rate"><strong>$20.00</strong>/hr</p>
+            </div>
+            <div class="rate-details">
+                <p class="rate"><strong>$20.00</strong>/hr</p>
+                <p>{{ $jobProposal->cover_letter }}</p>
             </div>
         </div>
     </div>
