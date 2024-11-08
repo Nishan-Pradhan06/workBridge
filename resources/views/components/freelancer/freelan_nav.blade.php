@@ -135,29 +135,31 @@
 
                         </div>
                     </div>
-                    <a class="nav-link profle-dropdown-toggle profile" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true">
-                        <img src="{{asset('profile.jpg')}}" alt="Profile Picture" class="profile-pic">
-                    </a>
-                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                        <div class="profile">
+                    <div class="prfile-icons">
+                        <a class="nav-link profle-dropdown-toggle profile" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true">
                             <img src="{{asset('profile.jpg')}}" alt="Profile Picture" class="profile-pic">
-                            <div class="info">
-                                <h5>Nishan Pradhan</h5>
-                                <p>Freelancer</p>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                            <div class="profile">
+                                <img src="{{asset('profile.jpg')}}" alt="Profile Picture" class="profile-pic">
+                                <div class="info">
+                                    <h5>Nishan Pradhan</h5>
+                                    <p>Freelancer</p>
+                                </div>
+                                <hr>
                             </div>
-                            <hr>
-                        </div>
-                        <div class="items dropdown-item">
-                            <i class="fas fa-user icons" style="font-size: 20px;"></i>
-                            <a class="dropdown-item" href="/freelancer/profile">Your Profile</a>
-                        </div>
-                        <div class="items dropdown-item">
-                            <i class="fas fa-cog icons" style="font-size: 20px;"></i>
-                            <a class="dropdown-item" href="/freelancer/setting/contactInfo">Account Settings</a>
-                        </div>
-                        <div class="items dropdown-item">
-                            <i class="fas fa-sign-out-alt icons" style="font-size: 20px;"></i>
-                            <a class="dropdown-item" href="/logout">Logout</a>
+                            <div class="items dropdown-item">
+                                <i class="fas fa-user icons" style="font-size: 20px;"></i>
+                                <a class="dropdown-item" href="/freelancer/profile">Your Profile</a>
+                            </div>
+                            <div class="items dropdown-item">
+                                <i class="fas fa-cog icons" style="font-size: 20px;"></i>
+                                <a class="dropdown-item" href="/freelancer/setting/contactInfo">Account Settings</a>
+                            </div>
+                            <div class="items dropdown-item">
+                                <i class="fas fa-sign-out-alt icons" style="font-size: 20px;"></i>
+                                <a class="dropdown-item" href="/logout">Logout</a>
+                            </div>
                         </div>
                     </div>
                 </div>
