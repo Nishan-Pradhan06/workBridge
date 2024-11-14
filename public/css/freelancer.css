@@ -1,0 +1,70 @@
+ 
+ 
+ 
+ 
+ /* Profile Content */
+    .main-content {
+        flex: 1;
+        padding: 2px;
+        overflow-y: auto;
+    }
+
+    .content-wrapper {
+        max-width: 700px;
+        margin: 0 auto;
+        background-color: white;
+        border-radius: 8px;
+        padding: 20px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .content-header h2 {
+        font-size: 24px;
+        font-weight: 600;
+        color: #333;
+        margin-bottom: 20px;
+    }
+
+    section {
+        margin-bottom: 30px;
+    }
+
+    section h3 {
+        font-size: 18px;
+        font-weight: 500;
+        color: #666;
+        margin-bottom: 15px;
+    }
+
+    .form-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+
+    .form-group {
+        display: flex;
+        flex-direction: column;
+    }
+
+    label {
+        font-size: 14px;
+        color: #666;
+        margin-bottom: 5px;
+    }
+
+    input,
+    textarea {
+        padding: 10px;
+        font-size: 16px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    }
+
+    textarea {
+        resize: vertical;
+    }
+
+    .full-width {
+        grid-column: span 2;
+    }
