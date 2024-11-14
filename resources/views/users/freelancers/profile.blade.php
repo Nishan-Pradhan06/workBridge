@@ -9,10 +9,11 @@
 <div class="main">
     @section('main') <!-- CONTENT STARTED AFTER SIDENAV -->
     <main class="main-content">
+        <h3>My Profile</h3>
         <div class="content-wrapper">
             <div class="content-header">
-                <h2>Edit Profile</h2>
-                <a href="" class="btn btn-success">Apply</a>
+                <h5>Edit Profile</h5>
+                <a href="" class="btn btn-primary">Update</a>
             </div>
             <form>
                 <section>

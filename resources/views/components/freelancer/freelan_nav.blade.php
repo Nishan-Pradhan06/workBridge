@@ -150,7 +150,7 @@
                             </div>
                             <div class="items dropdown-item">
                                 <i class="fas fa-user icons" style="font-size: 20px;"></i>
-                                <a class="dropdown-item" href="/freelancer/profile">Your Profile</a>
+                                <a class="dropdown-item" href="/freelancer/setting/profile">Your Profile</a>
                             </div>
                             <div class="items dropdown-item">
                                 <i class="fas fa-cog icons" style="font-size: 20px;"></i>

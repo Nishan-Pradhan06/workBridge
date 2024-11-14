@@ -16,8 +16,10 @@ Route::get('/get-started', [PageController::class, 'getStarted']);
 //freelancer
 Route::get('/find-job', [JobPostController::class, 'showActiveJobs']);
 Route::get('/create-profile', [Freelancer::class, 'createProfile']);
-Route::get('/freelancer/profile', [Freelancer::class, 'profile']);
+Route::get('/freelancer/setting/profile', [Freelancer::class, 'profile']);
 Route::get('/freelancer/setting/contactInfo', [Freelancer::class, 'contactInfo']);
+Route::get('/freelancer/setting/billing-and-payments', [Freelancer::class, 'billingAndPayment']);
+Route::get('/freelancer/setting/password-and-security', [Freelancer::class, 'PasswordAndSecurity']);
 Route::get('/apply/{id}', [JobProposalController::class, 'index']);
 Route::get('/contract', [Freelancer::class, 'contractProject']);
 

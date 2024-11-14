@@ -17,7 +17,11 @@ class Freelancer extends Controller
 
     function contactInfo()
     {
-        return view('users.freelancers.setting');
+        return view('users.freelancers.contact_info');
+    }
+    function billingAndPayment()
+    {
+        return view('users.freelancers.billing_and_payment');
     }
 
     function createProfile()

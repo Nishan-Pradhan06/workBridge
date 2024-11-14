@@ -1,67 +1,73 @@
- 
  /* Profile Content */
-    .main-content {
-        flex: 1;
-        padding: 2px;
-        overflow-y: auto;
-    }
+ .main-content {
+     flex: 1;
+     padding: 2px;
+     overflow-y: auto;
+ }
 
-    .content-wrapper {
-        max-width: 700px;
-        margin: 0 auto;
-        background-color: white;
-        border-radius: 8px;
-        padding: 20px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    }
+ .content-wrapper {
+     max-width: 700px;
+     margin: 0 auto;
+     background-color: white;
+     border-radius: 8px;
+     padding: 20px;
+     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+ }
 
-    .content-header h2 {
-        font-size: 24px;
-        font-weight: 600;
-        color: #333;
-        margin-bottom: 20px;
-    }
+ .content-header {
+     display: flex;
+     justify-content: space-between;
+     align-items: center;
+ }
 
-    section {
-        margin-bottom: 30px;
-    }
+ .content-header h2 {
 
-    section h3 {
-        font-size: 18px;
-        font-weight: 500;
-        color: #666;
-        margin-bottom: 15px;
-    }
+     font-size: 24px;
+     font-weight: 600;
+     color: #333;
+     margin-bottom: 20px;
+ }
 
-    .form-grid {
-        display: grid;
-        grid-template-columns: 1fr;
-        gap: 15px;
-    }
+ section {
+     margin-bottom: 30px;
+ }
 
-    .form-group {
-        display: flex;
-        flex-direction: column;
-    }
+ section h3 {
+     font-size: 18px;
+     font-weight: 500;
+     color: #666;
+     margin-bottom: 15px;
+ }
 
-    label {
-        font-size: 14px;
-        color: #666;
-        margin-bottom: 5px;
-    }
+ .form-grid {
+     display: grid;
+     grid-template-columns: 1fr;
+     gap: 15px;
+ }
 
-    input,
-    textarea {
-        padding: 10px;
-        font-size: 16px;
-        border: 1px solid #ccc;
-        border-radius: 4px;
-    }
+ .form-group {
+     display: flex;
+     flex-direction: column;
+ }
 
-    textarea {
-        resize: vertical;
-    }
+ label {
+     font-size: 14px;
+     color: #666;
+     margin-bottom: 5px;
+ }
 
-    .full-width {
-        grid-column: span 2;
-    }
+ input,
+ textarea {
+     padding: 10px;
+     font-size: 16px;
+     border: 1px solid #ccc;
+     border-radius: 4px;
+ }
+
+ textarea {
+     resize: vertical;
+ }
+
+ .full-width {
+     grid-column: span 2;
+ }
