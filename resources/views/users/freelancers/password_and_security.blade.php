@@ -9,7 +9,7 @@
 <div class="main">
     @section('main') <!-- CONTENT STARTED AFTER SIDENAV -->
     <main class="main-content">
-        <h3 class="heading">contact info</h3>
+        <h3 class="heading">Password And Security</h3>
     </main>
 </div>
 <!-- footer import -->

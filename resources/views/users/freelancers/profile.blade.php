@@ -9,7 +9,7 @@
 <div class="main">
     @section('main') <!-- CONTENT STARTED AFTER SIDENAV -->
     <main class="main-content">
-        <h3>My Profile</h3>
+        <h3 class="heading">My Profile</h3>
         <div class="content-wrapper">
             <div class="content-header">
                 <h5>Edit Profile</h5>

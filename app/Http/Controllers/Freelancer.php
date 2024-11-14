@@ -23,6 +23,10 @@ class Freelancer extends Controller
     {
         return view('users.freelancers.billing_and_payment');
     }
+    function PasswordAndSecurity()
+    {
+        return view('users.freelancers.password_and_security');
+    }
 
     function createProfile()
     {
