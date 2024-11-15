@@ -9,7 +9,17 @@
 <div class="main">
     @section('main') <!-- CONTENT STARTED AFTER SIDENAV -->
     <main class="main-content">
-        <h3 class="heading">contact info</h3>
+        <h3 class="heading">Contact Info</h3>
+        <div class="content-wrapper">
+            <form>
+                <div class="form-group">
+                    <label for="email">Email address</label>
+                    <input type="email" class="form-control" id="email">
+                    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
     </main>
 </div>
 <!-- footer import -->

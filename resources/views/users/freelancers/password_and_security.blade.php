@@ -10,6 +10,24 @@
     @section('main') <!-- CONTENT STARTED AFTER SIDENAV -->
     <main class="main-content">
         <h3 class="heading">Password And Security</h3>
+        <div class="content-wrapper">
+            <form>
+                <div class="form-group">
+                    <label for="currentpassword">Current Password</label>
+                    <input type="password" class="form-control" id="currentpassword">
+                    <small id="emailHelp" class="form-text text-muted">Enter the current password to change new password.</small>
+                </div>
+                <div class="form-group">
+                    <label for="newpassword">New Password</label>
+                    <input type="password" class="form-control" id="newpassword">
+                </div>
+                <div class="form-group">
+                    <label for="confirmnewpassword">Confrim Password</label>
+                    <input type="password" class="form-control" id="confirmnewpassword">
+                </div>
+                <button type="submit" class="btn btn-primary">Change Password</button>
+            </form>
+        </div>
     </main>
 </div>
 <!-- footer import -->
