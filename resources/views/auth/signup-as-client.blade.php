@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,10 +8,12 @@
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('css/components/signup.css') }}">
 </head>
+
 <body>
     <div class="container">
-        <form id="client-registration-form">
+        <form id="client-registration-form" action='/reg' method="post">
             <!-- Basic Information -->
+            @csrf
             <h1>Client Registration</h1>
             <section>
                 <label for="clientName">Full Name</label>
@@ -25,16 +28,19 @@
                 <label for="password">Password</label>
                 <input type="password" id="password" name="password" required>
 
+                <input type="hidden" name="role" value="client">
+
                 <label for="confirmPassword">Confirm Password</label>
                 <input type="password" id="confirmPassword" name="confirmPassword" required>
 
             </section>
 
-        
+
 
             <!-- Submit -->
             <a href="/client/dashboard"><button>create my account</button></a>
         </form>
     </div>
 </body>
+
 </html>

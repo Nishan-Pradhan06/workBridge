@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\auth;
 use App\Http\Controllers\Client;
 use App\Http\Controllers\Freelancer;
 use App\Http\Controllers\JobPostController;
