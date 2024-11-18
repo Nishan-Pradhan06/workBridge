@@ -21,19 +21,11 @@
                     <div class="form-grid">
                         <div class="form-group">
                             <label for="username">Username</label>
-                            <input type="text" id="username" value="lucky.jesse">
+                            <input type="text" id="username" value="{{ auth()->user()->name }}">
                         </div>
                         <div class="form-group">
                             <label for="email">Email address</label>
-                            <input type="email" id="email" value="jesse@example.com">
-                        </div>
-                        <div class="form-group">
-                            <label for="firstName">First name</label>
-                            <input type="text" id="firstName" value="Jesse">
-                        </div>
-                        <div class="form-group">
-                            <label for="lastName">Last name</label>
-                            <input type="text" id="lastName" value="Lucky">
+                            <input type="email" id="email" value="{{ auth()->user()->email }}">
                         </div>
                     </div>
                 </section>
