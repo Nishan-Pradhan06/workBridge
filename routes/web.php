@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\auth;
+use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Client;
 use App\Http\Controllers\Freelancer;
 use App\Http\Controllers\JobPostController;
@@ -9,10 +10,16 @@ use App\Http\Controllers\PageController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [PageController::class, 'index']);
-Route::get('/login', [PageController::class, 'login']);
+Route::get('/login', [PageController::class, 'login'])->name('login');
 Route::get('/signup-freelancer', [PageController::class, 'signupAsFreelancer']);
-Route::get('/signup-client', [PageController::class, 'signupAsClient']);
+// Route::get('/signup-client', [PageController::class, 'signupAsClient']); not used change the path and updated in auth/controller
 Route::get('/get-started', [PageController::class, 'getStarted']);
+
+//register
+
+// clients
+Route::get('/client-register', [RegisterController::class, 'showRegistrationForm'])->name('client-register');
+Route::post('/client-register', [RegisterController::class, 'clientRegister']);
 
 //freelancer
 Route::get('/find-job', [JobPostController::class, 'showActiveJobs']);
@@ -45,4 +52,3 @@ Route::get('/restore/{id}', [JobPostController::class, 'restore']);
 //route for job proposal
 Route::post('/submit-proposal', [JobProposalController::class, 'store']);
 Route::get('/applicants/{jobId}', [JobProposalController::class, 'show'])->name('proposals.show');
-
