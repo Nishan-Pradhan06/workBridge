@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,10 +8,12 @@
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('css/components/login.css') }}">
 </head>
+
 <body>
     <div class="login-container">
         <h2>Login</h2>
-        <form>
+        <form id="login-form" action="/login" method="post">
+            @csrf
             <div class="input-group">
                 <label for="email">Email</label>
                 <input type="email" id="email" name="email" placeholder="Enter your email" required>
@@ -25,4 +28,5 @@
         </form>
     </div>
 </body>
+
 </html>
