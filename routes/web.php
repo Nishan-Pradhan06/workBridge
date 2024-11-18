@@ -16,15 +16,17 @@ Route::get('/get-started', [PageController::class, 'getStarted']);
 //freelancer
 Route::get('/find-job', [JobPostController::class, 'showActiveJobs']);
 Route::get('/create-profile', [Freelancer::class, 'createProfile']);
-Route::get('/freelancer/profile', [Freelancer::class, 'profile']);
-Route::get('freelancer/setting/contactInfo', [Freelancer::class, 'contactInfo']);
+Route::get('/freelancer/setting/profile', [Freelancer::class, 'profile']);
+Route::get('/freelancer/setting/contactInfo', [Freelancer::class, 'contactInfo']);
+Route::get('/freelancer/setting/billing-and-payments', [Freelancer::class, 'billingAndPayment']);
+Route::get('/freelancer/setting/password-and-security', [Freelancer::class, 'PasswordAndSecurity']);
 Route::get('/apply/{id}', [JobProposalController::class, 'index']);
 Route::get('/contract', [Freelancer::class, 'contractProject']);
 
 //client
 Route::get('/client/dashboard', [Client::class, 'Dashboard']);
 Route::post('/contracts', [Client::class, 'contracts']);
-Route::post('/client-info', [Client::class, 'clientInfo']);
+Route::get('/client-info', [Client::class, 'Info']);
 Route::post('/payments/deposit-methods', [Client::class, 'clientInfo']);
 Route::post('/password-and-security', [Client::class, 'clientInfo']);
 
@@ -41,3 +43,5 @@ Route::get('/restore/{id}', [JobPostController::class, 'restore']);
 
 //route for job proposal
 Route::post('/submit-proposal', [JobProposalController::class, 'store']);
+Route::get('/applicants/{jobId}', [JobProposalController::class, 'show'])->name('proposals.show');
+

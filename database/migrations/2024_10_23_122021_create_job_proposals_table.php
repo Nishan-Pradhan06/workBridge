@@ -13,6 +13,8 @@ return new class extends Migration
     {
         Schema::create('job_proposals', function (Blueprint $table) {
             $table->id();
+            $table->integer('job_id');
+            $table->integer('user_id');
             $table->date('due_date');
             $table->string('amount');
             $table->date('project_duration');

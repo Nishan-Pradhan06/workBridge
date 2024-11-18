@@ -6,6 +6,83 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@yield('title','WorkBridge')</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <style>
+        .profile {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .profile-pic {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            /* border: 2px solid #0f0; */
+        }
+
+        .profle-dropdown-toggle::after {
+            display: none !important;
+            /* Hide the default arrow */
+        }
+
+        .info h5 {
+            margin-top: 10px;
+            font-size: 15px;
+        }
+
+        .info p {
+            font-size: 12px;
+            text-align: center;
+        }
+
+        hr {
+            margin-top: -10px;
+            width: 150px;
+        }
+
+        .items {
+            display: flex;
+            align-items: center;
+        }
+
+        .notification-content {
+            flex: 1;
+            font-size: 14px;
+            color: #555;
+        }
+
+        .notification-divider {
+            height: 1px;
+            background-color: #eee;
+            margin: 0 16px;
+        }
+
+        .notification-close {
+            position: absolute;
+            right: 16px;
+            top: 16px;
+            font-size: 16px;
+            /* color: #888; */
+            cursor: pointer;
+        }
+
+        /* Scrollbar styling */
+        .notification-dropdown::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .notification-dropdown::-webkit-scrollbar-thumb {
+            background-color: #ddd;
+            border-radius: 4px;
+        }
+
+        .notification-dropdown::-webkit-scrollbar-track {
+            background-color: #f9f9f9;
+        }
+    </style>
 </head>
 
 <body>
@@ -31,7 +108,60 @@
                     </li>
                 </ul>
                 <div class="nab-btn">
-                    <section>profile</section>
+                    <div class="notification-icons">
+
+                        <a class="nav-link profle-dropdown-toggle profile" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true">
+                            <i class="fas fa-bell icons" style="font-size: 20px;"></i>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                            <div class="items dropdown-item notification">
+                                <div class="notification-content">
+                                    <p>Your proposal for Flutter test was viewed.</p>
+                                </div>
+                            </div>
+                            <div class="notification-divider"></div>
+                            <div class="items dropdown-item notification">
+                                <div class="notification-content">
+                                    <p>Your proposal for Flutter test was viewed.</p>
+                                </div>
+                            </div>
+                            <div class="notification-divider"></div>
+                            <div class="items dropdown-item notification">
+                                <div class="notification-content">
+                                    <p>Your proposal for Flutter test was viewed.</p>
+                                </div>
+                            </div>
+                            <div class="notification-divider"></div>
+
+                        </div>
+                    </div>
+                    <div class="prfile-icons">
+                        <a class="nav-link profle-dropdown-toggle profile" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true">
+                            <img src="{{asset('profile.jpg')}}" alt="Profile Picture" class="profile-pic">
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                            <div class="profile">
+                                <img src="{{asset('profile.jpg')}}" alt="Profile Picture" class="profile-pic">
+                                <div class="info">
+                                    <h5>Nishan Pradhan</h5>
+                                    <p>Freelancer</p>
+                                </div>
+                                <hr>
+                            </div>
+                            <div class="items dropdown-item">
+                                <i class="fas fa-user icons" style="font-size: 20px;"></i>
+                                <a class="dropdown-item" href="/freelancer/setting/profile">Your Profile</a>
+                            </div>
+                            <div class="items dropdown-item">
+                                <i class="fas fa-cog icons" style="font-size: 20px;"></i>
+                                <a class="dropdown-item" href="/freelancer/setting/contactInfo">Account Settings</a>
+                            </div>
+                            <div class="items dropdown-item">
+                                <i class="fas fa-sign-out-alt icons" style="font-size: 20px;"></i>
+                                <a class="dropdown-item" href="/logout">Logout</a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </nav>
@@ -44,7 +174,7 @@
                             <a class="dropdown-item" href="/job-post">Find Work</a>
                             <a class="dropdown-item" href="/find-job">Your Dashboard</a>
                             <a class="dropdown-item" href="/proposals">Proposal and offers</a>
-                        </div> 
+                        </div>
                     </li>
                 </ul>
             </div>
@@ -53,7 +183,6 @@
     <div class="dropdown-divider"></div>
     @yield('content')
 
-    @include('components.footer')
     <!-- js -->
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>

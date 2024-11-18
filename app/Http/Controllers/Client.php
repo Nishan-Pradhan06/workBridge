@@ -15,4 +15,8 @@ class Client extends Controller
     {
         return view('users.clients.contracts');
     }
+    function Info()
+    {
+        return view('users.clients.info');
+    }
 }

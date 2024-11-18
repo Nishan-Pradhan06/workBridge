@@ -24,6 +24,8 @@ class JobProposalController extends Controller
         // dd($request->all());
         try {
             $jobProposal = new JobProposal(); //new objects
+            $jobProposal->job_id=1;
+            $jobProposal->user_id=1;
             $jobProposal->due_date = $request->due_date;
             $jobProposal->amount = $request->amount;
             $jobProposal->project_duration = $request->project_duration;
@@ -39,13 +41,13 @@ class JobProposalController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(JobProposal $jobProposal)
+    public function show($jobId)
     {
         try {
-            $jobProposal = JobProposal::all();
-            return view('features.proposal.proposal_list', compact('jobProposal'));
+            $jobProposals = JobProposal::where('job_id', $jobId)->get();
+            return view('features.proposal.proposal_list', compact('jobProposals'));
         } catch (\Exception $e) {
-            return redirect()->back()->with('error', 'Failed to fetch proposal');
+            return redirect()->back()->with('error', 'Failed to fetch proposals');
         }
     }
 
