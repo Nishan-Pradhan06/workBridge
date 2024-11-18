@@ -19,6 +19,9 @@ Route::get('/get-started', [PageController::class, 'getStarted']);
 // clients
 Route::get('/client-register', [RegisterController::class, 'showRegistrationForm'])->name('client-register');
 Route::post('/client-register', [RegisterController::class, 'clientRegister']);
+// freelancer
+Route::get('/freelancer-register', [RegisterController::class, 'showRegistrationFormFreelancer'])->name('freelancer-register');
+Route::post('/freelancer-register', [RegisterController::class, 'freelancerRegister']);
 
 
 //login route

@@ -22,15 +22,22 @@ class LoginController extends Controller
     public function login(Request $request)
     {
         // Validate the request data
-        // $request->validate([
-        //     'email' => 'required|email',
-        //     'password' => 'required',
-        // ]);
+        $request->validate([
+            'email' => 'required|email',
+            'password' => 'required',
+        ]);
 
         // Attempt to log in the user
-        if (Auth::attempt($request->only('email', 'password'))) {
+        $credentials = $request->only('email', 'password');
+
+        if (Auth::attempt($credentials)) {
             // Redirect to the dashboard
-            return redirect()->intended('/client/dashboard');
+            $user = Auth::user();
+            if ($user->role === 'client') {
+                return redirect()->intended('/client/dashboard');
+            } elseif ($user->role === 'freelancer') {
+                return redirect()->intended('/find-job');
+            }
         }
 
         // Redirect back with an error message
@@ -38,5 +45,4 @@ class LoginController extends Controller
             'email' => 'Invalid credentials.',
         ]);
     }
- 
 }

@@ -13,7 +13,7 @@ class RegisterController extends Controller
     {
         return view('auth.signup-as-client');
     }
-
+    //for client registeration
     public function clientRegister(Request $request)
     {
         // dd($request->all());
@@ -22,7 +22,7 @@ class RegisterController extends Controller
         // $request->validate([
         //     'clientName' => 'required|string|max:255',
         //     'email' => 'required|string|email|max:255|unique:users',
-        //     // 'phone' => 'required|string|regex:/^[0-9]{10,15}$/',
+        //     'phone' => 'required|string|regex:/^[0-9]{10,15}$/',
         //     'password' => 'required|string|min:8|confirmed',
         // ]);
 
@@ -31,8 +31,27 @@ class RegisterController extends Controller
         User::create([
             'name' => $request->name,
             'email' => $request->email,
-            'phone'=>$request->phone,
-            'role'=>$request->role,
+            'phone' => $request->phone,
+            'role' => $request->role,
+            'password' => Hash::make($request->password),
+        ]);
+        return redirect()->route('login')->with('success', 'Registration successful. Please login.'); //after creating the id it redirect to login page
+    }
+
+
+    //freelacner registeration
+    public function showRegistrationFormFreelancer()
+    {
+        return view('auth.signup-as-freelancer');
+    }
+
+    public function freelancerRegister(Request $request)
+    {
+        User::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'phone' => $request->phone,
+            'role' => $request->role,
             'password' => Hash::make($request->password),
         ]);
         return redirect()->route('login')->with('success', 'Registration successful. Please login.');
