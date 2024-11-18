@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\auth;
 use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Client;
 use App\Http\Controllers\Freelancer;
 use App\Http\Controllers\JobPostController;
@@ -10,9 +11,7 @@ use App\Http\Controllers\PageController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [PageController::class, 'index']);
-Route::get('/login', [PageController::class, 'login'])->name('login');
 Route::get('/signup-freelancer', [PageController::class, 'signupAsFreelancer']);
-// Route::get('/signup-client', [PageController::class, 'signupAsClient']); not used change the path and updated in auth/controller
 Route::get('/get-started', [PageController::class, 'getStarted']);
 
 //register
@@ -20,6 +19,12 @@ Route::get('/get-started', [PageController::class, 'getStarted']);
 // clients
 Route::get('/client-register', [RegisterController::class, 'showRegistrationForm'])->name('client-register');
 Route::post('/client-register', [RegisterController::class, 'clientRegister']);
+
+
+//login route
+Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
+Route::post('/login', [LoginController::class, 'login']);
+// Route::post('/logout', [LoginController::class, 'logout'])->name('logout'); ..logout remains to implements
 
 //freelancer
 Route::get('/find-job', [JobPostController::class, 'showActiveJobs']);
