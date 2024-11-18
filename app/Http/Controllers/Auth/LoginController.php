@@ -13,12 +13,6 @@ class LoginController extends Controller
         return view('auth.login');
     }
 
-    /**
-     * Handle the login request.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\RedirectResponse
-     */
     public function login(Request $request)
     {
         // Validate the request data
@@ -34,9 +28,11 @@ class LoginController extends Controller
             // Redirect to the dashboard
             $user = Auth::user();
             if ($user->role === 'client') {
-                return redirect()->intended('/client/dashboard');
+                // return redirect()->intended('/client/dashboard');
+                return redirect()->route('client.dashboard', ['id' => Auth::id()]); //returning to route with id
             } elseif ($user->role === 'freelancer') {
-                return redirect()->intended('/find-job');
+                // return redirect()->intended('/find-job');
+                return redirect()->route('freelancer.dashboard',['id'=>Auth::id()]);
             }
         }
 
