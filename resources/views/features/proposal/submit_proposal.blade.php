@@ -64,7 +64,7 @@
 <div class="form-container">
 
     <h2>submit proposal</h2>
-    <p>hello<p>
+
     <form action="/submit-proposal" method="post">
         @csrf
         <label for="due_date">Due Date:</label>
