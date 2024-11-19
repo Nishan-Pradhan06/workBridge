@@ -13,11 +13,13 @@
 
     .form-container {
         width: 100%;
-        max-width: 400px;
+        margin: 10px 30% ;
+        max-width: 600px;
         padding: 20px;
         background-color: #ffffff;
         border-radius: 8px;
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        align-self: center;
     }
 
     h2 {
@@ -60,7 +62,9 @@
     }
 </style>
 <div class="form-container">
+
     <h2>submit proposal</h2>
+    <p>hello<p>
     <form action="/submit-proposal" method="post">
         @csrf
         <label for="due_date">Due Date:</label>
@@ -78,5 +82,6 @@
         <button type="submit" class="btn btn-primary">Submit Proposal</button>
     </form>
 </div>
+@include('components.footer')
 
 @endsection <!--END THE CONTENT FROM HERE-->
