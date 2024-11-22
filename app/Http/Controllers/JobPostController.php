@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\JobPost;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class JobPostController extends Controller
 {
@@ -20,9 +21,12 @@ class JobPostController extends Controller
     public function store(Request $request)
     {
         // dd($request->all()); check the data is 
+        // dd(auth()->user());
         try {
             $jobPost = new JobPost(); //naya object banako
-            $jobPost->client_id = 2; //mannually setting user id deu to cookies auth not complete
+            $jobPost->client_id = Auth::user() ? Auth::user()->id : 1; //mannually setting user id deu to cookies auth not complete
+
+            // $jobPost->client_id = Auth()->id();
             $jobPost->title = $request->title;
             $jobPost->description = $request->des;
             $jobPost->budget = $request->budget;
@@ -107,7 +111,8 @@ class JobPostController extends Controller
     public function destroy($id)
     {
         try {
-            $jobPost = JobPost::withTrashed()->find($id);/**withTrashed le softdelete gareko post jiob ni permanenlty delete hunca ya */
+            $jobPost = JobPost::withTrashed()->find($id);
+            /**withTrashed le softdelete gareko post jiob ni permanenlty delete hunca ya */
             if (!$jobPost) {
                 return redirect()->back()->with('error', 'Job not found');
             } else {
