@@ -30,7 +30,7 @@ Route::post('/login', [LoginController::class, 'login']);
 // Route::post('/logout', [LoginController::class, 'logout'])->name('logout'); ..logout remains to implements
 
 //freelancer
-Route::get('/find-job/{id}', [JobPostController::class, 'showActiveJobs'])->name('freelancer.dashboard')->middleware('auth');
+Route::get('/find-job', [JobPostController::class, 'showActiveJobs'])->name('freelancer.dashboard')->middleware('auth');
 Route::get('/create-profile', [Freelancer::class, 'createProfile']);
 Route::get('/freelancer/setting/profile', [Freelancer::class, 'profile']);
 Route::get('/freelancer/setting/contactInfo', [Freelancer::class, 'contactInfo']);
