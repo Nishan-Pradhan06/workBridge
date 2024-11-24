@@ -58,11 +58,13 @@ class JobPostController extends Controller
      */
     public function showAllJobs()
     {
-            // fetch all jobs, including soft deleted
+        try {
             $jobPost = JobPost::withTrashed()->OrderBY('created_at', 'desc')
-            ->where('client_id', Auth::user()->id)->get(); //orderby descending order ma list hunxa
+                ->where('client_id', Auth::user()->id)->get(); //orderby descending order ma list hunxa
             return view('features.job.all-jobs', compact('jobPost'));
-        
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error', 'Failed to load jobs');
+        }
     }
 
     /**

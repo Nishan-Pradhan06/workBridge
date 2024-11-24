@@ -36,7 +36,7 @@ Route::get('/freelancer/setting/profile', [Freelancer::class, 'profile']);
 Route::get('/freelancer/setting/contactInfo', [Freelancer::class, 'contactInfo']);
 Route::get('/freelancer/setting/billing-and-payments', [Freelancer::class, 'billingAndPayment']);
 Route::get('/freelancer/setting/password-and-security', [Freelancer::class, 'PasswordAndSecurity']);
-Route::get('/apply/{id}', [JobProposalController::class, 'index']);
+Route::get('/apply/{job}', [JobProposalController::class, 'index']);
 Route::get('/contract', [Freelancer::class, 'contractProject']);
 
 //client
@@ -58,5 +58,5 @@ Route::get('/restore/{id}', [JobPostController::class, 'restore']);
 
 
 //route for job proposal
-Route::post('/submit-proposal', [JobProposalController::class, 'store']);
-Route::get('/applicants/{jobId}', [JobProposalController::class, 'show'])->name('proposals.show');
+Route::post('/submit-proposal/{job}', [JobProposalController::class, 'store'])->name('proposal.post');
+Route::get('/applicants/{job}', [JobProposalController::class, 'show'])->name('proposal.form');

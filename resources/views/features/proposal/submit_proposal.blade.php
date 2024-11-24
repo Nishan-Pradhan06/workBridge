@@ -13,7 +13,7 @@
 
     .form-container {
         width: 100%;
-        margin: 10px 30% ;
+        margin: 10px 30%;
         max-width: 600px;
         padding: 20px;
         background-color: #ffffff;
@@ -65,19 +65,26 @@
 
     <h2>submit proposal</h2>
 
-    <form action="/submit-proposal" method="post">
+    <form action="{{ route('proposal.post', $job) }}" method="post">
         @csrf
         <label for="due_date">Due Date:</label>
-        <input type="date" id="due_date" name="due_date" >
+        <input type="date" id="due_date" name="due_date">
 
         <label for="amount">Amount:</label>
-        <input type="text" id="amount" name="amount" placeholder="Enter amount" >
+        <input type="text" id="amount" name="amount" placeholder="Enter amount">
 
         <label for="project_duration">Project Duration:</label>
-        <input type="date" id="project_duration" name="project_duration" >
+        <input type="date" id="project_duration" name="project_duration">
 
         <label for="cover_letter">Cover Letter:</label>
-        <textarea id="cover_letter" name="cover_letter" rows="4" placeholder="Write your cover letter" ></textarea>
+        <textarea id="cover_letter" name="cover_letter" rows="4" placeholder="Write your cover letter"></textarea>
+
+        @if(session('success'))
+        <div class="alert alert-success" style="color: green; background-color: #d4edda; padding: 10px; border-radius: 5px;">
+            {{ session('success') }}
+        </div>
+        @endif
+
 
         <button type="submit" class="btn btn-primary">Submit Proposal</button>
     </form>
