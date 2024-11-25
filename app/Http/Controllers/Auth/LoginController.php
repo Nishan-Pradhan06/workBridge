@@ -25,20 +25,19 @@ class LoginController extends Controller
         $credentials = $request->only('email', 'password');
 
         if (Auth::attempt($credentials)) {
-            // Redirect to the dashboard
+            // Login successful
             $user = Auth::user();
             if ($user->role === 'client') {
-                // return redirect()->intended('/client/dashboard');
-                return redirect()->route('client.dashboard', ['id' => Auth::id()]); //returning to route with id
+                return redirect()->route('client.dashboard', ['id' => $user->id])
+                    ->with('success', 'Login successful! Welcome back, Client.');
             } elseif ($user->role === 'freelancer') {
-                // return redirect()->intended('/find-job');
-                return redirect()->route('freelancer.dashboard',['id'=>Auth::id()]);
+                return redirect()->route('freelancer.dashboard', ['id' => $user->id])
+                    ->with('success', 'Login successful! Welcome back, Freelancer.');
             }
+            return redirect('/')->with('success', 'Login successful!');
         }
 
-        // Redirect back with an error message
-        return back()->withErrors([
-            'email' => 'Invalid credentials.',
-        ]);
+        // Login failed
+        return back()->with('error', 'Invalid credentials.')->withInput();
     }
 }
