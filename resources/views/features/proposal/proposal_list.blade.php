@@ -125,13 +125,16 @@
         color: #666;
     }
 </style>
-
 <div class="applicant-container">
+    @if($jobPost)
     <div class="job-details">
-        <h2>
-            Flutter Developer
-        </h2>
+        <h2>{{ $jobPost->title }}</h2>
     </div>
+    @else
+    <p>No job posts available.</p>
+    @endif
+
+
     <div class="headers">
         <p></p>
         <p>Qualifications</p>
@@ -139,12 +142,13 @@
         <p>Duration</p>
         <p>Details</p>
     </div>
-    @forelse ($jobProposals as $jobProposal)
+
+    @forelse($jobProposals as $jobProposal)
     <div class="applicants-details">
         <div class="freelancer-card">
             <div class="freelancer-info">
                 <div class="profiles">
-                    <img src="" alt="Profile Picture" class="profile-pic" width="100" height="100">
+                    <img src="" alt="Profile Picture" class="profile-pic">
                     <div class="info">
                         <h3>Nishan Pradhan</h3>
                         <p>Application Development | Flutter</p>
@@ -169,10 +173,6 @@
             </div>
             <div class="rate-details">
                 <p class="rate"><strong>$20.00</strong>/hr</p>
-                <p class="rate"><strong>$20.00</strong>/hr</p>
-            </div>
-            <div class="rate-details">
-                <p class="rate"><strong>$20.00</strong>/hr</p>
                 <p>{{ $jobProposal->cover_letter }}</p>
             </div>
         </div>
@@ -181,6 +181,4 @@
     <p>No proposals found.</p>
     @endforelse
 </div>
-
-
 @endsection
