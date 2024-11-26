@@ -27,4 +27,10 @@ class JobPost extends Model
     {
         return $this->belongsTo(User::class, 'client_id');
     }
+
+    public function jobProposals()
+    {
+        return $this->hasMany(JobProposal::class, 'job_id');
+    }
+
 }

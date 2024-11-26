@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\JobPost;
+use App\Models\JobProposal;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -61,7 +62,9 @@ class JobPostController extends Controller
         try {
             $jobPost = JobPost::withTrashed()->OrderBY('created_at', 'desc')
                 ->where('client_id', Auth::user()->id)->get(); //orderby descending order ma list hunxa
-            return view('features.job.all-jobs', compact('jobPost'));
+
+            $jobProposals = JobProposal::all();
+            return view('features.job.all-jobs', compact('jobPost','jobProposals'));
         } catch (\Exception $e) {
             return redirect()->back()->with('error', 'Failed to load jobs');
         }

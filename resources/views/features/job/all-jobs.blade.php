@@ -3,19 +3,21 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 <style>
     /* for job not found css */
-    .button{ 
-    text-align:end;
+    .button {
+        text-align: end;
     }
-    .main{
-    text-align: center;
-    background-color: white;
-    padding: 40px;
-    border-radius: 8px;
-    height:60vh;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+
+    .main {
+        text-align: center;
+        background-color: white;
+        padding: 40px;
+        border-radius: 8px;
+        height: 60vh;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     }
-    .no-job{
-        margin-top:20vh;
+
+    .no-job {
+        margin-top: 20vh;
     }
 
     h2 {
@@ -27,14 +29,10 @@
         font-size: 18px;
         color: #666;
     }
-    .main-part{
-        height:70vh;
+
+    .main-part {
+        height: 70vh;
     }
-
-
-
-
-
 
     /* ui for job post */
     .custom-card {
@@ -75,23 +73,23 @@
         <br>
         @if($jobPost->isEmpty())
 
-            <div class=main>
-                <div class="button">
-                    <a href="/job-post" class="btn btn-primary">Post a Job</a>
-                </div>
-
-                <div class="no-job">
-                    <h2>No Jobs Posted Yet</h2>
-                    <p>It looks like there are currently no job postings. You need to create a job!</p>
-                </div>
+        <div class=main>
+            <div class="button">
+                <a href="/job-post" class="btn btn-primary">Post a Job</a>
             </div>
+
+            <div class="no-job">
+                <h2>No Jobs Posted Yet</h2>
+                <p>It looks like there are currently no job postings. You need to create a job!</p>
+            </div>
+        </div>
 
         <!-- add some ui here -->
         @else
         <h3>All Jobs</h3>
         `<div class="button">
             <a href="/job-post" class="btn btn-primary">Post a Job</a>
-         </div>
+        </div>
 
         @foreach($jobPost as $jobPosts)
         <div class="card mb-4 custom-card">
@@ -100,10 +98,16 @@
                     <h5><a href="http://">{{$jobPosts->title}}</a></h5>
                     <p style="font-size: 12px;">Created {{ \Carbon\Carbon::parse($jobPosts->created_at)->diffForHumans() }} by You</p>
                 </div>
+
                 <div class="mid">
-                    <p style="font-size: 24px;">0</p>
+                    <!-- Safely check for the count -->
+                    @foreach($jobPost as $job)
+                    <p style="font-size: 24px;">{{ $job->jobProposals ? $job->jobProposals->count() : 0 }}</p>
+                    @endforeach
                     <h6>Proposals</h6>
                 </div>
+
+
                 <div class="right">
                     <div class="right">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true">
