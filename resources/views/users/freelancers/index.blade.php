@@ -6,7 +6,7 @@
         <h3>Discover Jobs</h3>
 
         @if($jobPost->isEmpty())
-        <h3>No Jobs Found</h3>
+        <h3>jobs are comming soon</h3>
         @else
         @foreach($jobPost as $jobPosts)
         <div class="card mb-4">
@@ -22,8 +22,10 @@
                 <a href="{{ url('/apply/' . $jobPosts->id) }}" class="btn btn-success">Apply</a>
             </div>
         </div>
+
         @endforeach
         @endif
     </div>
 </div>
+@include('components.footer')
 @endsection

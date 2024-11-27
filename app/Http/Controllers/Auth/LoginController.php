@@ -13,12 +13,6 @@ class LoginController extends Controller
         return view('auth.login');
     }
 
-    /**
-     * Handle the login request.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\RedirectResponse
-     */
     public function login(Request $request)
     {
         // Validate the request data
@@ -31,18 +25,19 @@ class LoginController extends Controller
         $credentials = $request->only('email', 'password');
 
         if (Auth::attempt($credentials)) {
-            // Redirect to the dashboard
+            // Login successful
             $user = Auth::user();
             if ($user->role === 'client') {
-                return redirect()->intended('/client/dashboard');
+                return redirect()->route('client.dashboard', ['id' => $user->id])
+                    ->with('success', 'Login successful! Welcome back, Client.');
             } elseif ($user->role === 'freelancer') {
-                return redirect()->intended('/find-job');
+                return redirect()->route('freelancer.dashboard', ['id' => $user->id])
+                    ->with('success', 'Login successful! Welcome back, Freelancer.');
             }
+            return redirect('/')->with('success', 'Login successful!');
         }
 
-        // Redirect back with an error message
-        return back()->withErrors([
-            'email' => 'Invalid credentials.',
-        ]);
+        // Login failed
+        return back()->with('error', 'Invalid credentials.')->withInput();
     }
 }

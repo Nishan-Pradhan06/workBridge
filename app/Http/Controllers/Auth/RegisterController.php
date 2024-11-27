@@ -16,18 +16,15 @@ class RegisterController extends Controller
     //for client registeration
     public function clientRegister(Request $request)
     {
-        // dd($request->all());
-
         // Validate the request data
         // $request->validate([
-        //     'clientName' => 'required|string|max:255',
+        //     'name' => 'required|string|max:255',
         //     'email' => 'required|string|email|max:255|unique:users',
         //     'phone' => 'required|string|regex:/^[0-9]{10,15}$/',
-        //     'password' => 'required|string|min:8|confirmed',
+        //     'password' => 'required|string|min:8',
         // ]);
 
-        // dd($request->clientName, $request->email, $request->phone, $request->password, $request->role);
-
+        // Create the user
         User::create([
             'name' => $request->name,
             'email' => $request->email,
@@ -35,8 +32,10 @@ class RegisterController extends Controller
             'role' => $request->role,
             'password' => Hash::make($request->password),
         ]);
-        return redirect()->route('login')->with('success', 'Registration successful. Please login.'); //after creating the id it redirect to login page
+
+        return redirect()->route('login')->with('success', 'Registration successful. Please login.');
     }
+
 
 
     //freelacner registeration

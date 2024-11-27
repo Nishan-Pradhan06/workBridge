@@ -13,13 +13,16 @@ return new class extends Migration
     {
         Schema::create('job_posts', function (Blueprint $table) {
             $table->id();
-            $table->integer('client_id');
+            // $table->integer('client_id');
+            $table->unsignedBigInteger('client_id');
             $table->string('title');
             $table->text('description');
             $table->string('budget');
             $table->date('deadline');
             $table->string('skills');
             $table->timestamps();
+
+            $table->foreign('client_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 

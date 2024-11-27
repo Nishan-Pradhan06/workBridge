@@ -143,7 +143,7 @@
                             <div class="profile">
                                 <img src="{{asset('profile.jpg')}}" alt="Profile Picture" class="profile-pic">
                                 <div class="info">
-                                    <h5>Nishan Pradhan</h5>
+                                    <h5>{{ auth()->user()->name }}</h5>
                                     <p>Freelancer</p>
                                 </div>
                                 <hr>
