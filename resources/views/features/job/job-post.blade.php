@@ -19,6 +19,16 @@
     <h2>Post a Job</h2>
     <form action="/save-job" method="post">
         @csrf
+        @if(session('success'))
+        <div class="alert alert-success" style="color: green; background-color: #d4edda; padding: 10px; border-radius: 5px;">
+            {{ session('success') }}
+        </div>
+        @endif
+        @if(session('error'))
+        <div class="alert alert-error" style="color: red; background-color: #d4edda; padding: 10px; border-radius: 5px;">
+            {{ session('error') }}
+        </div>
+        @endif
         <div class="form-group">
             <label for="title">Title</label>
             <input type="text" class="form-control " id="title" placeholder="Enter Job Title" required name="title">

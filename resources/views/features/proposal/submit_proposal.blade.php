@@ -84,6 +84,11 @@
             {{ session('success') }}
         </div>
         @endif
+        @if(session('error'))
+        <div class="alert alert-error" style="color: green; background-color: red; padding: 10px; border-radius: 5px;">
+            {{ session('error') }}
+        </div>
+        @endif
 
 
         <button type="submit" class="btn btn-primary">Submit Proposal</button>
