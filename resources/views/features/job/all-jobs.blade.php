@@ -86,10 +86,6 @@
 
         <!-- add some ui here -->
         @else
-        <h3>All Jobs</h3>
-        `<div class="button">
-            <a href="/job-post" class="btn btn-primary">Post a Job</a>
-        </div>
 
         @foreach($jobPost as $jobPosts)
         <div class="card mb-4 custom-card">
