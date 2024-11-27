@@ -64,6 +64,15 @@
 <div class="form-container">
 
     <h2>submit proposal</h2>
+    @if(session('success'))
+        <div class="alert alert-success" style="color: green; background-color: #d4edda; padding: 10px; border-radius: 5px;">
+            {{ session('success') }}
+        </div>
+        @endif
+        @if(session('error'))
+        <div class="alert alert-error" style="color: red; background-color: #d4edda; padding: 10px; border-radius: 5px;">
+            {{ session('error') }}
+        </div>
 
     <form action="{{ route('proposal.post', $job) }}" method="post">
         @csrf
@@ -79,11 +88,7 @@
         <label for="cover_letter">Cover Letter:</label>
         <textarea id="cover_letter" name="cover_letter" rows="4" placeholder="Write your cover letter"></textarea>
 
-        @if(session('success'))
-        <div class="alert alert-success" style="color: green; background-color: #d4edda; padding: 10px; border-radius: 5px;">
-            {{ session('success') }}
-        </div>
-        @endif
+       
 
 
         <button type="submit" class="btn btn-primary">Submit Proposal</button>
