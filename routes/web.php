@@ -8,6 +8,7 @@ use App\Http\Controllers\Freelancer;
 use App\Http\Controllers\JobPostController;
 use App\Http\Controllers\JobProposalController;
 use App\Http\Controllers\PageController;
+use App\Http\Controllers\UserProfileController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [PageController::class, 'index']);
@@ -38,6 +39,8 @@ Route::get('/freelancer/setting/billing-and-payments', [Freelancer::class, 'bill
 Route::get('/freelancer/setting/password-and-security', [Freelancer::class, 'PasswordAndSecurity']);
 Route::get('/apply/{job}', [JobProposalController::class, 'index']);
 Route::get('/contract', [Freelancer::class, 'contractProject']);
+Route::get('/setting-up-profile', [UserProfileController::class, 'freelancerProfile'])->name('user-profile');
+Route::post('/upload-image', [UserProfileController::class, 'upload'])->name('image.upload');
 
 //client
 Route::get('/client/dashboard/{id}', [Client::class, 'show'])->name('client.dashboard')->middleware('auth');
