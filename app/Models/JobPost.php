@@ -23,4 +23,14 @@ class JobPost extends Model
     protected $dates = ['deleted_at']; //register the deleted_at column for soft deletes
 
 
+    public function client()
+    {
+        return $this->belongsTo(User::class, 'client_id');
+    }
+
+    public function jobProposals()
+    {
+        return $this->hasMany(JobProposal::class, 'job_id');
+    }
+
 }

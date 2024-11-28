@@ -20,6 +20,8 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'phone',
+        'role'
     ];
 
     /**
@@ -43,5 +45,10 @@ class User extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
+    }
+
+    public function jobs()
+    {
+        return $this->hasMany(JobPost::class, 'client_id');
     }
 }

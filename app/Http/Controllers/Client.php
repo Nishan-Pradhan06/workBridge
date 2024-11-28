@@ -2,13 +2,25 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class Client extends Controller
 {
-    function Dashboard()
+    public function show($id)
     {
-        return view('users.clients.clients');
+        // Ensure the authenticated user exists
+        $authUser = auth('web')->user();
+
+        // Check if the authenticated user's ID matches the requested ID
+        if (!$authUser || $authUser->id !== (int)$id) {
+            abort(403, 'Unauthorized access');
+        }
+
+        // Fetch the user by ID (this ensures the user exists in the database)
+        $user = User::findOrFail($id);
+
+        return view('users.clients.clients', compact('user'));
     }
 
     function ContractsPage()

@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\JobPost;
 use App\Models\JobProposal;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use PHPUnit\Architecture\Storage\ObjectsStorage;
 
 class JobProposalController extends Controller
@@ -11,45 +13,51 @@ class JobProposalController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(JobPost $job)
     {
-        return view('features.proposal.submit_proposal');
+        return view('features.proposal.submit_proposal', compact('job'));
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(Request $request, JobPost $job)
     {
-        // dd($request->all());
-        try {
-            $jobProposal = new JobProposal(); //new objects
-            $jobProposal->job_id=1;
-            $jobProposal->user_id=1;
-            $jobProposal->due_date = $request->due_date;
-            $jobProposal->amount = $request->amount;
-            $jobProposal->project_duration = $request->project_duration;
-            $jobProposal->cover_letter = $request->cover_letter;
-            $jobProposal->save();
 
-            return redirect()->back()->with('success', 'Proposal submitted successfully');
-        } catch (\Exception $e) {
-            return redirect()->back()->with('error', 'Failed to submit Proposal');
-        }
+        $jobProposal = new JobProposal(); //new objects
+        $jobProposal->job_id = $job->id;
+        $jobProposal->user_id = Auth::id();
+        $jobProposal->due_date = $request->due_date;
+        $jobProposal->amount = $request->amount;
+        $jobProposal->project_duration = $request->project_duration;
+        $jobProposal->cover_letter = $request->cover_letter;
+        $jobProposal->save();
+
+        return redirect()->back()->with('success', 'Proposal submitted successfully');
     }
 
     /**
      * Display the specified resource.
      */
+    // public function show($jobId)
+    // {
+    //         $jobProposals = JobProposal::where('job_id', $jobId)->get();
+    //         return view('features.proposal.proposal_list', compact('jobProposals'));
+
+    // }
     public function show($jobId)
     {
         try {
             $jobProposals = JobProposal::where('job_id', $jobId)->get();
-            return view('features.proposal.proposal_list', compact('jobProposals'));
+            $jobPost = JobPost::find($jobId); // Get the specific job details
+
+            // Pass both the job and its proposals to the view
+            return view('features.proposal.proposal_list', compact('jobProposals', 'jobPost'));
         } catch (\Exception $e) {
-            return redirect()->back()->with('error', 'Failed to fetch proposals');
+            return redirect()->back()->with('error', 'Failed to load job proposals');
         }
     }
+
 
     /**
      * Show the form for editing the specified resource.
@@ -72,7 +80,7 @@ class JobProposalController extends Controller
     public function update(Request $request, $id)
     {
         try {
-          $jobProposal = JobProposal::find($id);
+            $jobProposal = JobProposal::find($id);
             $jobProposal->due_date = $request->due_date;
             $jobProposal->amount = $request->amount;
             $jobProposal->project_duration = $request->project_duration;
@@ -94,10 +102,9 @@ class JobProposalController extends Controller
             $jobProposal = JobProposal::find($id);
             if (!$jobProposal) {
                 return redirect()->back()->with('error', 'Proposal not found');
-            }
-            else {
+            } else {
                 $jobProposal->delete();
-                return redirect()->back()->with('sucess','JobProposal delete Sucessfully');
+                return redirect()->back()->with('sucess', 'JobProposal delete Sucessfully');
             }
         } catch (\Exception $e) {
             return redirect()->back()->with('error', 'Failed to delete job Proposal');
