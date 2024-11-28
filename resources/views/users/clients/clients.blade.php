@@ -6,16 +6,15 @@
 
 .container {
     padding: 20px;
-    height:50vh;
-
-    
+    height:50vh;   
 }
-h1{
-    margin:0 200px;
+.welcome-section{
+    display: flex;
+    justify-content:space-between;
+    align-items:center;
 }
 
 .section {
-    text
     background: white;
     margin: 10px 0;
     height:35vh;
@@ -27,7 +26,7 @@ h1{
 h2{
     text-align:center;
 }
-p,button{
+.section>p,button{
     text-align:center;
     font-size:20px;
 }
@@ -47,23 +46,18 @@ button:hover {
 }
 
 </style>
-<h1>Welcome to Your Dashboard</h1>
-
-
-       
-
-    <div class="container">
-    
+<div class="container">
+    <div class="welcome-section">
+    <h3>Welcome, {{auth()->user()->name}}</h3>
+    <a href="/job-post" class="btn btn-primary">Post a Job</a>
+    </div>
+        
         <div id="intro" class="section">
-            <h2>Getting Started,</h2><br>
-            <p>Welcome to our freelancing platform!<br> 
-            Here you can post any projects job and also you can find job.<br>
+            <p> 
+            Here you can post any projects job and also you can find job.
              Let's get you started posting Jobs!</p>
-            <button onclick="postProject()">Post Project</button>
+            
         </div>
     </div>
-
-
-
 @include('components.footer')
 @endsection <!--END THE CONTENT FROM HERE-->
