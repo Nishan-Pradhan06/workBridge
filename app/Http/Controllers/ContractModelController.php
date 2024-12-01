@@ -10,9 +10,9 @@ class ContractModelController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function showContractPage()
     {
-        //
+        return view('features.contracts.contract');
     }
 
     /**

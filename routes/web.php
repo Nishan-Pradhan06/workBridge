@@ -8,6 +8,7 @@ use App\Http\Controllers\Freelancer;
 use App\Http\Controllers\JobPostController;
 use App\Http\Controllers\JobProposalController;
 use App\Http\Controllers\PageController;
+use App\Http\Controllers\ContractModelController ;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [PageController::class, 'index']);
@@ -36,8 +37,7 @@ Route::get('/freelancer/setting/profile', [Freelancer::class, 'profile']);
 Route::get('/freelancer/setting/contactInfo', [Freelancer::class, 'contactInfo']);
 Route::get('/freelancer/setting/billing-and-payments', [Freelancer::class, 'billingAndPayment']);
 Route::get('/freelancer/setting/password-and-security', [Freelancer::class, 'PasswordAndSecurity']);
-Route::get('/apply/{job}', [JobProposalController::class, 'index']);
-Route::get('/contract', [Freelancer::class, 'contractProject']);
+
 
 //client
 Route::get('/client/dashboard/{id}', [Client::class, 'show'])->name('client.dashboard')->middleware('auth');
@@ -60,3 +60,6 @@ Route::get('/restore/{id}', [JobPostController::class, 'restore']);
 //route for job proposal
 Route::post('/submit-proposal/{job}', [JobProposalController::class, 'store'])->name('proposal.post');
 Route::get('/applicants/{job}', [JobProposalController::class, 'show'])->name('proposal.form');
+
+Route::get('/apply', [ContractModelController::class, 'showContractPage']);
+Route::get('/contract', [Freelancer::class, 'contractProject']);

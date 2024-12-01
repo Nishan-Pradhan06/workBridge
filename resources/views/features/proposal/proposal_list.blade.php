@@ -155,7 +155,7 @@
                     </div>
                 </div>
                 <div class="actions">
-                    <button class="btn btn-success">Hire</button>
+                <a href="/apply" class="btn btn-primary">Hire</a>
                 </div>
             </div>
             <div class="freelancer-details">
