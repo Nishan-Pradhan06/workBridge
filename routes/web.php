@@ -8,7 +8,11 @@ use App\Http\Controllers\Freelancer;
 use App\Http\Controllers\JobPostController;
 use App\Http\Controllers\JobProposalController;
 use App\Http\Controllers\PageController;
+<<<<<<< HEAD
+use App\Http\Controllers\ContractModelController ;
+=======
 use App\Http\Controllers\UserProfileController;
+>>>>>>> f9474880bb12f7982d2118c38e1b5c12660a9248
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [PageController::class, 'index']);
@@ -37,10 +41,14 @@ Route::get('/freelancer/setting/profile', [Freelancer::class, 'profile']);
 Route::get('/freelancer/setting/contactInfo', [Freelancer::class, 'contactInfo']);
 Route::get('/freelancer/setting/billing-and-payments', [Freelancer::class, 'billingAndPayment']);
 Route::get('/freelancer/setting/password-and-security', [Freelancer::class, 'PasswordAndSecurity']);
+<<<<<<< HEAD
+
+=======
 Route::get('/apply/{job}', [JobProposalController::class, 'index']);
 Route::get('/contract', [Freelancer::class, 'contractProject']);
 Route::get('/setting-up-profile', [UserProfileController::class, 'freelancerProfile'])->name('user-profile');
 Route::post('/upload-image', [UserProfileController::class, 'upload'])->name('image.upload');
+>>>>>>> f9474880bb12f7982d2118c38e1b5c12660a9248
 
 //client
 Route::get('/client/dashboard/{id}', [Client::class, 'show'])->name('client.dashboard')->middleware('auth');
@@ -63,3 +71,6 @@ Route::get('/restore/{id}', [JobPostController::class, 'restore']);
 //route for job proposal
 Route::post('/submit-proposal/{job}', [JobProposalController::class, 'store'])->name('proposal.post');
 Route::get('/applicants/{job}', [JobProposalController::class, 'show'])->name('proposal.form');
+
+Route::get('/apply', [ContractModelController::class, 'showContractPage']);
+Route::get('/contract', [Freelancer::class, 'contractProject']);
