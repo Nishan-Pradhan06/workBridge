@@ -97,9 +97,9 @@
 
                 <div class="mid">
                     <!-- Safely check for the count -->
-                    @foreach($jobPost as $job)
-                    <p style="font-size: 24px;">{{ $job->jobProposals ? $job->jobProposals->count() : 0 }}</p>
-                    @endforeach
+                   
+                    <p style="font-size: 24px;">{{ $jobPosts->jobProposals ? $jobPosts->jobProposals->count() : 0 }}</p>
+               
                     <h6>Proposals</h6>
                 </div>
 
