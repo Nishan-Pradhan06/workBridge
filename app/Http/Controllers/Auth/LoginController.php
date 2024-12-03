@@ -31,7 +31,9 @@ class LoginController extends Controller
                 return redirect()->route('client.dashboard', ['id' => $user->id])
                     ->with('success', 'Login successful! Welcome back, Client.');
             } elseif ($user->role === 'freelancer') {
-                return redirect()->route('freelancer.dashboard', ['id' => $user->id])
+                // return redirect()->route('freelancer.dashboard', ['id' => $user->id])
+                //     ->with('success', 'Login successful! Welcome back, Freelancer.');
+                return redirect()->route('freelancer.profilesetup', ['id' => $user->id])
                     ->with('success', 'Login successful! Welcome back, Freelancer.');
             }
             return redirect('/')->with('success', 'Login successful!');
