@@ -34,7 +34,7 @@ Route::post('/login', [LoginController::class, 'login']);
 
 //freelancer
 Route::get('/find-job', [JobPostController::class, 'showActiveJobs'])->name('freelancer.dashboard')->middleware('auth');
-Route::get('/create-profile', [ProfileController::class, 'UserProfileDetailsForm']);
+Route::get('/setup-profile', [ProfileController::class, 'UserProfileDetailsForm'])->name('freelancer.profilesetup');
 Route::get('/freelancer/setting/profile', [Freelancer::class, 'profile']);
 Route::get('/freelancer/setting/contactInfo', [Freelancer::class, 'contactInfo']);
 Route::get('/freelancer/setting/billing-and-payments', [Freelancer::class, 'billingAndPayment']);
