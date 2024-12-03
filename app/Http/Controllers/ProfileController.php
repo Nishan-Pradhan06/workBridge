@@ -29,7 +29,7 @@ class ProfileController extends Controller
      */
     public function store(Request $request)
     {
-        // Validate request
+        // Validate request (optional, can uncomment if needed)
         // $request->validate([
         //     'profilePic' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
         //     'location' => 'required|string|max:255',
@@ -43,6 +43,7 @@ class ProfileController extends Controller
         //     'certificationFiles.*' => 'nullable|mimes:pdf,jpg,png|max:2048',
         // ]);
 
+        // Create new profile for freelancer
         $profile = new Profile();
         $profile->user_id = Auth::user()->id;
         $profile->location = $request->location;
@@ -56,8 +57,8 @@ class ProfileController extends Controller
 
         // Save profile picture if exists
         if ($request->hasFile('profilePic')) {
-            $path = $request->file('profilePic')->store('profiles', 'public'); // Save the image in storage/app/public/profiles
-            $profile->profile_picture = $path; // Store the path in the database
+            $path = $request->file('profilePic')->store('profiles', 'public');
+            $profile->profile_picture = $path;
         }
 
         // Save certifications if any
@@ -70,7 +71,7 @@ class ProfileController extends Controller
         // Save profile data
         $profile->save();
 
-        // Redirect to the freelancer dashboard
+        // Redirect to freelancer dashboard after profile setup
         return redirect()->route('freelancer.dashboard', ['id' => Auth::user()->id])
             ->with('success', 'Profile created successfully.');
     }
