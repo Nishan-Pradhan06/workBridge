@@ -1,131 +1,144 @@
 @extends('components.freelancer.freelan_nav')
 @section('content')
 <!-- <title>@yield('Setup Profile')</title> -->
+
 <style>
-    .main-container {
-        max-width: 800px;
-        margin: 0 auto;
-        background-color: white;
-        padding: 20px;
-        border-radius: 8px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    }
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+        }
 
-    h1,
-    h2 {
-        color: #333;
-        margin-bottom: 10px;
-    }
+        .main-container {
+            max-width: 800px;
+            margin: 50px auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
 
-    form {
-        display: flex;
-        flex-direction: column;
-    }
+        h1, h2, h3 {
+            color: #333;
+            margin-bottom: 10px;
+        }
 
-    label {
-        margin-bottom: 5px;
-        font-weight: bold;
-    }
+        form {
+            display: flex;
+            flex-direction: column;
+        }
 
-    input,
-    textarea,
-    select {
-        margin-bottom: 15px;
-        padding: 10px;
-        font-size: 16px;
-        border-radius: 5px;
-        border: 1px solid #ccc;
-        width: 100%;
-    }
+        label {
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
 
-    button {
-        background-color: #28a745;
-        color: white;
-        padding: 10px 15px;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-        font-size: 16px;
-    }
+        input, textarea, select {
+            margin-bottom: 15px;
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            width: 100%;
+        }
 
-    button:hover {
-        background-color: #218838;
-    }
+        button {
+            background-color: #28a745;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
 
-    .step {
-        display: none;
-    }
+        button:hover {
+            background-color: #218838;
+        }
 
-    .step.active {
-        display: block;
-    }
+        .step {
+            display: none;
+        }
 
-    .navigation-buttons {
-        display: flex;
-        justify-content: space-between;
-    }
+        .step.active {
+            display: block;
+        }
 
-    /* Profile Picture Preview */
-    #profilePicPreview {
-        width: 150px;
-        height: 150px;
-        border: 1px solid #ccc;
-        border-radius: 50%;
-        object-fit: cover;
-        display: block;
-        margin: 10px auto;
-    }
+        .navigation-buttons {
+            display: flex;
+            justify-content: space-between;
+        }
 
-    /* File Preview for Certifications */
-    .file-preview {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 10px;
-        margin-top: 10px;
-    }
+        /* Profile Picture Styles */
+        .profile-picture {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background: #ddd;
+            overflow: hidden;
+            margin: 10px auto 15px;
+            position: relative;
+            cursor: pointer;
+        }
 
-    .file-preview div {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        width: 80px;
-        height: 100px;
-    }
+        .profile-picture img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: none; /* Hidden by default */
+        }
 
-    .file-preview img,
-    .file-preview span {
-        width: 100%;
-        height: 80px;
-        object-fit: contain;
-        background-color: #f0f0f0;
-        border: 1px solid #ccc;
-        border-radius: 5px;
-    }
+        .profile-picture label {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: rgba(0, 0, 0, 0.6);
+            color: #fff;
+            font-size: 14px;
+            opacity: 1;
+            transition: opacity 0.3s;
+        }
 
-    .file-preview span {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 12px;
-        text-align: center;
-    }
+        .profile-picture:hover label {
+            background: rgba(0, 0, 0, 0.8);
+        }
 
-    .file-preview small {
-        margin-top: 5px;
-        font-size: 12px;
-        color: #555;
-        text-align: center;
-    }
-</style>
+        /* Certificate Preview */
+        .certificate-preview {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .certificate-preview img {
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+    </style>
 
 <div class="main-container">
     <h3>Setup Profile</h3>
     <form id="multiStepForm">
+
         <!-- Step 1: Basic Information -->
         <div class="step active">
+            <h2>Basic Information</h2>
             <label for="profilePic">Profile Picture</label>
-            <input type="file" id="profilePic" name="profilePic" accept="image/*">
-            <img id="profilePicPreview" src="#" alt="Profile Picture Preview" style="display: none;">
+            <div class="profile-picture">
+                <img id="profilePicPreview" src="" alt="Profile Picture">
+                <label for="profilePic" id="uploadLabel">Click to Upload</label>
+                <input type="file" id="profilePic" name="profilePic" accept="image/*">
+            </div>
             <label for="location">Location</label>
             <input type="text" id="location" name="location">
         </div>
@@ -164,17 +177,12 @@
             <h2>Availability</h2>
             <label for="hoursPerWeek">Hours per Week</label>
             <input type="number" id="hoursPerWeek" name="hoursPerWeek" min="0">
-
             <h2>Certifications & Education</h2>
             <label for="certifications">Certifications</label>
             <textarea id="certifications" name="certifications" rows="3"></textarea>
-
-            <!-- Multiple File Upload -->
             <label for="multipleFiles">Upload Certifications</label>
             <input type="file" id="multipleFiles" name="certificationFiles[]" multiple accept="image/*,application/pdf">
-            <div class="file-preview" id="filePreview">
-                <p>No files selected.</p>
-            </div>
+            <div class="certificate-preview" id="certificatePreview"></div>
         </div>
 
         <!-- Navigation Buttons -->
@@ -191,8 +199,10 @@
     const nextBtn = document.getElementById("nextBtn");
     const profilePicInput = document.getElementById("profilePic");
     const profilePicPreview = document.getElementById("profilePicPreview");
-    const fileInput = document.getElementById("multipleFiles");
-    const filePreview = document.getElementById("filePreview");
+    const uploadLabel = document.getElementById("uploadLabel");
+    const multipleFilesInput = document.getElementById("multipleFiles");
+    const certificatePreviewContainer = document.getElementById("certificatePreview");
+
     let currentStep = 0;
 
     // Show steps
@@ -204,51 +214,32 @@
         nextBtn.textContent = step === steps.length - 1 ? "Submit" : "Next";
     }
 
-    // Handle Profile Picture Preview
-    profilePicInput.addEventListener("change", (event) => {
-        const file = event.target.files[0];
+    // Profile Picture Preview Functionality
+    profilePicInput.addEventListener("change", function () {
+        const file = profilePicInput.files[0];
         if (file) {
             const reader = new FileReader();
-            reader.onload = (e) => {
+            reader.onload = function (e) {
                 profilePicPreview.src = e.target.result;
                 profilePicPreview.style.display = "block";
+                uploadLabel.style.display = "none";
             };
             reader.readAsDataURL(file);
-        } else {
-            profilePicPreview.style.display = "none";
         }
     });
 
-    // Handle multiple file upload preview
-    fileInput.addEventListener("change", (event) => {
-        const files = Array.from(event.target.files);
-        filePreview.innerHTML = ""; // Clear previous preview
-        if (files.length > 0) {
-            files.forEach(file => {
-                const fileDiv = document.createElement("div");
-                const fileName = document.createElement("small");
-                fileName.textContent = file.name;
-
-                if (file.type.startsWith("image/")) {
-                    const img = document.createElement("img");
-                    const reader = new FileReader();
-                    reader.onload = (e) => {
-                        img.src = e.target.result;
-                    };
-                    reader.readAsDataURL(file);
-                    fileDiv.appendChild(img);
-                } else {
-                    const fileIcon = document.createElement("span");
-                    fileIcon.textContent = "PDF";
-                    fileDiv.appendChild(fileIcon);
-                }
-
-                fileDiv.appendChild(fileName);
-                filePreview.appendChild(fileDiv);
-            });
-        } else {
-            filePreview.innerHTML = "<p>No files selected.</p>";
-        }
+    // Certificate Preview Functionality
+    multipleFilesInput.addEventListener("change", function () {
+        certificatePreviewContainer.innerHTML = ""; // Clear previous previews
+        Array.from(multipleFilesInput.files).forEach((file) => {
+            const reader = new FileReader();
+            reader.onload = function (e) {
+                const img = document.createElement("img");
+                img.src = e.target.result;
+                certificatePreviewContainer.appendChild(img);
+            };
+            reader.readAsDataURL(file);
+        });
     });
 
     // Navigation buttons
@@ -268,5 +259,7 @@
 
     showStep(currentStep); // Initialize the form
 </script>
+
+
 @include('components.footer')
 @endsection
