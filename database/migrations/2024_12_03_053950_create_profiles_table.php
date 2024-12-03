@@ -13,6 +13,17 @@ return new class extends Migration
     {
         Schema::create('profiles', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
+            $table->string('profile_picture')->nullable();
+            $table->string('location');
+            $table->text('bio')->nullable();
+            $table->string('skills')->nullable();
+            $table->string('skill_level');
+            $table->string('job_title')->nullable();
+            $table->text('job_description')->nullable();
+            $table->string('portfolio_link')->nullable();
+            $table->integer('hours_per_week')->nullable();
+            $table->text('certification_files')->nullable();
             $table->timestamps();
         });
     }

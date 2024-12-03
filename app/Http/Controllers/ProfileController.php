@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Profile;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ProfileController extends Controller
 {
@@ -12,7 +13,7 @@ class ProfileController extends Controller
      */
     public function UserProfileDetailsForm()
     {
-        return view ('users.freelancers.on_boarding');
+        return view('users.freelancers.on_boarding');
     }
 
     /**
@@ -28,8 +29,53 @@ class ProfileController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // Validate request
+        // $request->validate([
+        //     'profilePic' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+        //     'location' => 'required|string|max:255',
+        //     'bio' => 'nullable|string',
+        //     'skills' => 'nullable|string',
+        //     'skillLevel' => 'required|string|in:beginner,intermediate,expert',
+        //     'jobTitle' => 'nullable|string|max:255',
+        //     'jobDesc' => 'nullable|string',
+        //     'portfolio' => 'nullable|url',
+        //     'hoursPerWeek' => 'nullable|integer|min:0',
+        //     'certificationFiles.*' => 'nullable|mimes:pdf,jpg,png|max:2048',
+        // ]);
+
+        $profile = new Profile();
+        $profile->user_id = Auth::user()->id;
+        $profile->location = $request->location;
+        $profile->bio = $request->bio;
+        $profile->skills = $request->skills;
+        $profile->skill_level = $request->skillLevel;
+        $profile->job_title = $request->jobTitle;
+        $profile->job_description = $request->jobDesc;
+        $profile->portfolio_link = $request->portfolio;
+        $profile->hours_per_week = $request->hoursPerWeek;
+
+        // Save profile picture if exists
+        if ($request->hasFile('profilePic')) {
+            $path = $request->file('profilePic')->store('profiles', 'public'); // Save the image in storage/app/public/profiles
+            $profile->profile_picture = $path; // Store the path in the database
+        }
+
+        // Save certifications if any
+        if ($request->hasFile('certificationFiles')) {
+            $profile->certification_files = json_encode(
+                array_map(fn($file) => $file->store('certifications', 'public'), $request->file('certificationFiles'))
+            );
+        }
+
+        // Save profile data
+        $profile->save();
+
+        // Redirect to the freelancer dashboard
+        return redirect()->route('freelancer.dashboard', ['id' => Auth::user()->id])
+            ->with('success', 'Profile created successfully.');
     }
+
+
 
     /**
      * Display the specified resource.
