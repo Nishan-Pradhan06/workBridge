@@ -23,10 +23,6 @@
                             <label for="username">Username</label>
                             <input type="text" id="username" value="{{ auth()->user()->name }}">
                         </div>
-                        <div class="form-group">
-                            <label for="email">Email address</label>
-                            <input type="email" id="email" value="{{ auth()->user()->email }}">
-                        </div>
                     </div>
                 </section>
 
@@ -35,7 +31,7 @@
                     <div class="form-grid">
                         <div class="form-group full-width">
                             <label for="address">Address</label>
-                            <input type="text" id="address" value="Bld Mihail Kogalniceanu, nr. 8 Bl 1, Sc 1, Ap 09">
+                            <input type="text" id="address" value="{{ auth()->user()->location }}">
                         </div>
                         <div class="form-group">
                             <label for="city">City</label>
@@ -56,7 +52,7 @@
                     <h3>About Me</h3>
                     <div class="form-group">
                         <label for="aboutMe">About me</label>
-                        <textarea id="aboutMe" rows="4">A beautiful Dashboard for Bootstrap 5. It is Free and Open Source.</textarea>
+                        <textarea id="aboutMe" rows="4">{{auth()->user()->about}}</textarea>
                     </div>
                 </section>
             </form>

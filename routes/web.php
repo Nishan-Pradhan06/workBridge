@@ -36,10 +36,12 @@ Route::post('/login', [LoginController::class, 'login']);
 Route::get('/find-job', [JobPostController::class, 'showActiveJobs'])->name('freelancer.dashboard')->middleware('auth');
 Route::get('/setup-profile', [ProfileController::class, 'UserProfileDetailsForm'])->name('freelancer.profilesetup');
 Route::post('/setup-profile', [ProfileController::class, 'store'])->middleware('auth')->name('profiles.store');
-Route::get('/freelancer/setting/profile', [Freelancer::class, 'profile']);
-Route::get('/freelancer/setting/contactInfo', [Freelancer::class, 'contactInfo']);
+// Route::get('/freelancer/setting/profile', [Freelancer::class, 'profile']);
+Route::get('/freelancer/setting/profile', [ProfileController::class, 'show'])->name('freelancer.profile');
+Route::get('/freelancer/setting/contactInfo', [Freelancer::class, 'contactInfo'])->name('freelancer.accountSetting');
 Route::get('/freelancer/setting/billing-and-payments', [Freelancer::class, 'billingAndPayment']);
-Route::get('/freelancer/setting/password-and-security', [Freelancer::class, 'PasswordAndSecurity']);
+Route::get('/freelancer/setting/password-and-security', [Freelancer::class, 'PasswordAndSecurity'])->name('freelancer.password-security');
+
 Route::get('/apply/{job}', [JobProposalController::class, 'index']);
 Route::get('/contract', [Freelancer::class, 'contractProject']);
 

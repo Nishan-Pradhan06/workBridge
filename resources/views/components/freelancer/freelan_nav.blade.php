@@ -137,11 +137,20 @@
                     </div>
                     <div class="prfile-icons">
                         <a class="nav-link profle-dropdown-toggle profile" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true">
-                            <img src="{{asset('profile.jpg')}}" alt="Profile Picture" class="profile-pic">
+                            @if(auth()->user()->profile && auth()->user()->profile->profile_picture)
+                            <img src="{{ asset('storage/' . auth()->user()->profile->profile_picture) }}" alt="Profile Picture" class="profile-pic">
+                            @else
+                            <img src="{{ asset('default.png') }}" alt="Default Profile Picture" class="profile-pic">
+                            @endif
+
                         </a>
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                             <div class="profile">
-                                <img src="{{asset('profile.jpg')}}" alt="Profile Picture" class="profile-pic">
+                                @if(auth()->user()->profile && auth()->user()->profile->profile_picture)
+                                <img src="{{ asset('storage/' . auth()->user()->profile->profile_picture) }}" alt="Profile Picture" class="profile-pic">
+                                @else
+                                <img src="{{ asset('default.png') }}" alt="Default Profile Picture" class="profile-pic">
+                                @endif
                                 <div class="info">
                                     <h5>{{ auth()->user()->name }}</h5>
                                     <p>Freelancer</p>
@@ -150,11 +159,11 @@
                             </div>
                             <div class="items dropdown-item">
                                 <i class="fas fa-user icons" style="font-size: 20px;"></i>
-                                <a class="dropdown-item" href="/freelancer/setting/profile">Your Profile</a>
+                                <a class="dropdown-item" href="{{ route('freelancer.profile') }}">Your Profile</a>
                             </div>
                             <div class="items dropdown-item">
                                 <i class="fas fa-cog icons" style="font-size: 20px;"></i>
-                                <a class="dropdown-item" href="/freelancer/setting/contactInfo">Account Settings</a>
+                                <a class="dropdown-item" href="{{route('freelancer.accountSetting')}}">Account Settings</a>
                             </div>
                             <div class="items dropdown-item">
                                 <i class="fas fa-sign-out-alt icons" style="font-size: 20px;"></i>
