@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Profile;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class Freelancer extends Controller
 {
@@ -10,14 +12,16 @@ class Freelancer extends Controller
     {
         return view('users.index');
     }
-    function profile()
-    {
-        return view('users.freelancers.profile');
-    }
+    // function profile()
+    // {
+    //     return view('users.freelancers.profile');
+    // }
 
     function contactInfo()
     {
-        return view('users.freelancers.contact_info');
+        $user = Auth::user();
+        $profile = Profile::where('user_id',$user->id)->first();
+        return view('users.freelancers.contact_info',compact('profile'));
     }
     function billingAndPayment()
     {
@@ -25,7 +29,9 @@ class Freelancer extends Controller
     }
     function PasswordAndSecurity()
     {
-        return view('users.freelancers.password_and_security');
+        $user = Auth::user();
+        return view('users.freelancers.password_and_security', compact('user'));
+        // return view('users.freelancers.password_and_security');
     }
 
     function createProfile()

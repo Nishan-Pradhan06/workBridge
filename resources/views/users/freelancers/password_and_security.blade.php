@@ -14,7 +14,7 @@
             <form>
                 <div class="form-group">
                     <label for="currentpassword">Current Password</label>
-                    <input type="password" class="form-control" id="currentpassword">
+                    <input type="password" class="form-control" id="currentpassword" value="{{ auth()->user()->password }}">
                     <small id="emailHelp" class="form-text text-muted">Enter the current password to change new password.</small>
                 </div>
                 <div class="form-group">
