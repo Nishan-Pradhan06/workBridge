@@ -17,12 +17,31 @@ class ContractModelController extends Controller
     public function showContractPage()
     {
         $userId = Auth::user()->id;
-        $jobProposals = JobProposal::all();
+        // $jobProposals = JobProposal::where('user_id', Auth::user()->id)->get();
+        $jobProposals = JobProposal::where('user_id', $userId)->get();
         // $jobPosts=JobPost::where('user_id', $userId)->get();
-        $jobPosts = JobPost::whereIn('id', $jobProposals->pluck('job_id'))->get();
+        // $jobPosts = JobPost::whereIn('id', $jobProposals->pluck('job_id'))->get();
+        $jobPosts = JobPost::where('id', $userId)->get();
 
         return view('features.contracts.contract',compact('jobProposals', 'jobPosts'));
     }
+
+    // public function showContractPage()
+    // {
+    //     $userId = Auth::user()->id;
+        
+    //     // Fetch job proposals for the logged-in user
+    //     $jobProposals = JobProposal::where('user_id', $userId)->get();
+        
+    //     // Fetch job posts related to the job proposals
+    //     $jobPost = JobPost::whereIn('id', $jobProposals->pluck('job_id'))->get();
+        
+    //     // Get freelancer profile information for each proposal (if needed)
+    //     $freelancerProfiles = Profile::whereIn('user_id', $jobProposals->pluck('user_id'))->get();
+
+    //     // Pass the data to the view
+    //     return view('features.contracts.contract', compact('jobProposals', 'jobPost', 'freelancerProfiles'));
+    // }
 
     // public function showContractPage($proposalId)
     // {

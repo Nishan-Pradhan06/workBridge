@@ -8,11 +8,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Job Proposal Details</title>
     <style>
-        .contract-container{
+        .contract-container {
             display: flex;
             margin: 20px;
             /* max-width: 600px; */
         }
+
         .container {
             max-width: 700px;
             /* margin: 30px auto; */
@@ -57,7 +58,8 @@
             border-radius: 8px;
             border-left: 4px solid #0056b3;
         }
-        .payment{
+
+        .payment {
             max-height: 400px;
         }
     </style>
@@ -67,23 +69,25 @@
     <div class="contract-container">
         <div class="container">
             <section class="proposal-details">
-                <h2>Job Title: Web Development Project</h2>
-                <p><strong>Freelancer:</strong> John Doe</p>
-                <p><strong>Proposed Budget:</strong> $500</p>
-                <p><strong>Delivery Time:</strong> 2 weeks</p>
+                @foreach ($jobPosts as $jobPost)
+                
+                
+                <h2>Job Title:{{$jobPost->title}} </h2>
+                @endforeach
+                <p><strong>Proposed Budget:</strong> $</p> <!-- Budget from database -->
+                <p><strong>Delivery Time:</strong>  weeks</p> <!-- Delivery time from database -->
                 <h3>Proposal Description:</h3>
-                <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore
-                    et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                    aliquip ex ea commodo consequat.
-                </p>
+                <p></p>
             </section>
+
 
             <section class="freelancer-info">
                 <h2>Freelancer Information</h2>
-                <p><strong>Name:</strong> John Doe</p>
-                <p><strong>Skills:</strong> HTML, CSS, JavaScript, React</p>
-                <p><strong>Portfolio:</strong> <a href="#" target="_blank">View Portfolio</a></p>
+            
+                <p><strong>Name:</strong> {{Auth::user()->name}}</p> <!-- Assuming the user has a name field -->
+                <p><strong>Skills:</strong></p> <!-- Freelancer skills -->
+                <p><strong>Portfolio:</strong> <a href="" target="_blank">View Portfolio</a></p> <!-- Portfolio URL -->
+             
             </section>
         </div>
         <div class="container payment">
@@ -93,7 +97,7 @@
                 <p><strong>Charge:</strong>NPR:5%</p>
                 <p><strong>Total Amount:</strong>NPR:1000</p>
             </section>
-            
+
             <button type="submit" class="btn btn-primary">Hire</button>
         </div>
     </div>
