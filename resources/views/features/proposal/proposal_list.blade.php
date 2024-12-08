@@ -30,7 +30,7 @@
         display: flex;
         align-items: center;
         justify-content: space-between;
-        width: 74vw;
+        width: 70vw;
         border: 1px solid #ddd;
         border-radius: 8px;
         background-color: #f9f9f9;
@@ -124,43 +124,6 @@
         font-size: 14px;
         color: #666;
     }
-/*     
-    .freelancer-card {
-      width: 80%;
-      background-color: #fff;
-      border: 1px solid #ccc;
-      border-radius: 10px;
-      padding: 20px;
-      display: grid;
-      grid-template-columns: 1fr 2fr 1fr 1fr 1fr;
-      gap: 10px;
-      align-items: center;
-    }
-    .freelancer-info {
-      text-align: center;
-    }
-    .freelancer-info img {
-      width: 70px;
-      height: 70px;
-      border-radius: 50%;
-      object-fit: cover;
-      margin-bottom: 10px;
-    }
-    .freelancer-info button {
-      margin-top: 10px;
-      padding: 8px 12px;
-      border: none;
-      background-color: #007bff;
-      color: #fff;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-    .freelancer-info button:hover {
-      background-color: #0056b3;
-    }
-    .text-center {
-      text-align: center;
-    } */
    
 </style>
 <div class="applicant-container">
@@ -180,7 +143,7 @@
         <p>Duration</p>
         <p>Details</p>
     </div>
-    
+
     @forelse($jobProposals as $jobProposal)
     <div class="applicants-details">
         <div class="freelancer-card">
@@ -189,11 +152,11 @@
                     <img src="" alt="Profile Picture" class="profile-pic">
                     <div class="info">
                         <h3>{{ auth()->user()->name }}</h3>
-                        <p>Application Development | Flutter</p>
+                        <p>Application Development</p>
                     </div>
                 </div>
                 <div class="actions">
-                <a href="/apply" class="btn btn-primary">Hire</a>
+                    <a href="/apply" class="btn btn-primary">View</a>
                 </div>
             </div>
             <div class="freelancer-details">
@@ -210,27 +173,18 @@
                 <p class="rate"><strong>$20.00</strong>/hr</p>
             </div>
             <div class="rate-details">
+                <p class="rate"><strong>$20.00</strong>/hr</p>
+            </div>
+            <div class="rate-details">
                 <p>{{ $jobProposal->cover_letter }}</p>
             </div>
         </div>
-        <!-- <div class="freelancer-card">
-    <div class="freelancer-info">
-      <img src="https://via.placeholder.com/70" alt="Profile Picture">
-      <div>
-        <strong>Nishan Pradhan</strong><br>
-        Flutter Developer
-      </div>
-      <button>Hire</button>
     </div>
-    <div class="empty-box text-center">Skills</div>
-    <div class="empty-box text-center">Amount</div>
-    <div class="empty-box text-center">Duration</div>
-    <div class="empty-box text-center">Cover Letter</div>
-  </div> -->
-    </div>
+
     @empty
     <p>No proposals found.</p>
     @endforelse
 
 </div>
+@include('components.footer')
 @endsection
