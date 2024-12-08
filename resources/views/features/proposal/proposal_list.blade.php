@@ -30,7 +30,7 @@
         display: flex;
         align-items: center;
         justify-content: space-between;
-        width: 74vw;
+        width: 70vw;
         border: 1px solid #ddd;
         border-radius: 8px;
         background-color: #f9f9f9;
@@ -124,6 +124,7 @@
         font-size: 14px;
         color: #666;
     }
+   
 </style>
 <div class="applicant-container">
     @if($jobPost)
@@ -150,12 +151,12 @@
                 <div class="profiles">
                     <img src="" alt="Profile Picture" class="profile-pic">
                     <div class="info">
-                        <h3>Nishan Pradhan</h3>
-                        <p>Application Development | Flutter</p>
+                        <h3>{{ auth()->user()->name }}</h3>
+                        <p>Application Development</p>
                     </div>
                 </div>
                 <div class="actions">
-                <a href="/apply" class="btn btn-primary">Hire</a>
+                    <a href="/apply" class="btn btn-primary">View</a>
                 </div>
             </div>
             <div class="freelancer-details">
@@ -173,12 +174,17 @@
             </div>
             <div class="rate-details">
                 <p class="rate"><strong>$20.00</strong>/hr</p>
+            </div>
+            <div class="rate-details">
                 <p>{{ $jobProposal->cover_letter }}</p>
             </div>
         </div>
     </div>
+
     @empty
     <p>No proposals found.</p>
     @endforelse
+
 </div>
+@include('components.footer')
 @endsection

@@ -1,6 +1,6 @@
 <section class="footer-section">
     <link rel="stylesheet" href="{{ asset('css/components/footer.css') }}">
-    <div class="container">
+    <div class="containers">
         <div class="row g-4">
             <div class="col-lg-4">
                 <img src="{{asset('logo.png')}}" alt="Logo" class="footer-logo">

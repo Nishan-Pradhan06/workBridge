@@ -2,6 +2,9 @@
     background-color: #ffffff;
     padding-top: 3rem;
 }
+.containers{
+    margin: 10px 60px;
+}
 
 .footer-section img {
     height: 36px;
