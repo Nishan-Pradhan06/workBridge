@@ -124,7 +124,7 @@
                     <div class="profiles">
                         <img src="{{asset('profile.jpg')}}" alt="Profile Picture" class="profile-pics">
                         <div class="info">
-                            <h3>{{ auth()->user()->name }}</h3>
+                            <h3>{{ $jobProposal->user->name }}</h3>
                             <p>Application Development</p>
                         </div>
                     </div>

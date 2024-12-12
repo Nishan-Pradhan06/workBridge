@@ -16,4 +16,9 @@ class JobProposal extends Model
         'project_duration',
         'cover_letter'
      ];
+
+     function user()
+     {
+      return $this->belongsTo(User::class);
+     }
 }
