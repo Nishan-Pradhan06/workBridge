@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\JobPost;
 use App\Models\JobProposal;
+use App\Models\Profile;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use PHPUnit\Architecture\Storage\ObjectsStorage;
@@ -50,6 +51,7 @@ class JobProposalController extends Controller
         try {
             $jobProposals = JobProposal::where('job_id', $jobId)->get();
             $jobPost = JobPost::find($jobId); // Get the specific job details
+            // $jobProposals = JobProposal::where('job_id', $jobId)->with(['user', 'profile'])->get();
 
             // Pass both the job and its proposals to the view
             return view('features.proposal.proposal_list', compact('jobProposals', 'jobPost'));
@@ -57,7 +59,28 @@ class JobProposalController extends Controller
             return redirect()->back()->with('error', 'Failed to load job proposals');
         }
     }
+    // public function show($jobId)
+    // {
+    //     try {
+    //         $jobProposals = JobProposal::where('job_id', $jobId)->get();
+    //         $jobPost = JobPost::find($jobId);
 
+    //         // Fetch profiles for each proposal
+    //         $proposalsWithProfiles = $jobProposals->map(function ($proposal) {
+    //             // Assuming each proposal has a user_id or freelancer_id
+    //             $profile = Profile::where('user_id', $proposal->user_id)->first();
+    //             $proposal->profile = $profile;
+    //             return $proposal;
+    //         });
+
+    //         return view('features.proposal.proposal_list', [
+    //             'jobProposals' => $proposalsWithProfiles,
+    //             'jobPost' => $jobPost
+    //         ]);
+    //     } catch (\Exception $e) {
+    //         return redirect()->back()->with('error', 'Failed to load job proposals');
+    //     }
+    // }
 
     /**
      * Show the form for editing the specified resource.

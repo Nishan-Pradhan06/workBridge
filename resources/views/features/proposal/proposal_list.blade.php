@@ -5,32 +5,14 @@
         padding: 0 140px;
     }
 
-    .job-details {
-        padding-left: 40px;
-    }
-
     .headers {
-        display: flex;
-        justify-content: center;
+        padding: 10px;
         font-weight: bold;
         color: #333;
     }
 
-    .headers p {
-        flex: 0.17;
-        text-align: center;
-        font-size: 14px;
-    }
-
-    .applicants-details {
-        padding: 8px 50px;
-    }
-
     .freelancer-card {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        width: 70vw;
+        width: 80vw;
         border: 1px solid #ddd;
         border-radius: 8px;
         background-color: #f9f9f9;
@@ -52,7 +34,7 @@
         gap: 20px;
     }
 
-    .profile-pic {
+    .profile-pics {
         width: 70px;
         height: 70px;
         border-radius: 50%;
@@ -73,17 +55,6 @@
         font-size: 14px;
     }
 
-    .btn {
-        width: 100px;
-    }
-
-    .freelancer-details {
-        display: flex;
-        justify-content: space-around;
-        /* justify-content: space-between; */
-        padding-left: 30px;
-        word-wrap: wordwrap;
-    }
 
     .stats,
     .qualifications,
@@ -114,17 +85,11 @@
         font-size: 12px;
     }
 
-    .rate {
-        font-size: 20px;
-        font-weight: bold;
-        color: #333;
+    .rows {
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
-
-    .rate-details p {
-        font-size: 14px;
-        color: #666;
-    }
-   
 </style>
 <div class="applicant-container">
     @if($jobPost)
@@ -136,47 +101,57 @@
     @endif
 
 
-    <div class="headers">
-        <p></p>
-        <p>Qualifications</p>
-        <p>Amount</p>
-        <p>Duration</p>
-        <p>Details</p>
+    <div class="container headers">
+        <div class="row">
+            <div class="col-3"></div>
+            <div class="col">Qualifications</div>
+            <div class="col">Amount</div>
+            <div class="col">Duration</div>
+            <div class="col">Details</div>
+        </div>
     </div>
 
     @forelse($jobProposals as $jobProposal)
-    <div class="applicants-details">
-        <div class="freelancer-card">
-            <div class="freelancer-info">
-                <div class="profiles">
-                    <img src="" alt="Profile Picture" class="profile-pic">
-                    <div class="info">
-                        <h3>{{ auth()->user()->name }}</h3>
-                        <p>Application Development</p>
+
+    <div class="freelancer-card">
+
+
+        <div class="container">
+            <div class="row rows">
+                <div class="col-3">
+
+                    <div class="profiles">
+                        <img src="" alt="Profile Picture" class="profile-pics">
+                        <div class="info">
+                            <h3>{{ auth()->user()->name }}</h3>
+                            <p>Application Development</p>
+                        </div>
                     </div>
+                    <div class="actions">
+                        <a href="/apply" class="btn btn-primary">View</a>
+                    </div>
+
                 </div>
-                <div class="actions">
-                    <a href="/apply" class="btn btn-primary">View</a>
-                </div>
-            </div>
-            <div class="freelancer-details">
-                <div class="qualifications">
+                <div class="col-2">
                     <div class="skills">
                         <span>Web Development</span>
-                        <span>Typing</span>
-                        <span>Data Entry</span>
-                        <span>Canva</span>
                     </div>
                 </div>
-            </div>
-            <div class="rate-details">
-                <p class="rate"><strong>$20.00</strong>/hr</p>
-            </div>
-            <div class="rate-details">
-                <p class="rate"><strong>$20.00</strong>/hr</p>
-            </div>
-            <div class="rate-details">
-                <p>{{ $jobProposal->cover_letter }}</p>
+                <div class="col-2">
+                    <div class="rate-details">
+                        <p class="rate"><strong>{{$jobProposal->amount}}</strong>/hr</p>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="rate-details">
+                        <p class="rate"><strong>{{$jobProposal->project_duration}}</strong></p>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="rate-details">
+                        <p>{{ $jobProposal->cover_letter }}</p>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
