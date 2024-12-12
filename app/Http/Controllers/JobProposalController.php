@@ -14,9 +14,20 @@ class JobProposalController extends Controller
     /**
      * Display a listing of the resource.
      */
+    // public function index(JobPost $job)
+    // {
+    //     return view('features.proposal.submit_proposal', compact('job'));
+    // }
+
     public function index(JobPost $job)
     {
-        return view('features.proposal.submit_proposal', compact('job'));
+        // Check if the authenticated user has already submitted a proposal for this job
+        $hasSubmittedProposal = JobProposal::where('job_id', $job->id)
+            ->where('user_id', Auth::id())
+            ->exists();
+
+        // Pass the flag to the view
+        return view('features.proposal.submit_proposal', compact('job', 'hasSubmittedProposal'));
     }
 
     /**
@@ -25,16 +36,43 @@ class JobProposalController extends Controller
     public function store(Request $request, JobPost $job)
     {
 
-        $jobProposal = new JobProposal(); //new objects
-        $jobProposal->job_id = $job->id;
-        $jobProposal->user_id = Auth::id();
-        $jobProposal->due_date = $request->due_date;
-        $jobProposal->amount = $request->amount;
-        $jobProposal->project_duration = $request->project_duration;
-        $jobProposal->cover_letter = $request->cover_letter;
-        $jobProposal->save();
+        // $jobProposal = new JobProposal(); //new objects
+        // $jobProposal->job_id = $job->id;
+        // $jobProposal->user_id = Auth::id();
+        // $jobProposal->due_date = $request->due_date;
+        // $jobProposal->amount = $request->amount;
+        // $jobProposal->project_duration = $request->project_duration;
+        // $jobProposal->cover_letter = $request->cover_letter;
+        // $jobProposal->save();
 
-        return redirect()->back()->with('success', 'Proposal submitted successfully');
+        // return redirect()->back()->with('success', 'Proposal submitted successfully');
+        try {
+            // Check if a proposal already exists for this user and job
+            $existingProposal = JobProposal::where('job_id', $job->id)
+                ->where('user_id', Auth::id())
+                ->first();
+
+            if ($existingProposal) {
+                // Redirect back with an error message if a proposal already exists
+                return redirect()->back()->with('error', 'You have already submitted a proposal for this job.');
+            }
+
+            // Create a new proposal
+            $jobProposal = new JobProposal();
+            $jobProposal->job_id = $job->id;
+            $jobProposal->user_id = Auth::id();
+            $jobProposal->due_date = $request->due_date;
+            $jobProposal->amount = $request->amount;
+            $jobProposal->project_duration = $request->project_duration;
+            $jobProposal->cover_letter = $request->cover_letter;
+            $jobProposal->save();
+
+            // Redirect back with success message
+            return redirect()->back()->with('success', 'Proposal submitted successfully');
+        } catch (\Exception $e) {
+            // Handle errors and redirect back with an error message
+            return redirect()->back()->with('error', 'Failed to submit proposal.');
+        }
     }
 
     /**

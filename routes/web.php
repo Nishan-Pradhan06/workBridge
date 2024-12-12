@@ -45,7 +45,7 @@ Route::get('/freelancer/setting/billing-and-payments', [Freelancer::class, 'bill
 Route::get('/freelancer/setting/password-and-security', [Freelancer::class, 'PasswordAndSecurity'])->name('freelancer.password-security');
 
 Route::get('/apply/{job}', [JobProposalController::class, 'index']);
-Route::get('/contract', [Freelancer::class, 'contractProject']);
+// Route::get('/contract', [Freelancer::class, 'contractProject']);
 
 //client
 Route::get('/client/dashboard/{id}', [Client::class, 'show'])->name('client.dashboard')->middleware('auth');
@@ -69,12 +69,11 @@ Route::get('/restore/{id}', [JobPostController::class, 'restore']);
 Route::post('/submit-proposal/{job}', [JobProposalController::class, 'store'])->name('proposal.post');
 Route::get('/applicants/{job}', [JobProposalController::class, 'show'])->name('proposal.form');
 
-Route::get('/apply', [ContractModelController::class, 'showContractPage']);
-Route::get('/contract', [Freelancer::class, 'contractProject']);
+Route::get('/contract', [ContractModelController::class, 'showContractPage'])->name('contract.freelancer');
+// Route::get('/contract', [Freelancer::class, 'contractProject']);
 
 
 //admin route
-    Route::get('/admin', [AdminController::class, 'index'])->name('admin.dashboard');
-    Route::get('/admin/users', [AdminController::class, 'manageUsers'])->name('admin.users');
-    Route::get('/admin/settings', [AdminController::class, 'settings'])->name('admin.settings');
-
+Route::get('/admin', [AdminController::class, 'index'])->name('admin.dashboard');
+Route::get('/admin/users', [AdminController::class, 'manageUsers'])->name('admin.users');
+Route::get('/admin/settings', [AdminController::class, 'settings'])->name('admin.settings');

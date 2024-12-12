@@ -63,12 +63,12 @@
 </style>
 <div class="form-container">
 
-    <h2>submit proposal</h2>
+    <h2>Submit Proposal</h2>
 
     <form action="{{ route('proposal.post', $job) }}" method="post">
         @csrf
-        <!-- <label for="due_date">Due Date:</label>
-        <input type="date" id="due_date" name="due_date"> -->
+        <label for="due_date">Due Date:</label>
+        <input type="date" id="due_date" name="due_date">
 
         <label for="amount">Amount:</label>
         <input type="text" id="amount" name="amount" placeholder="Enter amount">
@@ -85,13 +85,20 @@
         </div>
         @endif
         @if(session('error'))
-        <div class="alert alert-error" style="color: green; background-color: red; padding: 10px; border-radius: 5px;">
+        <div class="alert alert-error" style="color: white; background-color: red; padding: 10px; border-radius: 5px;">
             {{ session('error') }}
         </div>
         @endif
 
 
-        <button type="submit" class="btn btn-primary">Submit Proposal</button>
+        <!-- <button type="submit" class="btn btn-primary">Submit Proposal</button> -->
+        <button
+            type="submit"
+            class="btn {{ $hasSubmittedProposal ? 'btn-secondary disabled' : 'btn-primary' }}"
+            {{ $hasSubmittedProposal ? 'disabled' : '' }}>
+            {{ $hasSubmittedProposal ? 'Proposal Already Submitted' : 'Submit Proposal' }}
+        </button>
+
     </form>
 </div>
 @include('components.footer')

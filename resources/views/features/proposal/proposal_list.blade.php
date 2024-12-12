@@ -17,6 +17,7 @@
         border-radius: 8px;
         background-color: #f9f9f9;
         padding: 20px;
+        margin: 10px 0;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     }
 
@@ -39,7 +40,7 @@
         height: 70px;
         border-radius: 50%;
         margin-bottom: 10px;
-        border: 2px solid #0f0;
+        /* border: 2px solid #0f0; */
     }
 
 
@@ -121,14 +122,14 @@
                 <div class="col-3">
 
                     <div class="profiles">
-                        <img src="" alt="Profile Picture" class="profile-pics">
+                        <img src="{{asset('profile.jpg')}}" alt="Profile Picture" class="profile-pics">
                         <div class="info">
                             <h3>{{ auth()->user()->name }}</h3>
                             <p>Application Development</p>
                         </div>
                     </div>
                     <div class="actions">
-                        <a href="/apply" class="btn btn-primary">View</a>
+                        <a href="/contract" class="btn btn-primary">View</a>
                     </div>
 
                 </div>
@@ -139,7 +140,7 @@
                 </div>
                 <div class="col-2">
                     <div class="rate-details">
-                        <p class="rate"><strong>{{$jobProposal->amount}}</strong>/hr</p>
+                        <p class="rate"><strong>NPR: {{$jobProposal->amount}}</strong>/hr</p>
                     </div>
                 </div>
                 <div class="col">
