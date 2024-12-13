@@ -56,4 +56,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(JobPost::class, 'client_id');
     }
+
+    public function jobProposals()
+    {
+        return $this->hasMany(JobProposal::class, 'user_id');
+    }
 }
