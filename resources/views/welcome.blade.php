@@ -1,4 +1,3 @@
-
 <!doctype html>
 <html lang="en">
 
@@ -54,7 +53,19 @@
                         </div>
                     </div>
                     <div class="col-lg-6">
-                        <img class="img-fluid" src="{{asset('hero.png')}}" alt="hero" />
+                        <!-- <img class="img-fluid" src="{{asset('hero.png')}}" alt="hero" /> -->
+
+
+                        <lottie-player
+                            src="https://lottie.host/7a77e23a-99ef-48cf-93a7-bacc2358c156/DPjzPgiwZn.json"
+                            background="transparent"
+                            speed="1"
+                            style="width: 500px; height: 500px"
+                            loop
+                            autoplay
+                            direction="1"
+                            mode="normal">
+                        </lottie-player>
                     </div>
                 </div>
             </div>
@@ -88,7 +99,7 @@
         </div>
     </div>
 
-
+    <script src="https://unpkg.com/@lottiefiles/lottie-player@2.0.8/dist/lottie-player.js"></script>
     <!-- footer components -->
     @include('components.footer')
 </body>
