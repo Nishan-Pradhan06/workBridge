@@ -71,7 +71,7 @@
         <input type="date" id="due_date" name="due_date">
 
         <label for="amount">Amount:</label>
-        <input type="text" id="amount" name="amount" placeholder="Enter amount">
+        <input type="number" id="amount" name="amount" placeholder="Enter amount">
 
         <label for="project_duration">Project Duration:</label>
         <input type="date" id="project_duration" name="project_duration">
