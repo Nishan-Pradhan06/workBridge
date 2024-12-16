@@ -106,6 +106,15 @@
                             <a class="dropdown-item" href="/proposals">Proposal and offers</a>
                         </div>
                     </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Projects
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="/track-progress">View Progress</a>
+                            <a class="dropdown-item" href="/">Submit Projects</a>
+                        </div>
+                    </li>
                 </ul>
                 <div class="nab-btn">
                     <div class="notification-icons">
@@ -183,6 +192,15 @@
                             <a class="dropdown-item" href="/job-post">Find Work</a>
                             <a class="dropdown-item" href="/find-job">Your Dashboard</a>
                             <a class="dropdown-item" href="/proposals">Proposal and offers</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Projects
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="/track-progress">View Progress</a>
+                            <a class="dropdown-item" href="/">Submit Projects</a>
                         </div>
                     </li>
                 </ul>

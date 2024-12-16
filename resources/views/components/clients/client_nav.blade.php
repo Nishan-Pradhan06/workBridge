@@ -77,8 +77,8 @@
                             Projects
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="/job-post">Progress</a>
-                            <a class="dropdown-item" href="/all-jobs">Compelted Projects</a>
+                            <a class="dropdown-item" href="/track-progress">Assign Progress</a>
+                            <a class="dropdown-item" href="/">All Projects</a>
                         </div>
                     </li>
                 </ul>
@@ -117,6 +117,15 @@
                             <a class="dropdown-item" href="{{ route('client.dashboard',auth()->id()) }}">Post a Job</a>
                             <a class="dropdown-item" href="/all-jobs">All Jobs Post</a>
                             <a class="dropdown-item" href="/contracts">All Contracts</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Projects
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="/track-progress">Assign Progress</a>
+                            <a class="dropdown-item" href="/">All Projects</a>
                         </div>
                     </li>
                 </ul>

@@ -14,6 +14,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\admin\AdminController;
+use App\Http\Controllers\ProjectModelController;
 
 Route::get('/', [PageController::class, 'index']);
 Route::get('/signup-freelancer', [PageController::class, 'signupAsFreelancer']);
@@ -77,3 +78,7 @@ Route::get('/contract', [ContractModelController::class, 'showContractPage'])->n
 Route::get('/admin', [AdminController::class, 'index'])->name('admin.dashboard');
 Route::get('/admin/users', [AdminController::class, 'manageUsers'])->name('admin.users');
 Route::get('/admin/settings', [AdminController::class, 'settings'])->name('admin.settings');
+
+
+//routes for projects
+Route::get('/track-progress',[ProjectModelController::class, 'showProjectsTrackingPage'])->name('projects.track-progress');
