@@ -13,6 +13,8 @@ return new class extends Migration
     {
         Schema::create('contract_models', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('job_id')->references('id')->on('job_posts');
+            $table->foreignId('user_id')->references('id')->on('users');
             $table->timestamps();
         });
     }

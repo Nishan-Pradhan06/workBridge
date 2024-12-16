@@ -72,6 +72,15 @@
                             <a class="dropdown-item" href="/contracts">All Contracts</a>
                         </div>
                     </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Projects
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="/job-post">Progress</a>
+                            <a class="dropdown-item" href="/all-jobs">Compelted Projects</a>
+                        </div>
+                    </li>
                 </ul>
                 <div class="nab-btn">
                     <a class="nav-link profle-dropdown-toggle profile" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true">

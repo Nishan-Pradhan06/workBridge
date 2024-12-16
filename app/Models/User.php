@@ -61,4 +61,10 @@ class User extends Authenticatable
     {
         return $this->hasMany(JobProposal::class, 'user_id');
     }
+
+    //need to review
+    public function contract()
+    {
+        return $this->hasMany(HasFactory::class,"user_id");
+    }
 }

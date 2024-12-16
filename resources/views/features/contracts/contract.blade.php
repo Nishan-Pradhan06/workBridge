@@ -59,12 +59,9 @@
 
 <div class="contract-container">
     <div class="container">
+
         <section class="proposal-details">
-            @foreach ($jobPosts as $jobPost)
-
-
-            <h2>Job Title:{{$jobPost->title}} </h2>
-            @endforeach
+            <h2>Job Title:</h2>
             <p><strong>Proposed Budget:</strong> $</p> <!-- Budget from database -->
             <p><strong>Delivery Time:</strong> weeks</p> <!-- Delivery time from database -->
             <h3>Proposal Description:</h3>

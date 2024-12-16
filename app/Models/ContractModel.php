@@ -8,4 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class ContractModel extends Model
 {
     use HasFactory;
+
+    
 }
