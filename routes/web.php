@@ -7,6 +7,7 @@ use App\Http\Controllers\Client;
 use App\Http\Controllers\Freelancer;
 use App\Http\Controllers\JobPostController;
 use App\Http\Controllers\JobProposalController;
+use App\Http\Controllers\MilestoneController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\ContractModelController;
 use App\Http\Controllers\UserProfileController;
@@ -81,4 +82,10 @@ Route::get('/admin/settings', [AdminController::class, 'settings'])->name('admin
 
 
 //routes for projects
-Route::get('/track-progress',[ProjectModelController::class, 'showProjectsTrackingPage'])->name('projects.track-progress');
+// Route::get('/track-progress',[ProjectModelController::class, 'showProjectsTrackingPage'])->name('projects.track-progress');
+
+
+//milestone
+Route::get('/milestones', [MilestoneController::class, 'showMileStonePage'])->name('milestones.index');
+Route::post('/milestones', [MilestoneController::class, 'store'])->name('milestones.store');
+Route::patch('/milestones/{milestone}', [MilestoneController::class, 'update'])->name('milestones.update');

@@ -77,7 +77,7 @@
                             Projects
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="/track-progress">Assign Progress</a>
+                            <a class="dropdown-item" href="/milestones">Assign Progress</a>
                             <a class="dropdown-item" href="/">All Projects</a>
                         </div>
                     </li>
@@ -124,7 +124,7 @@
                             Projects
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="/track-progress">Assign Progress</a>
+                            <a class="dropdown-item" href="/milestones">Assign Progress</a>
                             <a class="dropdown-item" href="/">All Projects</a>
                         </div>
                     </li>
