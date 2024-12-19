@@ -35,9 +35,12 @@ class ContractModelController extends Controller
             // Retrieve job details
             $jobPost = JobPost::find($jobId);
 
+            $userid = request()->query('user_id');
+            // dd($userid);
+
             // Retrieve job proposals with additional relations if needed
-            $jobProposals = JobProposal::where('job_id', $jobId)->get();
-            // $jobProposals = JobProposal::with('user')->where('job_id', $jobId)->get();
+            $jobProposals = JobProposal::where('job_id', $jobId)->where('user_id', $userid)->get();
+            // $jobProposals = JobProposal::with('user')->where('job_id', $jobId)->where('user_id', $userid)->get();
 
             // Prepare data as an associative array
             $contractData = [

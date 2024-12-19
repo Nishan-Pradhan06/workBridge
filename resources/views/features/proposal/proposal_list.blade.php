@@ -133,7 +133,7 @@
                         </div>
                     </div>
                     <div class="actions">
-                        <a href="{{ url('/contract/' . $jobPost->id) }}" class="btn btn-primary">View</a>
+                        <a href="{{ url('/contract/' . $jobPost->id . '?user_id=' . $jobProposal->user->id) }}" class="btn btn-primary">View</a>
                     </div>
 
                 </div>
