@@ -122,20 +122,24 @@
                 <div class="col-3">
 
                     <div class="profiles">
-                        <img src="{{asset('profile.jpg')}}" alt="Profile Picture" class="profile-pics">
+                        @if($jobProposal->user->profile && $jobProposal->user->profile->profile_picture)
+                        <img src="{{ asset('storage/' . $jobProposal->user->profile->profile_picture) }}" alt="Profile Picture" class="profile-pics">
+                        @else
+                        <img src="{{ asset('default.png') }}" alt="Default Profile Picture" class="profile-pic">
+                        @endif
                         <div class="info">
                             <h3>{{ $jobProposal->user->name }}</h3>
-                            <p>Application Development</p>
+                            <p>{{$jobProposal->user->profile->job_title}}</p>
                         </div>
                     </div>
                     <div class="actions">
-                        <a href="/contract" class="btn btn-primary">View</a>
+                        <a href="{{ url('/contract/' . $jobPost->id) }}" class="btn btn-primary">View</a>
                     </div>
 
                 </div>
                 <div class="col-2">
                     <div class="skills">
-                        <span>Web Development</span>
+                        <span>{{$jobProposal->user->profile->skills}}</span>
                     </div>
                 </div>
                 <div class="col-2">

@@ -71,7 +71,7 @@ Route::get('/restore/{id}', [JobPostController::class, 'restore']);
 Route::post('/submit-proposal/{job}', [JobProposalController::class, 'store'])->name('proposal.post');
 Route::get('/applicants/{job}', [JobProposalController::class, 'show'])->name('proposal.form');
 
-Route::get('/contract', [ContractModelController::class, 'showContractPage'])->name('contract.freelancer');
+Route::get('/contract/{job}', [ContractModelController::class, 'showContractPage'])->name('contract.freelancer');
 // Route::get('/contract', [Freelancer::class, 'contractProject']);
 
 

@@ -1,15 +1,14 @@
-@extends('components/clients/client_nav') <!--IMPORT THE COMPONENTS-->
+@extends('components/clients/client_nav') <!-- IMPORT THE COMPONENTS -->
+
 @section('content')
 <style>
     .contract-container {
         display: flex;
         margin: 20px;
-        /* max-width: 600px; */
     }
 
     .container {
         max-width: 700px;
-        /* margin: 30px auto; */
         background: #fff;
         border-radius: 8px;
         box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
@@ -59,36 +58,34 @@
 
 <div class="contract-container">
     <div class="container">
-
         <section class="proposal-details">
-            <h2>Job Title:</h2>
-            <p><strong>Proposed Budget:</strong> $</p> <!-- Budget from database -->
-            <p><strong>Delivery Time:</strong> weeks</p> <!-- Delivery time from database -->
-            <h3>Proposal Description:</h3>
-            <p></p>
+            <div class="job-details">
+                <h2>Job Title: {{ $contractData['jobDetails']->title }}</h2> <!-- Job Title from database -->
+                <p><strong>Proposed Budget:</strong> NPR: {{ $contractData['proposals'][0]->amount }}</p> <!-- Budget from database -->
+                <p><strong>Delivery Time:</strong> {{ $contractData['proposals'][0]->project_duration }}</p> <!-- Delivery Time from database -->
+                <h3>Proposal Description:</h3>
+                <p>{{ $contractData['proposals'][0]->cover_letter ?? 'No description available.' }}</p> <!-- Description from proposal -->
+            </div>
         </section>
-
 
         <section class="freelancer-info">
             <h2>Freelancer Information</h2>
-
-            <p><strong>Name:</strong> {{Auth::user()->name}}</p> <!-- Assuming the user has a name field -->
-            <p><strong>Skills:</strong></p> <!-- Freelancer skills -->
-            <p><strong>Portfolio:</strong> <a href="" target="_blank">View Portfolio</a></p> <!-- Portfolio URL -->
-
+            <p><strong>Name:</strong> {{$contractData['proposals'][0]->user->name}}</p> <!-- Freelancer Name -->
+            <p><strong>Skills:</strong> {{$contractData['proposals'][0]->user->skill??'Not listed' }}</p> <!-- Freelancer Skills -->
+            <p><strong>Portfolio:</strong> <a href="{{$contractData['proposals'][0]->user->portfolio_url ?? '#'}}" target="_blank">View Portfolio</a></p> <!-- Freelancer Portfolio URL -->
         </section>
     </div>
+
     <div class="container payment">
         <section class="proposal-details">
             <h2>Payment</h2>
-            <p><strong>Amount:</strong>NRP:1000</p>
-            <p><strong>Charge:</strong>NPR:5%</p>
-            <p><strong>Total Amount:</strong>NPR:1000</p>
+            <p><strong>Amount:</strong> NPR: {{ $contractData['proposals'][0]->amount }}</p> <!-- Amount from proposal -->
+            <p><strong>Charge:</strong> NPR: 5%</p>
+            <p><strong>Total Amount:</strong> NPR: {{ $contractData['proposals'][0]->amount - ($contractData['proposals'][0]->amount * 0.05) }}</p> <!-- Total amount after 5% charge -->
         </section>
 
         <button type="submit" class="btn btn-primary">Hire</button>
     </div>
 </div>
 @include('components.footer')
-
 @endsection

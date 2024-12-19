@@ -17,7 +17,7 @@ class JobProposal extends Model
         'cover_letter'
      ];
 
-     function user()
+    public function user()
      {
       return $this->belongsTo(User::class);
      }

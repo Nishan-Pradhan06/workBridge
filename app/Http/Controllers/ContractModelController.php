@@ -14,28 +14,56 @@ class ContractModelController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function showContractPage()
-    {
-        $userId = Auth::user()->id;
-        // $jobProposals = JobProposal::where('user_id', Auth::user()->id)->get();
-        $jobProposals = JobProposal::where('user_id', $userId)->get();
-        // $jobPosts=JobPost::where('user_id', $userId)->get();
-        // $jobPosts = JobPost::whereIn('id', $jobProposals->pluck('job_id'))->get();
-        $jobPosts = JobPost::where('id', $userId)->get();
+    // public function showContractPage($jobId)
+    // {
+    //     // $userId = Auth::user()->id;
+    //     // dd($userId);
+    //     // $jobProposals = JobProposal::where('user_id', Auth::user()->id)->get();
+    //     // $jobProposals = JobProposal::where('user_id', $userId)->get();
+    //     // $jobPosts=JobPost::where('user_id', $userId)->get();
+    //     // $jobPosts = JobPost::whereIn('id', $jobProposals->pluck('job_id'))->get();
+    //     $jobProposals = JobProposal::where('job_id', $jobId)->get();
+    //     $jobPost = JobPost::find($jobId); // Get the specific job details
+    //     // $jobPosts = JobPost::where('client_id', $userId)->get();
+    //     // dd($jobPosts[0]->title);
 
-        return view('features.contracts.contract',compact('jobProposals', 'jobPosts'));
+    //     return view('features.contracts.contract', compact('jobProposals', 'jobPost'));
+    // }
+    public function showContractPage($jobId)
+    {
+        try {
+            // Retrieve job details
+            $jobPost = JobPost::find($jobId);
+
+            // Retrieve job proposals with additional relations if needed
+            $jobProposals = JobProposal::where('job_id', $jobId)->get();
+            // $jobProposals = JobProposal::with('user')->where('job_id', $jobId)->get();
+
+            // Prepare data as an associative array
+            $contractData = [
+                'jobDetails' => $jobPost,
+                'proposals' => $jobProposals,
+            ];
+
+            // dd($contractData);
+            // Pass the prepared array to the view
+            return view('features.contracts.contract', compact('contractData'));
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error', 'Failed to load contract details');
+        }
     }
+
 
     // public function showContractPage()
     // {
     //     $userId = Auth::user()->id;
-        
+
     //     // Fetch job proposals for the logged-in user
     //     $jobProposals = JobProposal::where('user_id', $userId)->get();
-        
+
     //     // Fetch job posts related to the job proposals
     //     $jobPost = JobPost::whereIn('id', $jobProposals->pluck('job_id'))->get();
-        
+
     //     // Get freelancer profile information for each proposal (if needed)
     //     $freelancerProfiles = Profile::whereIn('user_id', $jobProposals->pluck('user_id'))->get();
 
@@ -47,7 +75,7 @@ class ContractModelController extends Controller
     // {
     //     // Retrieve the proposal by its ID
     //     $proposal = JobProposal::find($proposalId);
-        
+
     //     if (!$proposal) {
     //         return redirect()->back()->with('error', 'Proposal not found');
     //     }
