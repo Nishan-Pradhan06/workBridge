@@ -9,10 +9,9 @@
     <title>WorkBridge - Freelancing</title>
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     <style>
-        .hero-section {
-            padding: 100px 0;
+        body{
+            background-color: white;
         }
-
         .stats-section {
             background-color: #00A4EF;
             color: white;
@@ -32,6 +31,41 @@
         .stats-divider {
             border-right: 1px solid white;
         }
+
+        .hero-sections {
+            
+            background-image: url(Rectangle.png);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding:10vh;
+        }
+        .ways{
+            background-color: white;
+            display: flex;
+            padding: 5vh;
+            margin: 5vh;
+            /* box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); */
+            border-radius: 1vh;
+        }
+        .ways img{
+            width: 70vh;
+            margin-left: 7vh;
+        }
+        .ways-text{
+            margin-top: 3vh;
+            text-align: right;
+            align-items: right;
+            margin-left: 30vh;
+
+        }
+
+        /* .details{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-around;
+        } */
     </style>
 </head>
 
@@ -39,39 +73,47 @@
     <!-- navbar component -->
     @include('components.navigation_bar')
 
-    <div class="bg-light pt-40 hero-section">
-        <section class="pt-12 pb-12 pb-sm-16 pt-lg-8">
-            <div class="container">
-                <div class="row align-items-center">
-                    <div class="col-lg-6 text-center text-lg-start ">
-                        <h1 class="display-4 font-weight-bold text-dark">Kickstart Your Freelancing Career Today!</h1>
-                        <p class="mt-3 lead text-muted">
-                            Join thousands of developers and designers who have already started their freelancing journey on WorkBridge. Whether you're looking for short-term gigs or long-term projects, we connect you with clients worldwide and help you build a career on your own terms.
-                        </p>
-                        <div class="text-left">
-                            <a href="/get-started" class="btn btn-primary btn-lg active " role="button" aria-pressed="true">Get Started</a>
-                        </div>
-                    </div>
-                    <div class="col-lg-6">
-                        <!-- <img class="img-fluid" src="{{asset('hero.png')}}" alt="hero" /> -->
-
-
-                        <lottie-player
-                            src="https://lottie.host/7a77e23a-99ef-48cf-93a7-bacc2358c156/DPjzPgiwZn.json"
-                            background="transparent"
-                            speed="1"
-                            style="width: 500px; height: 500px"
-                            loop
-                            autoplay
-                            direction="1"
-                            mode="normal">
-                        </lottie-player>
-                    </div>
-                </div>
+    <div class="hero-sections bg-light ">
+        <div class="detail">
+            <div class="col-lg-10 ">
+                <h1 class="display-5 font-weight-bold text-dark">Are you Looking for Freelancers?</h1>
+                <p class="mt-3 lead text-muted">
+                    Hire Great Freelancers, Fast. Spacelance helps you hire elite freelancers at a moment's notice.
+                </p>
             </div>
-        </section>
+            <div class="text-left">
+                <a href="/get-started" class="btn btn-primary btn-lg active " role="button" aria-pressed="true">Hire Freelacner</a>
+            </div>
+
+        </div>
+        <div class="banner">
+            <lottie-player
+                src="https://lottie.host/7a77e23a-99ef-48cf-93a7-bacc2358c156/DPjzPgiwZn.json"
+                background="transparent"
+                speed="1"
+                style="width: 500px; height: 500px"
+                loop
+                autoplay
+                direction="1"
+                mode="normal">
+            </lottie-player>
+        </div>
     </div>
     <!-- hero section ends here -->
+
+    <div class="ways">
+        <div class="ways-image">
+        <img src="landingGirl.png" alt="">
+        </div>
+
+        <div class="ways-text">
+            <h1>Find The Best <br><span style="color:blue;">Freelancers</span> Here</h1>
+            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Corporis veniam perferendis animi voluptatum dolorum hic, porro et vitae. Quam corrupti sint incidunt accusamus asperiores quisquam officiis est sapiente quod odit?</p>
+
+
+        </div>
+        
+    </div>
 
 
     <!-- statatics started here -->
