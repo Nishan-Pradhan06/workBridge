@@ -59,6 +59,66 @@
             margin-left: 30vh;
 
         }
+        .portfolio-container{
+            text-align: center;
+            align-items: center;
+        }
+
+        #p-top{
+            font-size: 30px;
+            opacity: 0.5;
+        }
+        #p-down{
+            font-size: 40px;
+            font-weight: 500;
+        }
+        .portfolios{
+            background-color: white;
+            display: flex;
+            text-align: center;
+            align-items: center;
+            padding: 3vh;
+            justify-content: center;
+            
+        }
+        .portfolio{
+            margin: 3vh;
+            height: 50vh;
+            width: 50vh;
+            overflow: hidden;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+        .portfolio .image-box{
+            height: 40vh;
+            align-items: center;
+            justify-content: center;
+            width: 50vhpx;
+            background-color: red;
+            overflow: hidden;
+        }
+        .image-box img{
+            width: 50vh;
+
+        }
+        .portfolio .text{
+           text-align: center;
+           margin-top: 10px;
+           line-height: 0.75;
+        }
+        #name{
+            font-size: 25px;
+            font-weight: bold;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        #job{
+            font-size: 20px;
+            font-weight: 500;
+            opacity: 0.5;
+            color: rgb(37,37,37);
+            
+        }
 
         /* .details{
             display: flex;
@@ -114,6 +174,52 @@
         </div>
         
     </div>
+
+    <!-- portfolios card -->
+
+    <div class="portfolio-container">
+        <div class="portfolio-head">
+            <p id="p-top">Logos,websites,book & mores!</p>
+            <p id="p-down">Checkout The Best <span style="color:#00A4EF;">Portfolios </span>Here</p>
+        </div>
+
+        <div class="portfolios">
+            <div class="portfolio">
+                <div class="image-box">
+                    <img src="bunny.jpg" alt="">
+                </div>
+                <div class="text">
+                    <p id="name">Bunny.desin</p>
+                    <p id="job">UI/UX Designer</p>
+                </div>
+            </div>
+
+
+            <div class="portfolio">
+                <div class="image-box">
+                    <img src="nishan.jpg" alt="">
+                </div>
+                <div class="text">
+                    <p id="name">Nishan Pradhan </p>
+                    <p id="job">Graphic Desiner</p>
+                </div>
+            </div>
+
+
+            <div class="portfolio">
+                <div class="image-box">
+                    <img src="isha.jpg" alt="">
+                </div>
+                <div class="text">
+                    <p id="name">Isha Thapa</p>
+                    <p id="job">Graphic Desiner</p>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
+    <!--  -->
 
 
     <!-- statatics started here -->
