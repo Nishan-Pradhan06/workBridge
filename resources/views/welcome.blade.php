@@ -119,6 +119,46 @@
             color: rgb(37,37,37);
             
         }
+        .subscription-container{
+            background-color: rgb(242,250,250);
+            text-align: center;
+            align-items: center;
+            justify-content: center;
+            line-height: 1.5;
+            margin-top:15vh;
+            padding: 5vh;
+        }
+        #s-top{
+            font-size: 50px;
+
+        }
+        #s-down{
+            font-size: 20px;
+            opacity: 0.5;
+        }
+        #email{
+            border: 2px solid #ccc;
+            border-radius: 4px;
+            font-size: 25px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            height: 7vh;
+            padding: 10px;
+            width: 60vh;
+            text-align: center;
+            margin-top: 5vh;
+            font-weight: 400;
+        }
+        #subscribe{
+            background-color: #00A4EF;
+            border: none;
+            padding: 1.5vh  7vh;
+            color: #ccc;
+            font-size: 20px;
+            margin-top: 3vh;
+            border-radius: 10px;
+            font-weight: 500;
+
+        }
 
         /* .details{
             display: flex;
@@ -169,8 +209,6 @@
         <div class="ways-text">
             <h1>Find The Best <br><span style="color:blue;">Freelancers</span> Here</h1>
             <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Corporis veniam perferendis animi voluptatum dolorum hic, porro et vitae. Quam corrupti sint incidunt accusamus asperiores quisquam officiis est sapiente quod odit?</p>
-
-
         </div>
         
     </div>
@@ -186,7 +224,7 @@
         <div class="portfolios">
             <div class="portfolio">
                 <div class="image-box">
-                    <img src="bunny.jpg" alt="">
+                    <img src="bunny.webp" alt="">
                 </div>
                 <div class="text">
                     <p id="name">Bunny.desin</p>
@@ -208,10 +246,10 @@
 
             <div class="portfolio">
                 <div class="image-box">
-                    <img src="isha.jpg" alt="">
+                    <img src="teaser.jpg" alt="">
                 </div>
                 <div class="text">
-                    <p id="name">Isha Thapa</p>
+                    <p id="name">Teaser</p>
                     <p id="job">Graphic Desiner</p>
                 </div>
             </div>
@@ -219,7 +257,13 @@
         </div>
     </div>
 
-    <!--  -->
+    <!--Subscription section -->
+    <div class="subscription-container">
+        <p id="s-top">Newsletter Subscription</p>
+        <p id="s-down">Susribe to our newsletter to get new freelencer work and project</p>
+        <input id="email" type="email" placeholder="Enter your address"></br>
+        <button id="subscribe">subscribe</button>
+    </div>
 
 
     <!-- statatics started here -->
