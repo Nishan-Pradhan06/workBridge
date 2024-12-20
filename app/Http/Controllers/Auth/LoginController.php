@@ -44,6 +44,9 @@ class LoginController extends Controller
                 // If no profile exists, redirect to profile setup page
                 return redirect()->route('freelancer.profilesetup', ['id' => $user->id])
                     ->with('success', 'Login successful! Please complete your profile setup.');
+            } elseif ($user->role === 'admin') {
+                return redirect()->route('admin.dashboard', ['id' => $user->id])
+                    ->with('success', 'Login successful! Welcome back, Admin.');
             }
             return redirect('/')->with('success', 'Login successful!');
         }
@@ -51,5 +54,4 @@ class LoginController extends Controller
         // Login failed
         return back()->with('error', 'Invalid credentials.')->withInput();
     }
-
 }

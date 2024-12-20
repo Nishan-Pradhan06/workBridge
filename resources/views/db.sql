@@ -34,28 +34,32 @@ CREATE TABLE proposals (
     FOREIGN KEY (freelancer_id) REFERENCES users(id)
 );
 
--- Contracts table
-CREATE TABLE contracts (
+-- Payments table
+CREATE TABLE payments (
     id INT PRIMARY KEY,
-    job_id INT,
+    proposal_id INT,
     client_id INT,
     freelancer_id INT,
     amount DECIMAL(10,2),
     platform_fee DECIMAL(10,2),
-    status ENUM('active', 'completed', 'cancelled'),
+    status ENUM('pending', 'completed', 'failed'),
     created_at TIMESTAMP,
-    FOREIGN KEY (job_id) REFERENCES jobs(id),
+    FOREIGN KEY (proposal_id) REFERENCES proposals(id),
     FOREIGN KEY (client_id) REFERENCES users(id),
     FOREIGN KEY (freelancer_id) REFERENCES users(id)
 );
 
--- Payments table
-CREATE TABLE payments (
+-- Milestones table
+CREATE TABLE milestones (
     id INT PRIMARY KEY,
-    contract_id INT,
+    job_id INT,
+    freelancer_id INT,
+    client_id INT,
     amount DECIMAL(10,2),
-    platform_fee DECIMAL(10,2),
-    status ENUM('pending', 'completed', 'failed'),
+    description TEXT,
+    status ENUM('todo', 'in_progress', 'completed'),
     created_at TIMESTAMP,
-    FOREIGN KEY (contract_id) REFERENCES contracts(id)
+    FOREIGN KEY (job_id) REFERENCES jobs(id),
+    FOREIGN KEY (freelancer_id) REFERENCES users(id),
+    FOREIGN KEY (client_id) REFERENCES users(id)
 );
