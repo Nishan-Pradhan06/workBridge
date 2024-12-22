@@ -1,0 +1,271 @@
+@extends('components.clients.client_nav') <!--IMPORTING THE FILES FROM COMPOENTS/NAVBAR.BLADE.PHP-->
+@section('title','Dashboard') <!--SETTINGUP THE TITLE-->
+@section('content') <!--START THE CONTENT FROM HERE-->
+
+<style>
+    .container{
+        margin-top: 20px;
+    }
+    .status-cotainer{
+        display: flex;
+        justify-content: space-between;
+        margin: auto; 
+    }
+    .status{
+        align-items: center;
+        display: flex;
+        justify-content: center;
+        padding: 0px;
+    }
+    .status .logo{
+        width: 70px;
+        height: 70px;
+   
+        border-radius: 10px;
+    }
+    .status .logo img{
+        width: 70px;
+
+    }
+    .status .content{
+        padding: 25px;
+
+    }
+    .content .text{
+        opacity: 0.75;
+        font-family: 'Arial', sans-serif;
+        font-size: 16px;
+        margin-top: 12px;
+    }
+    .content .num{
+        font-family: 'Arial', sans-serif;
+        font-size: 25px;
+        font-weight: 600;
+        margin-bottom: 5px;
+    }
+
+    /* active projects */
+    .project-status{
+        margin:50px 0;
+        
+
+    }
+    .project-status-name{
+        display: flex;
+        justify-content: space-between;
+        margin-top: 20px;
+        box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.15);
+        padding: 20px;
+        border-radius: 20px;
+    }
+    .project-status-name .btn{
+        padding: 15px;
+    }
+    .project-status-name .btn button{
+        padding:8px 25px;
+        border-radius: 15px;
+        color: blue;
+    }
+    .p-status-detail span{
+        margin-right: 20px;
+        
+    }
+    .proposal-detail{
+        display: flex;
+        gap: 10px;
+    }
+    .accept-btn button{
+        background-color: blue;
+        color: white;
+        padding:8px 25px;
+        border-radius: 15px;
+        border: none;
+
+    }
+    .decline-btn button{
+        color:black;
+        background-color: white;
+        padding:8px 25px;
+        border-radius: 15px;
+
+    }
+    .price{
+        text-align: center;
+        justify-content: center;
+    }
+    .price p{
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 20px;
+        font-weight: 500;
+    }
+    
+</style>
+<body>
+    <div class="container">
+        <!-- status section -->
+        <div class="status-cotainer">
+            <div class="status">
+                <div class="logo">
+                    <img src="{{asset('project.png')}}" alt="">
+                </div>
+                <div class="content">
+                    <div class="text">
+                        <p>Active Projects</p>
+                    </div>
+                    <div class="num">
+                        <p>12</p>
+    
+                    </div>
+                </div>
+
+            </div>
+            <div class="status">
+                <div class="logo">
+                <img src="{{asset('pending.png')}}" alt="">
+                </div>
+                <div class="content">
+                    <div class="text">
+                        <p>Pending Proposals</p>
+                    </div>
+                    <div class="num">
+                        <p>8</p>  
+                    </div>
+                </div>
+            </div>
+            <div class="status">
+                <div class="logo">
+                <img src="{{asset('spend.png')}}" alt="">
+                </div>
+                <div class="content">
+                    <div class="text">
+                        <p>Total Spent</p>
+                    </div>
+                    <div class="num">
+                        <p>$24,500</p>
+                    </div>
+                </div>
+            </div>
+            <div class="status">
+                <div class="logo">
+                <img src="{{asset('av-balance.png')}}" alt="">
+                </div>
+                <div class="content">
+                    <div class="text">
+                        <p>Available Balance</p>
+                    </div>
+                    <div class="num">
+                        <p>$8,750</p>
+                     </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- active projects -->
+         <div class="project-status">
+         <h2>Active Projects</h2>
+         <div class="project-status-name">
+                <div class="text">
+                    <div class="head">
+                        <p>Mobile App Development</p>
+                    </div>
+                    <div class="p-status-detail">
+                        <span>Due:2024-04-15</span>
+                        <span>Budget: $5000</span>
+                    </div>
+                </div>
+                <div class="btn">
+                    <button>in progress</button>
+                </div>
+            </div>
+         </div>
+         
+         <!-- completed projects -->
+         <div class="project-status">
+         <h2>Completed Projects</h2>
+            <div class="project-status-name">
+                <div class="text">
+                    <div class="head">
+                        <p>Brand Identity Design</p>
+                    </div>
+                    <div class="p-status-detail">
+                        <span>Completed:2024-04-15</span>
+                        <span>Budget: $3000</span>
+                    </div>
+                </div>
+                <div class="btn">
+                    <button>Invoice</button>
+                </div>
+            </div>
+            
+            <div class="project-status-name">
+                <div class="text">
+                    <div class="head">
+                        <p>SEO Optimization</p>
+                    </div>
+                    <div class="p-status-detail">
+                        <span>Completed:2024-04-15</span>
+                        <span>Budget: $3000</span>
+                    </div>
+                </div>
+                <div class="btn">
+                    <button>Invoice</button>
+                </div>
+            </div>
+         </div>
+         
+
+          <!-- proposals -->
+          <div class="project-status">
+         <h2>Proposals</h2>
+            <div class="project-status-name">
+                <div class="text">
+                    <div class="head">
+                        <p>Website Development</p>
+                    </div>
+                    <div class="p-status-detail">
+                        <span>Nabin Basnet</span>
+                        <span>2024-04-15</span>
+                    </div>
+                </div>
+                <div class="proposal-detail">
+                    <div class="price">
+                        <p>$2500</p>
+                    </div>
+                    <div class="accept-btn">
+                        <button>Accept</button>
+                    </div>
+                    <div class="decline-btn">
+                        <button>Decline</button>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="project-status-name">
+                <div class="text">
+                    <div class="head">
+                        <p>Logo Design</p>
+                    </div>
+                    <div class="p-status-detail">
+                        <span>Nishan Pradhan</span>
+                        <span>2024-04-15</span>
+                    </div>
+                </div>
+                <div class="proposal-detail">
+                    <div class="price">
+                        <p>$500</p>
+                    </div>
+                    <div class="accept-btn">
+                        <button>Accept</button>
+                    </div>
+                    <div class="decline-btn">
+                        <button>Decline</button>
+                    </div>
+
+                </div>
+            </div>
+         </div>
+         
+    </div>
+@include('components.footer')
+@endsection <!--END THE CONTENT FROM HERE-->

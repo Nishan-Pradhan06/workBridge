@@ -20,7 +20,7 @@ class Client extends Controller
         // Fetch the user by ID (this ensures the user exists in the database)
         $user = User::findOrFail($id);
 
-        return view('users.clients.clients', compact('user'));
+        return view('users.clients.dashboard', compact('user'));
     }
 
     function ContractsPage()
