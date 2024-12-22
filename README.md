@@ -6,11 +6,10 @@ WorkBridge is a freelancing platform designed specifically for Nepali students w
 
 - **User Registration and Authentication**: Secure registration and login for users and freelancers.
 - **Project Listings**: Admins and clients can post projects for freelancers to apply.
-- **Application System**: Freelancers can apply for projects, and clients can review applications.
-- **MCQ Exam for Freelancers**: Freelancers take an MCQ exam to qualify for projects.
 - **Project Assignment**: Verified freelancers are assigned projects to showcase their skills.
 - **User Dashboard**: Personalized dashboard for users to manage their profile, applications, and projects.
 - **Admin Panel**: Admins manage users, projects, applications, and other platform settings.
+- **Payment Inetegrations**: Khalti Payment Integration.
 
 ## Tech Stack
 
@@ -22,7 +21,7 @@ WorkBridge is a freelancing platform designed specifically for Nepali students w
 
 - **User**: Applies for projects, manages profile and applications.
 - **Client**: Posts projects, reviews applications, and selects freelancers.
-- **Superadmin**: Manages platform settings, verifies users, and oversees overall operations.
+- **Superadmin**: Manages platform settings, and oversees overall operations.
 
 ## Developers
 
