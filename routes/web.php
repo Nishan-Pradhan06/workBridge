@@ -86,6 +86,7 @@ Route::get('/admin/settings', [AdminController::class, 'settings'])->name('admin
 
 
 //milestone
-Route::get('/milestones', [MilestoneController::class, 'showMileStonePage'])->name('milestones.index');
-Route::post('/milestones', [MilestoneController::class, 'store'])->name('milestones.store');
-Route::patch('/milestones/{milestone}', [MilestoneController::class, 'update'])->name('milestones.update');
+Route::get('/projects', [MilestoneController::class, 'showMileStonePage'])->name('milestones.index');
+Route::post('/save-milestones', [MilestoneController::class, 'store'])->name('milestones.store');
+Route::get('/milestones',[MilestoneController::class, 'show'])->name('milestones.show');
+// Route::patch('/milestones/{milestone}', [MilestoneController::class, 'update'])->name('milestones.update');

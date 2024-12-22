@@ -57,10 +57,10 @@
             Todo
         </div>
         <div class="card-body">
-
+        @foreach($milestones as $milestone)
             <div class="milestone-card">
                 <div class="milestone-details">
-                    <h5 class="card-title">Enhance Job Posting System</h5>
+                    <h5 class="card-title">{{$milestone->title}}</h5>
                     <p class="card-text">
                         Improve the job posting functionality to allow clients to upload detailed project requirements, including attachments, deadlines, and budget estimates.
                     </p>
@@ -79,6 +79,7 @@
                 </div>
             </div>
         </div>
+        @endforeach
         <div class="card-footer text-muted">
             <a href="#" class="btn btn-link" data-toggle="modal" data-target="#add-milestone"> Add Milestone</a>
         </div>
