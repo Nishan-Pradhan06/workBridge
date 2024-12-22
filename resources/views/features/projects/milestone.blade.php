@@ -57,12 +57,13 @@
             Todo
         </div>
         <div class="card-body">
-        @foreach($milestones as $milestone)
+            @if(isset($milestones) && $milestones->count() > 0)
+            @foreach($milestones as $milestone)
             <div class="milestone-card">
                 <div class="milestone-details">
-                    <h5 class="card-title">{{$milestone->title}}</h5>
+                    <h5 class="card-title">{{$milestone->milestone_title}}</h5>
                     <p class="card-text">
-                        Improve the job posting functionality to allow clients to upload detailed project requirements, including attachments, deadlines, and budget estimates.
+                        {{$milestone->milestone_des}}
                     </p>
                 </div>
                 <div class="actions">
@@ -78,8 +79,14 @@
 
                 </div>
             </div>
+            @endforeach
+            @else
+            <div class="alert alert-info">
+                No milestones found.
+            </div>
+            @endif
         </div>
-        @endforeach
+
         <div class="card-footer text-muted">
             <a href="#" class="btn btn-link" data-toggle="modal" data-target="#add-milestone"> Add Milestone</a>
         </div>

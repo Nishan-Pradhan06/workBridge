@@ -58,15 +58,11 @@ class MilestoneController extends Controller
     // }
     public function show()
     {
-        // Get all milestones for the authenticated user
-        $milestones = Milestone::where('client_id', Auth::user()->id)
-            ->orderBy('created_at', 'desc')
-            ->get();
+        $milestones = Milestone::all();
+        // $milestones = Milestone::where('client_id', Auth::user()->id)
+        // ->orderBy('created_at', 'desc')
+        // ->get();
 
-        // Return view with milestones
-        return view('features.projects.milestone', [
-            'milestones' => $milestones
-        ]);
-        dd($milestones);
+        return view('features.projects.milestone', compact('milestones'));
     }
 }
