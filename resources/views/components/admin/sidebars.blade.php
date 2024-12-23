@@ -113,7 +113,7 @@
         <ul class="nav nav-pills flex-column mb-auto">
 
             <li>
-                <a href="#" class="nav-link text-white active">
+                <a href="{{route('admin.dashboard')}}" class=" nav-link text-white {{ Route::is('admin.dashboard') ? 'active' : '' }}">
                     <svg class="bi pe-none me-2" width="16" height="16">
                         <use xlink:href="#speedometer2" />
                     </svg>
@@ -121,7 +121,7 @@
                 </a>
             </li>
             <li>
-                <a href="#" class="nav-link text-white">
+                <a href="{{route('admin.users')}}" class=" nav-link text-white {{ Route::is('admin.users') ? 'active' : '' }}">
                     <svg class="bi pe-none me-2" width="16" height="16">
                         <use xlink:href="#table" />
                     </svg>
@@ -132,7 +132,7 @@
         <hr>
         <div class="dropdown">
             <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                
+
                 <div class="rounded-circle bg-success text-white p-2 me-2">
                     {{ strtoupper(substr(auth()->user()->name, 0, 2)) }}
                 </div>

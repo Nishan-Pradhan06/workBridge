@@ -22,4 +22,10 @@ class AdminController extends Controller
         // Pass both user lists and counts to the view
         return view("users.admin.admin", compact('totalUsers', 'totalClients', 'totalFreelancers', 'users'));
     }
+
+    public function showUsersPage()
+    {
+        $users = User::whereIn('role', ['client', 'freelancer'])->paginate(8);
+        return view("users.admin.users", compact('users'));
+    }
 }

@@ -96,7 +96,7 @@ Route::get('/contract/{job}', [ContractModelController::class, 'showContractPage
 
 //admin route
 Route::get('/admin', [AdminController::class, 'index'])->name('admin.dashboard');
-Route::get('/admin/users', [AdminController::class, 'manageUsers'])->name('admin.users');
+Route::get('/admin/users', [AdminController::class, 'showUsersPage'])->name('admin.users');
 Route::get('/admin/settings', [AdminController::class, 'settings'])->name('admin.settings');
 
 

@@ -26,6 +26,10 @@
         @endforeach
         @endif
     </div>
+    <!-- Pagination links with padding -->
+    <div class="d-flex justify-content-center">
+        {{ $jobPost->links('pagination::bootstrap-4') }}
+    </div>
 </div>
 @include('components.footer')
 @endsection
