@@ -92,9 +92,14 @@
         <tr>
           <td>
             <div class="d-flex align-items-center">
+              @if(auth()->user()->profile && auth()->user()->profile->profile_picture)
+              <img src="{{ asset('storage/' . auth()->user()->profile->profile_picture) }}" alt="Profile Picture" class="profile-pic">
+              @else
               <div class="rounded-circle bg-success text-white p-2 me-2">
                 {{ strtoupper(substr($user->name, 0, 2)) }}
               </div>
+              @endif
+
               <div>
                 <strong>{{ $user->name }}</strong><br>
                 <span class="text-muted">{{ $user->email }}</span>

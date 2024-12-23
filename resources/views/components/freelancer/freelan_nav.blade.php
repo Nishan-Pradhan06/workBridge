@@ -82,6 +82,21 @@
         .notification-dropdown::-webkit-scrollbar-track {
             background-color: #f9f9f9;
         }
+
+        .small-circle {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: #28a745;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            font-weight: bold;
+            text-transform: uppercase;
+            margin-right: 10px;
+        }
     </style>
 </head>
 
@@ -149,7 +164,9 @@
                             @if(auth()->user()->profile && auth()->user()->profile->profile_picture)
                             <img src="{{ asset('storage/' . auth()->user()->profile->profile_picture) }}" alt="Profile Picture" class="profile-pic">
                             @else
-                            <img src="{{ asset('default.png') }}" alt="Default Profile Picture" class="profile-pic">
+                            <div class="small-circle">
+                                {{ strtoupper(substr(auth()->user()->name, 0, 2)) }}
+                            </div>
                             @endif
 
                         </a>
@@ -158,7 +175,9 @@
                                 @if(auth()->user()->profile && auth()->user()->profile->profile_picture)
                                 <img src="{{ asset('storage/' . auth()->user()->profile->profile_picture) }}" alt="Profile Picture" class="profile-pic">
                                 @else
-                                <img src="{{ asset('default.png') }}" alt="Default Profile Picture" class="profile-pic">
+                                <div class="small-circle">
+                                    {{ strtoupper(substr(auth()->user()->name, 0, 2)) }}
+                                </div>
                                 @endif
                                 <div class="info">
                                     <h5>{{ auth()->user()->name }}</h5>

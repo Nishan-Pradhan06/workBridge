@@ -132,8 +132,11 @@
         <hr>
         <div class="dropdown">
             <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                <img src="{{asset('default.png')}}" alt="" width="32" height="32" class="rounded-circle me-2">
-                <strong>mdo</strong>
+                
+                <div class="rounded-circle bg-success text-white p-2 me-2">
+                    {{ strtoupper(substr(auth()->user()->name, 0, 2)) }}
+                </div>
+                <strong>{{ auth()->user()->name }}</strong>
             </a>
             <ul class="dropdown-menu dropdown-menu-dark text-small shadow">
                 <li><a class="dropdown-item" href="#">Settings</a></li>

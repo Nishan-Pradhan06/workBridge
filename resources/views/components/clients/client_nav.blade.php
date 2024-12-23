@@ -46,6 +46,21 @@
             display: flex;
             align-items: center;
         }
+
+        .small-circle {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: #28a745;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            font-weight: bold;
+            text-transform: uppercase;
+            margin-right: 10px;
+        }
     </style>
 </head>
 
@@ -78,17 +93,29 @@
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item" href="{{route('milestones.index')}}">Assign Progress</a>
-                            <a class="dropdown-item" href="/">All Projects</a>
+                            <a class="dropdown-item" href="">All Projects</a>
                         </div>
                     </li>
                 </ul>
                 <div class="nab-btn">
                     <a class="nav-link profle-dropdown-toggle profile" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true">
-                        <img src="{{asset('profile.jpg')}}" alt="Profile Picture" class="profile-pic">
+                        @if(auth()->user()->profile && auth()->user()->profile->profile_picture)
+                        <img src="{{ asset('storage/' . auth()->user()->profile->profile_picture) }}" alt="Profile Picture" class="profile-pic">
+                        @else
+                        <div class="small-circle">
+                            {{ strtoupper(substr(auth()->user()->name, 0, 2)) }}
+                        </div>
+                        @endif
                     </a>
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                         <div class="profile">
-                            <img src="{{asset('profile.jpg')}}" alt="Profile Picture" class="profile-pic">
+                            @if(auth()->user()->profile && auth()->user()->profile->profile_picture)
+                            <img src="{{ asset('storage/' . auth()->user()->profile->profile_picture) }}" alt="Profile Picture" class="profile-pic">
+                            @else
+                            <div class="small-circle">
+                                {{ strtoupper(substr(auth()->user()->name, 0, 2)) }}
+                            </div>
+                            @endif
                             <div class="info">
                                 <h5>{{ auth()->user()->name }}</h5>
                                 <p>Client</p>
