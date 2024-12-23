@@ -101,7 +101,12 @@
                         </div>
                         <div class="items dropdown-item">
                             <i class="fas fa-sign-out-alt icons" style="font-size: 20px;"></i>
-                            <a class="dropdown-item" href="">Logout</a>
+                            <form action="{{ route('logout') }}" method="POST">
+                                @csrf
+                                <button submit="submit" class="btn btn-link">Logout</button>
+                            </form>
+
+                            <!-- <a class="dropdown-item" href="" {{ route('logout') }}">Logout</a> -->
                         </div>
                     </div>
                 </div>
@@ -116,7 +121,7 @@
                             <a class="dropdown-item" href="/job-post">Post a Job</a>
                             <a class="dropdown-item" href="{{ route('client.dashboard',auth()->id()) }}">Post a Job</a>
                             <a class="dropdown-item" href="/all-jobs">All Jobs Post</a>
-                            <a class="dropdown-item" href="/contracts">All Contracts</a>
+                            <a class="dropdown-item" href="">All Contracts</a>
                         </div>
                     </li>
                     <li class="nav-item dropdown">
@@ -125,7 +130,7 @@
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item" href="{{route('milestones.index')}}">Assign Progress</a>
-                            <a class="dropdown-item" href="/">All Projects</a>
+                            <a class="dropdown-item" href="">All Projects</a>
                         </div>
                     </li>
                 </ul>

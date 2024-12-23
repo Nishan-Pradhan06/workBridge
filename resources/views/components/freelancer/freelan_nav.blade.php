@@ -176,7 +176,11 @@
                             </div>
                             <div class="items dropdown-item">
                                 <i class="fas fa-sign-out-alt icons" style="font-size: 20px;"></i>
-                                <a class="dropdown-item" href="/logout">Logout</a>
+                                <form action="{{ route('logout') }}" method="POST">
+                                    @csrf
+                                    <button type="submit" class="btn btn-link dropdown-item">Sign out</button>
+
+                                </form>
                             </div>
                         </div>
                     </div>

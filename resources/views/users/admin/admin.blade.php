@@ -42,21 +42,21 @@
     <div class="col-md-3 mb-3">
       <div class="card text-center shadow-sm p-3">
         <h5>Total Users</h5>
-        <h2>256</h2>
+        <h2>{{$totalUsers}}</h2>
 
       </div>
     </div>
     <div class="col-md-3 mb-3">
       <div class="card text-center shadow-sm p-3">
         <h5>Active Freelancers</h5>
-        <h2>180</h2>
+        <h2>{{$totalFreelancers}}</h2>
 
       </div>
     </div>
     <div class="col-md-3 mb-3">
       <div class="card text-center shadow-sm p-3">
         <h5>Active Clients</h5>
-        <h2>76</h2>
+        <h2>{{$totalClients}}</h2>
 
       </div>
     </div>
@@ -82,54 +82,39 @@
           <th>User</th>
           <th>Role</th>
           <th>Status</th>
+          <th>Registered</th>
           <th>Actions</th>
         </tr>
       </thead>
       <tbody>
+        <!-- Loop through all users -->
+        @foreach ($users as $user)
         <tr>
           <td>
             <div class="d-flex align-items-center">
-              <div
-                class="rounded-circle bg-success text-white p-2 me-2">JD</div>
+              <div class="rounded-circle bg-success text-white p-2 me-2">
+                {{ strtoupper(substr($user->name, 0, 2)) }}
+              </div>
               <div>
-                <strong>John Doe</strong><br>
-                <span
-                  class="text-muted">john@example.com</span>
+                <strong>{{ $user->name }}</strong><br>
+                <span class="text-muted">{{ $user->email }}</span>
               </div>
             </div>
           </td>
-          <td><span
-              class="badge bg-primary">Freelancer</span></td>
-          <td><span
-              class="badge bg-success">Active</span></td>
-
+          <td> @if ($user->role == 'freelancer')
+            <span class="badge bg-primary">{{ ucfirst($user->role) }}</span>
+            @elseif ($user->role == 'client')
+            <span class="badge bg-info">{{ ucfirst($user->role) }}</span>
+            @endif
+          </td>
+          <td><span class="badge bg-success">Active</span></td>
+          <td>{{ $user->created_at->format('d M Y, h:i A') }}</td>
           <td>
-            <button class="btn btn-light"><i
-                class="fa-solid fa-ellipsis"></i></button>
+            <button class="btn btn-light"><i class="fa-solid fa-ellipsis"></i></button>
           </td>
         </tr>
-        <tr>
-          <td>
-            <div class="d-flex align-items-center">
-              <div
-                class="rounded-circle bg-warning text-white p-2 me-2">JS</div>
-              <div>
-                <strong>Jane Smith</strong><br>
-                <span
-                  class="text-muted">jane@example.com</span>
-              </div>
-            </div>
-          </td>
-          <td><span
-              class="badge bg-info">Client</span></td>
-          <td><span
-              class="badge bg-success">Active</span></td>
+        @endforeach
 
-          <td>
-            <button class="btn btn-light"><i
-                class="fa-solid fa-ellipsis"></i></button>
-          </td>
-        </tr>
       </tbody>
     </table>
   </div>
