@@ -1,4 +1,3 @@
-@include('components.admin.includes')
 <style>
   body {
     font-family: Arial, sans-serif;
