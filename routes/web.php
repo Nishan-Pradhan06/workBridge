@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\admin\AdminController;
 use App\Http\Controllers\ProjectModelController;
+use App\Http\Middleware\CheckUserStatus;
 
 Route::get('/', [PageController::class, 'index']);
 Route::get('/signup-freelancer', [PageController::class, 'signupAsFreelancer']);
@@ -45,7 +46,7 @@ Route::post('/login', [LoginController::class, 'login']);
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout'); // Implementing logout functionality
 
 
-Route::middleware(['auth'])->group(function () {
+Route::middleware(['auth', CheckUserStatus::class])->group(function () {
 
     // Freelancer Routes
     Route::get('/find-job', [JobPostController::class, 'showActiveJobs'])->name('freelancer.dashboard');
