@@ -84,7 +84,7 @@
             <p><strong>Total Amount:</strong> NPR: {{ $contractData['proposals'][0]->amount - ($contractData['proposals'][0]->amount * 0.05) }}</p> <!-- Total amount after 5% charge -->
         </section>
 
-        <button type="submit" class="btn btn-primary">vHire</button>
+        <button type="submit" class="btn btn-primary">Hire</button>
     </div>
 </div>
 @include('components.footer')
