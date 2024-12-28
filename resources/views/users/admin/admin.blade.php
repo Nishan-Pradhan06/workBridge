@@ -76,9 +76,15 @@
   <!-- User Management Table -->
   <div class="card shadow-sm p-3">
     <div class="d-flex justify-content-between mb-3">
-      <h5>Recents Users</h5>
-      <input type="text" class="form-control w-25"
-        placeholder="Search users...">
+      <h5>Recent Users</h5>
+      <form method="GET" action="{{ route('admin.dashboard') }}">
+        <input
+          type="text"
+          name="search"
+          value="{{ request('search') }}"
+          class="form-control w-100"
+          placeholder="Search users...">
+      </form>
     </div>
     <table class="table table-hover">
       <thead>
