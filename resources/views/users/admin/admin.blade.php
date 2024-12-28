@@ -22,6 +22,10 @@
     height: 40px;
 
   }
+  .dropdown-toggle::after {
+        display: none !important;
+        /* Hide the default arrow */
+    }
 </style>
 <!-- FontAwesome for Icons -->
 @include('components.admin.sidebars')
@@ -114,7 +118,14 @@
           <td><span class="badge bg-success">Active</span></td>
           <td>{{ $user->created_at->format('d M Y, h:i A') }}</td>
           <td>
-            <button class="btn btn-light"><i class="fa-solid fa-ellipsis"></i></button>
+            <div class="dropdown">
+              <button class="btn btn-light dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false"><i class="fa-solid fa-ellipsis"></i></button>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#">Suspend</a></li>
+                <li><a class="dropdown-item" href="#">Activate</a></li>
+                <li><a class="dropdown-item" href="#">Change Role</a></li>
+              </ul>
+            </div>
           </td>
         </tr>
         @endforeach
