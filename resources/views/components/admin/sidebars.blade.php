@@ -146,6 +146,14 @@
                         Users
                     </a>
                 </li>
+                <li>
+                    <a href="{{route('admin.payments')}}" class="nav-link text-white {{ Route::is('admin.payments') ? 'active' : '' }}">
+                        <svg class="bi pe-none me-2" width="16" height="16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v1H0V4zm0 2h16v5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V6zm3 3a1 1 0 0 0 0 2h2a1 1 0 0 0 0-2H3z" />
+                        </svg>
+                        Payments
+                    </a>
+                </li>
             </ul>
             <hr>
             <div class="dropdown">
