@@ -28,4 +28,10 @@ class AdminController extends Controller
         $users = User::whereIn('role', ['client', 'freelancer'])->paginate(8);
         return view("users.admin.users", compact('users'));
     }
+    public function showPaymentsPage()
+    {
+        // $users = User::whereIn('role', ['client', 'freelancer'])->paginate(8);
+        // return view("users.admin.users", compact('users'));
+        return view("users.admin.payments");
+    }
 }
