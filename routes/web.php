@@ -87,10 +87,15 @@ Route::middleware(['auth'])->group(function () {
 
 
     //admin route
-    Route::get('/admin', [AdminController::class, 'index'])->name('admin.dashboard');
-    Route::get('/admin/users', [AdminController::class, 'showUsersPage'])->name('admin.users');
-    Route::get('/admin/settings', [AdminController::class, 'settings'])->name('admin.settings');
-    Route::get('/admin/payments', [AdminController::class, 'showPaymentsPage'])->name('admin.payments');
+    Route::prefix('admin')->group(function () {
+        Route::get('/', [AdminController::class, 'index'])->name('admin.dashboard');
+        Route::get('/users', [AdminController::class, 'showUsersPage'])->name('admin.users');
+        Route::get('/settings', [AdminController::class, 'settings'])->name('admin.settings');
+        Route::get('/payments', [AdminController::class, 'showPaymentsPage'])->name('admin.payments');
+        //suspend and active
+        Route::post('/suspend/{user}',[AdminController::class, 'suspendUser'])->name('admin.suspend');
+        Route::post('/activate/{user}', [AdminController::class, 'activateUser'])->name('admin.activate');
+    });
 
 
     //routes for projects

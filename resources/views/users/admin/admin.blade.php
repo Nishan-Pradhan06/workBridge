@@ -22,10 +22,11 @@
     height: 40px;
 
   }
+
   .dropdown-toggle::after {
-        display: none !important;
-        /* Hide the default arrow */
-    }
+    display: none !important;
+    /* Hide the default arrow */
+  }
 </style>
 <!-- FontAwesome for Icons -->
 @include('components.admin.sidebars')
@@ -66,7 +67,7 @@
     <div class="col-md-3 mb-3">
       <div class="card text-center shadow-sm p-3">
         <h5>Suspended Users</h5>
-        <h2>12</h2>
+        <h2>{{$suspendedUser}}</h2>
 
       </div>
     </div>
@@ -115,14 +116,36 @@
             <span class="badge bg-info">{{ ucfirst($user->role) }}</span>
             @endif
           </td>
-          <td><span class="badge bg-success">Active</span></td>
+          <td>
+            @if ($user->status == 'active')
+            <span class="badge bg-success">Active</span>
+            @elseif ($user->status == 'suspended')
+            <span class="badge bg-danger">Suspended</span>
+            @endif
+          </td>
           <td>{{ $user->created_at->format('d M Y, h:i A') }}</td>
           <td>
             <div class="dropdown">
               <button class="btn btn-light dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false"><i class="fa-solid fa-ellipsis"></i></button>
               <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#">Suspend</a></li>
-                <li><a class="dropdown-item" href="#">Activate</a></li>
+
+                @if ($user->status == 'active')
+                <li>
+                  <form action="{{ route('admin.suspend', $user->id) }}" method="POST">
+                    @csrf
+                    <button type="submit" class="dropdown-item" style="border: none; background: none;">Suspend</button>
+                  </form>
+                </li>
+                @endif
+                <!-- Activate Action -->
+                @if ($user->status == 'suspended')
+                <li>
+                  <form action="{{ route('admin.activate', $user->id) }}" method="POST">
+                    @csrf
+                    <button type="submit" class="dropdown-item" style="border: none; background: none;">Activate</button>
+                  </form>
+                </li>
+                @endif
                 <li><a class="dropdown-item" href="#">Change Role</a></li>
               </ul>
             </div>
