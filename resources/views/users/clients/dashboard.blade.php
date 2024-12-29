@@ -3,41 +3,48 @@
 @section('content') <!--START THE CONTENT FROM HERE-->
 
 <style>
-    .container{
+    .container {
         margin-top: 20px;
     }
-    .status-cotainer{
+
+    .status-cotainer {
         display: flex;
         justify-content: space-between;
-        margin: auto; 
+        margin: auto;
     }
-    .status{
+
+    .status {
         align-items: center;
         display: flex;
         justify-content: center;
         padding: 0px;
     }
-    .status .logo{
+
+    .status .logo {
         width: 70px;
         height: 70px;
-   
+
         border-radius: 10px;
     }
-    .status .logo img{
+
+    .status .logo img {
         width: 70px;
 
     }
-    .status .content{
+
+    .status .content {
         padding: 25px;
 
     }
-    .content .text{
+
+    .content .text {
         opacity: 0.75;
         font-family: 'Arial', sans-serif;
         font-size: 16px;
         margin-top: 12px;
     }
-    .content .num{
+
+    .content .num {
         font-family: 'Arial', sans-serif;
         font-size: 25px;
         font-weight: 600;
@@ -45,12 +52,13 @@
     }
 
     /* active projects */
-    .project-status{
-        margin:50px 0;
-        
+    .project-status {
+        margin: 50px 0;
+
 
     }
-    .project-status-name{
+
+    .project-status-name {
         display: flex;
         justify-content: space-between;
         margin-top: 20px;
@@ -58,52 +66,66 @@
         padding: 20px;
         border-radius: 20px;
     }
-    .project-status-name .btn{
+
+    .project-status-name .btn {
         padding: 15px;
     }
-    .project-status-name .btn button{
-        padding:8px 25px;
+
+    .project-status-name .btn button {
+        padding: 8px 25px;
         border-radius: 15px;
         color: blue;
     }
-    .p-status-detail span{
+
+    .p-status-detail span {
         margin-right: 20px;
-        
+
     }
-    .proposal-detail{
+
+    .proposal-detail {
         display: flex;
         gap: 10px;
     }
-    .accept-btn button{
+
+    .accept-btn button {
         background-color: blue;
         color: white;
-        padding:8px 25px;
+        padding: 8px 25px;
         border-radius: 15px;
         border: none;
 
     }
-    .decline-btn button{
-        color:black;
+
+    .decline-btn button {
+        color: black;
         background-color: white;
-        padding:8px 25px;
+        padding: 8px 25px;
         border-radius: 15px;
 
     }
-    .price{
+
+    .price {
         text-align: center;
         justify-content: center;
     }
-    .price p{
+
+    .price p {
         font-family: Arial, Helvetica, sans-serif;
         font-size: 20px;
         font-weight: 500;
     }
-    
 </style>
+
 <body>
     <div class="container">
+        @if (auth()->user()->status === 'suspended')
+        <div class="alert alert-danger">
+            Your account is suspended. You may not access some features.
+        </div>
+        @endif
         <!-- status section -->
         <div class="status-cotainer">
+
             <div class="status">
                 <div class="logo">
                     <img src="{{asset('project.png')}}" alt="">
@@ -114,27 +136,27 @@
                     </div>
                     <div class="num">
                         <p>12</p>
-    
+
                     </div>
                 </div>
 
             </div>
             <div class="status">
                 <div class="logo">
-                <img src="{{asset('pending.png')}}" alt="">
+                    <img src="{{asset('pending.png')}}" alt="">
                 </div>
                 <div class="content">
                     <div class="text">
                         <p>Pending Proposals</p>
                     </div>
                     <div class="num">
-                        <p>8</p>  
+                        <p>8</p>
                     </div>
                 </div>
             </div>
             <div class="status">
                 <div class="logo">
-                <img src="{{asset('spend.png')}}" alt="">
+                    <img src="{{asset('spend.png')}}" alt="">
                 </div>
                 <div class="content">
                     <div class="text">
@@ -147,7 +169,7 @@
             </div>
             <div class="status">
                 <div class="logo">
-                <img src="{{asset('av-balance.png')}}" alt="">
+                    <img src="{{asset('av-balance.png')}}" alt="">
                 </div>
                 <div class="content">
                     <div class="text">
@@ -155,15 +177,15 @@
                     </div>
                     <div class="num">
                         <p>$8,750</p>
-                     </div>
+                    </div>
                 </div>
             </div>
         </div>
 
         <!-- active projects -->
-         <div class="project-status">
-         <h2>Active Projects</h2>
-         <div class="project-status-name">
+        <div class="project-status">
+            <h2>Active Projects</h2>
+            <div class="project-status-name">
                 <div class="text">
                     <div class="head">
                         <p>Mobile App Development</p>
@@ -177,11 +199,11 @@
                     <button>in progress</button>
                 </div>
             </div>
-         </div>
-         
-         <!-- completed projects -->
-         <div class="project-status">
-         <h2>Completed Projects</h2>
+        </div>
+
+        <!-- completed projects -->
+        <div class="project-status">
+            <h2>Completed Projects</h2>
             <div class="project-status-name">
                 <div class="text">
                     <div class="head">
@@ -196,7 +218,7 @@
                     <button>Invoice</button>
                 </div>
             </div>
-            
+
             <div class="project-status-name">
                 <div class="text">
                     <div class="head">
@@ -211,12 +233,12 @@
                     <button>Invoice</button>
                 </div>
             </div>
-         </div>
-         
+        </div>
 
-          <!-- proposals -->
-          <div class="project-status">
-         <h2>Proposals</h2>
+
+        <!-- proposals -->
+        <div class="project-status">
+            <h2>Proposals</h2>
             <div class="project-status-name">
                 <div class="text">
                     <div class="head">
@@ -264,8 +286,8 @@
 
                 </div>
             </div>
-         </div>
-         
+        </div>
+
     </div>
-@include('components.footer')
-@endsection <!--END THE CONTENT FROM HERE-->
+    @include('components.footer')
+    @endsection <!--END THE CONTENT FROM HERE-->

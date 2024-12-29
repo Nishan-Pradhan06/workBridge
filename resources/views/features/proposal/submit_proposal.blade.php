@@ -92,12 +92,18 @@
 
 
         <!-- <button type="submit" class="btn btn-primary">Submit Proposal</button> -->
+        @if (auth()->user()->status === 'suspended')
+        <div class="alert alert-danger">
+            Your account is suspended. You cannot access these features.
+        </div>
+        @else
         <button
             type="submit"
             class="btn {{ $hasSubmittedProposal ? 'btn-secondary disabled' : 'btn-primary' }}"
             {{ $hasSubmittedProposal ? 'disabled' : '' }}>
             {{ $hasSubmittedProposal ? 'Proposal Already Submitted' : 'Submit Proposal' }}
         </button>
+        @endif
 
     </form>
 </div>
