@@ -171,4 +171,20 @@ class JobProposalController extends Controller
             return redirect()->back()->with('error', 'Failed to delete job Proposal');
         }
     }
+
+    public function proposalPending(JobProposal $proposal)
+    {
+        $proposal->update(['status' => 'pending']);
+        return redirect()->back()->with('status', 'Pending successfully');
+    }
+    public function proposalAccepted(JobProposal $proposal)
+    {
+        $proposal->update(['status' => 'accepted']);
+        return redirect()->back()->with('status', 'Accepted successfully');
+    }
+    public function proposalRejected(JobProposal $proposal)
+    {
+        $proposal->update(['status' => 'rejected']);
+        return redirect()->back()->with('status', 'Rejected successfully');
+    }
 }

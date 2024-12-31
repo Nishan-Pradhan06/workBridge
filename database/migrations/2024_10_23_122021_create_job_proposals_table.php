@@ -20,6 +20,7 @@ return new class extends Migration
             $table->decimal('amount', 10, 2);
             $table->date('project_duration');
             $table->string('cover_letter');
+            $table->enum('status', ['pending', 'accepted', 'rejected'])->default('pending');
             $table->timestamps();
         });
     }
