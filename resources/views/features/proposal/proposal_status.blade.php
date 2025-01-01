@@ -9,8 +9,14 @@
         </div>
         @endif
         <h3>Propoal List</h3>
-
-        <h3>no Proposal</h3>
+        @if($ProposalStatus['proposals']->isEmpty())
+        <!-- Display a message and image when no proposals are available -->
+        <div class="text-center">
+            <img src="{{ asset('no-found.png') }}" alt="No Proposals" style="max-width: 100%; height: auto;">
+            <p>No proposals available at the moment.</p>
+        </div>
+        @else
+        <!-- Loop through proposals and display them if they exist -->
         @foreach($ProposalStatus['proposals'] as $proposal)
         <div class="card p-3 shadow-sm" style="border-radius: 10px; margin-top: 20px;">
             <div class="d-flex justify-content-between align-items-center">
@@ -33,7 +39,6 @@
                     @else
                     <span class="badge bg-secondary text-white">Unknown</span>
                     @endif
-
                 </div>
                 <div>
                     <span class="text-muted">
@@ -43,8 +48,9 @@
             </div>
         </div>
         @endforeach
-    </div>
+        @endif
 
-</div>
-@include('components.footer')
-@endsection
+
+    </div>
+    @include('components.footer')
+    @endsection

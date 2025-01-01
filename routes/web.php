@@ -82,8 +82,6 @@ Route::middleware(['auth', CheckUserStatus::class])->group(function () {
     //route for job proposal
     Route::post('/submit-proposal/{job}', [JobProposalController::class, 'store'])->name('proposal.post');
     Route::get('/applicants/{job}', [JobProposalController::class, 'show'])->name('proposal.form');
-    // Route::get('/proposal-status-list/{job}', [JobProposalController::class, 'showProposalStatus'])->name('proposal.status');
-    // Route::get('/proposal-status-list/{job}', [JobProposalController::class, 'showProposalStatus'])->name('proposal.status');
     Route::get('/proposal-status-list', [JobProposalController::class, 'showProposalStatus'])->name('proposal.status');
     Route::post('/proposals/{id}/accept', [JobProposalController::class, 'acceptProposal'])->name('proposals.accept');
     Route::post('/proposals/{id}/reject', [JobProposalController::class, 'rejectProposal'])->name('proposals.reject');

@@ -235,6 +235,16 @@ class JobProposalController extends Controller
 
     public function showProposalStatus()
     {
+
+        $ProposalList = JobProposal::where('user_id', Auth::id())->get();  // Fetch proposals for the logged-in user
+        $jobPost = JobPost::all();  // Fetch job posts  
+
+        $ProposalStatus = [
+            'jobDetails' => $jobPost,
+            'proposals' => $ProposalList,
+        ];
+        // dd($ProposalStatus);
+        return view('features.proposal.proposal_status', compact('ProposalStatus'));
         // $ProposalStatus = JobProposal::where('job_id', $jobId)->with('user_id', Auth::id())->get();
         // $jobPost = JobPost::find($jobId);
         // return view('features.proposal.proposal_status', compact('ProposalStatus', 'jobPost'));
@@ -252,17 +262,9 @@ class JobProposalController extends Controller
         // ];
 
         // return view('features.proposal.proposal_status', compact('ProposalStatus'));
-        $ProposalList = JobProposal::where('user_id', Auth::id())->get();  // Fetch proposals for the logged-in user
-        $jobPost = JobPost::all();  // Fetch job posts  
 
-        $ProposalStatus = [
-            'jobDetails' => $jobPost,
-            'proposals' => $ProposalList,
-        ];
 
-        return view('features.proposal.proposal_status', compact('ProposalStatus'));
 
-        // dd($ProposalStatus);
 
         // Fetch the job post details
         // $jobPost = JobPost::all();
