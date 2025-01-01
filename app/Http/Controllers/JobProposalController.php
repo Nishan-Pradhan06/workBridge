@@ -233,21 +233,59 @@ class JobProposalController extends Controller
     //     ]);
     // }
 
-    public function showProposalStatus($jobId)
+    public function showProposalStatus()
     {
         // $ProposalStatus = JobProposal::where('job_id', $jobId)->with('user_id', Auth::id())->get();
         // $jobPost = JobPost::find($jobId);
         // return view('features.proposal.proposal_status', compact('ProposalStatus', 'jobPost'));
 
         // Get the proposal status for the specific job and logged-in user
-        $ProposalStatus = JobProposal::where('job_id', $jobId)
-            ->where('user_id', Auth::id()) // Ensure filtering by the logged-in user
-            ->get();
+        // $ProposalStatus = JobProposal::where('job_id')
+        //     ->where('user_id', Auth::id()) // Ensure filtering by the logged-in user
+        //     ->get();
+        // $ProposalList = JobProposal::all();
+        // $jobPost = JobPost::all();
+
+        // $ProposalStatus = [
+        //     'jobDetails' => $jobPost,
+        //     'proposals' => $ProposalList,
+        // ];
+
+        // return view('features.proposal.proposal_status', compact('ProposalStatus'));
+        $ProposalList = JobProposal::where('user_id', Auth::id())->get();  // Fetch proposals for the logged-in user
+        $jobPost = JobPost::all();  // Fetch job posts  
+
+        $ProposalStatus = [
+            'jobDetails' => $jobPost,
+            'proposals' => $ProposalList,
+        ];
+
+        return view('features.proposal.proposal_status', compact('ProposalStatus'));
+
+        // dd($ProposalStatus);
 
         // Fetch the job post details
-        $jobPost = JobPost::find($jobId);
+        // $jobPost = JobPost::all();
 
         // Return the view with the filtered data
-        return view('features.proposal.proposal_status', compact('ProposalStatus', 'jobPost'));
     }
+    // public function showProposalStatus($jobId)
+    // {
+    //     // Fetch the job post details
+    //     $jobPost = JobPost::find($jobId);
+
+    //     // Return an error page or redirect if the job post is not found
+    //     if (!$jobPost) {
+    //         return redirect()->back()->with('error', 'Job post not found.');
+    //     }
+
+    //     // Get the proposal status for the specific job and logged-in user
+    //     $ProposalStatus = JobProposal::where('job_id', $jobId)
+    //         ->where('user_id', Auth::id()) // Ensure filtering by the logged-in user
+    //         ->get();
+
+    //     // Return the view with the filtered data
+    //     return view('features.proposal.proposal_status', compact('ProposalStatus', 'jobPost'));
+    // }
+
 }

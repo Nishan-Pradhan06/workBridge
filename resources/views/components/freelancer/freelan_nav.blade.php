@@ -104,7 +104,7 @@
     <header class="bg-white header">
         <link rel="stylesheet" href="{{ asset('css/components/navbar.css') }}">
         <nav class="navbar navbar-expand-lg navbar-light">
-            <a class="navbar-brand" href="/">
+            <a class="navbar-brand" href="{{route('freelancer.dashboard')}}">
                 <img src="{{asset('logo.png')}}" alt="logo" class="logo">
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -118,7 +118,7 @@
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item" href="/find-job">Find Work</a>
-                            <a class="dropdown-item" href="{{route('proposal.status')}}">Proposal and offers</a>
+                            <a class="dropdown-item" href="/proposal-status-list">Proposal and offers</a>
                         </div>
                     </li>
                     <li class="nav-item dropdown">
