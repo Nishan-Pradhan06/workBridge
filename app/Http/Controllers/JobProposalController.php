@@ -177,14 +177,77 @@ class JobProposalController extends Controller
         $proposal->update(['status' => 'pending']);
         return redirect()->back()->with('status', 'Pending successfully');
     }
-    public function proposalAccepted(JobProposal $proposal)
+    public function acceptProposal($id)
     {
-        $proposal->update(['status' => 'accepted']);
-        return redirect()->back()->with('status', 'Accepted successfully');
+        try {
+            $proposal = JobProposal::find($id);
+
+            if (!$proposal) {
+                return redirect()->back()->with('error', 'Proposal not found.');
+            }
+
+            // Accept the selected proposal
+            $proposal->status = 'accepted';
+            $proposal->save();
+
+            // Reject other proposals for the same job
+            JobProposal::where('job_id', $proposal->job_id)
+                ->where('id', '!=', $id) // Exclude the accepted proposal
+                ->update(['status' => 'rejected']);
+
+            // Optionally, trigger a project start logic
+            // $this->startProject($proposal);
+
+            return redirect()->back()->with('success', 'Proposal accepted. Other proposals rejected.');
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error', 'Failed to accept proposal.');
+        }
     }
-    public function proposalRejected(JobProposal $proposal)
+
+    public function rejectProposal($id)
     {
-        $proposal->update(['status' => 'rejected']);
-        return redirect()->back()->with('status', 'Rejected successfully');
+        try {
+            $proposal = JobProposal::find($id);
+
+            if (!$proposal) {
+                return redirect()->back()->with('error', 'Proposal not found.');
+            }
+
+            // Update status to rejected
+            $proposal->status = 'rejected';
+            $proposal->save();
+
+            return redirect()->back()->with('success', 'Proposal rejected successfully.');
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error', 'Failed to reject proposal.');
+        }
+    }
+    // private function startProject(JobProposal $proposal)
+    // {
+    //     // Example: Create a new project using the proposal details
+    //     Project::create([
+    //         'job_id' => $proposal->job_id,
+    //         'freelancer_id' => $proposal->user_id,
+    //         'start_date' => now(),
+    //         'status' => 'in_progress',
+    //     ]);
+    // }
+
+    public function showProposalStatus($jobId)
+    {
+        // $ProposalStatus = JobProposal::where('job_id', $jobId)->with('user_id', Auth::id())->get();
+        // $jobPost = JobPost::find($jobId);
+        // return view('features.proposal.proposal_status', compact('ProposalStatus', 'jobPost'));
+
+        // Get the proposal status for the specific job and logged-in user
+        $ProposalStatus = JobProposal::where('job_id', $jobId)
+            ->where('user_id', Auth::id()) // Ensure filtering by the logged-in user
+            ->get();
+
+        // Fetch the job post details
+        $jobPost = JobPost::find($jobId);
+
+        // Return the view with the filtered data
+        return view('features.proposal.proposal_status', compact('ProposalStatus', 'jobPost'));
     }
 }
