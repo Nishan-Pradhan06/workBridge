@@ -91,6 +91,11 @@
         align-items: center;
         justify-content: center;
     }
+
+    .actions {
+        display: flex;
+        gap: 10px;
+    }
 </style>
 <div class="applicant-container">
     @if($jobPost)
@@ -125,7 +130,9 @@
                         @if($jobProposal->user->profile && $jobProposal->user->profile->profile_picture)
                         <img src="{{ asset('storage/' . $jobProposal->user->profile->profile_picture) }}" alt="Profile Picture" class="profile-pics">
                         @else
-                        <img src="{{ asset('default.png') }}" alt="Default Profile Picture" class="profile-pic">
+                        <div class="rounded-circle bg-success text-white p-2 me-2">
+                            {{ strtoupper(substr($jobProposal->user->name, 0, 2)) }}
+                        </div>
                         @endif
                         <div class="info">
                             <h3>{{ $jobProposal->user->name }}</h3>
@@ -134,6 +141,15 @@
                     </div>
                     <div class="actions">
                         <a href="{{ url('/contract/' . $jobPost->id . '?user_id=' . $jobProposal->user->id) }}" class="btn btn-primary">View</a>
+
+                        <form action="{{ route('proposals.accept', $jobProposal->id) }}" method="POST">
+                            @csrf
+                            <button type="submit" class="btn btn-primary">Accept</button>
+                        </form>
+                        <form action="{{ route('proposals.reject', $jobProposal->id) }}" method="POST">
+                            @csrf
+                            <button type="submit" class="btn btn-danger">Reject</button>
+                        </form>
                     </div>
 
                 </div>

@@ -52,7 +52,13 @@
         </div>
         <!-- Hidden Input for client_id -->
         <input type="hidden" name="client_id" value="{{ auth()->id() }}">
+        @if (auth()->user()->status === 'suspended')
+        <div class="alert alert-danger">
+            Your account is suspended. You cannot access these features.
+        </div>
+        @else
         <button type="submit" class="btn btn-primary">Submit</button>
+        @endif
 
     </form>
 </div>

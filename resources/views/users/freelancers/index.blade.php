@@ -3,6 +3,11 @@
 <div class="container">
     <div class="px-5">
         <br>
+        @if (auth()->user()->status === 'suspended')
+        <div class="alert alert-danger">
+            Your account is suspended. You may not access some features.
+        </div>
+        @endif
         <h3>Discover Jobs</h3>
 
         @if($jobPost->isEmpty())

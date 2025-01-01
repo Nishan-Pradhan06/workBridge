@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\admin\AdminController;
 use App\Http\Controllers\ProjectModelController;
+use App\Http\Middleware\CheckUserStatus;
 
 Route::get('/', [PageController::class, 'index']);
 Route::get('/signup-freelancer', [PageController::class, 'signupAsFreelancer']);
@@ -45,7 +46,7 @@ Route::post('/login', [LoginController::class, 'login']);
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout'); // Implementing logout functionality
 
 
-Route::middleware(['auth'])->group(function () {
+Route::middleware(['auth', CheckUserStatus::class])->group(function () {
 
     // Freelancer Routes
     Route::get('/find-job', [JobPostController::class, 'showActiveJobs'])->name('freelancer.dashboard');
@@ -81,16 +82,25 @@ Route::middleware(['auth'])->group(function () {
     //route for job proposal
     Route::post('/submit-proposal/{job}', [JobProposalController::class, 'store'])->name('proposal.post');
     Route::get('/applicants/{job}', [JobProposalController::class, 'show'])->name('proposal.form');
+    Route::get('/proposal-status-list/{job}', [JobProposalController::class, 'showProposalStatus'])->name('proposal.status');
+    Route::post('/proposals/{id}/accept', [JobProposalController::class, 'acceptProposal'])->name('proposals.accept');
+    Route::post('/proposals/{id}/reject', [JobProposalController::class, 'rejectProposal'])->name('proposals.reject');
+
 
     Route::get('/contract/{job}', [ContractModelController::class, 'showContractPage'])->name('contract.freelancer');
     // Route::get('/contract', [Freelancer::class, 'contractProject']);
 
 
     //admin route
-    Route::get('/admin', [AdminController::class, 'index'])->name('admin.dashboard');
-    Route::get('/admin/users', [AdminController::class, 'showUsersPage'])->name('admin.users');
-    Route::get('/admin/settings', [AdminController::class, 'settings'])->name('admin.settings');
-    Route::get('/admin/payments', [AdminController::class, 'showPaymentsPage'])->name('admin.payments');
+    Route::prefix('admin')->group(function () {
+        Route::get('/', [AdminController::class, 'index'])->name('admin.dashboard');
+        Route::get('/users', [AdminController::class, 'showUsersPage'])->name('admin.users');
+        Route::get('/settings', [AdminController::class, 'settings'])->name('admin.settings');
+        Route::get('/payments', [AdminController::class, 'showPaymentsPage'])->name('admin.payments');
+        //suspend and active
+        Route::post('/suspend/{user}',[AdminController::class, 'suspendUser'])->name('admin.suspend');
+        Route::post('/activate/{user}', [AdminController::class, 'activateUser'])->name('admin.activate');
+    });
 
 
     //routes for projects

@@ -118,7 +118,7 @@
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item" href="/find-job">Find Work</a>
-                            <a class="dropdown-item" href="/proposals">Proposal and offers</a>
+                            <a class="dropdown-item" href="{{route('proposal.status')}}">Proposal and offers</a>
                         </div>
                     </li>
                     <li class="nav-item dropdown">

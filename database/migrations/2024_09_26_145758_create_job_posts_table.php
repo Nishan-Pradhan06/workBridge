@@ -13,15 +13,14 @@ return new class extends Migration
     {
         Schema::create('job_posts', function (Blueprint $table) {
             $table->id();
-
+            $table->foreignId('client_id')->references('id')->on('users')->cascadeOnDelete();
             $table->string('title');
             $table->text('description');
             $table->string('budget');
             $table->date('deadline');
             $table->string('skills');
+            $table->enum('status', ['open', 'in_progress', 'completed'])->default('open');
             $table->timestamps();
-
-            $table->foreignId('client_id')->references('id')->on('users')->cascadeOnDelete();
         });
     }
 
