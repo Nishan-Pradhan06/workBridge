@@ -150,7 +150,7 @@
                         <p>Pending Proposals</p>
                     </div>
                     <div class="num">
-                        <p>8</p>
+                        <p>{{$proposal->length}}</p>
                     </div>
                 </div>
             </div>

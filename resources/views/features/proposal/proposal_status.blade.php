@@ -8,12 +8,12 @@
             Your account is suspended. You may not access some features.
         </div>
         @endif
-        <h3>Propoal List</h3>
+        <h3>Proposal List</h3>
         @if($ProposalStatus['proposals']->isEmpty())
         <!-- Display a message and image when no proposals are available -->
         <div class="text-center">
-            <img src="{{ asset('no-found.png') }}" alt="No Proposals" style="max-width: 100%; height: auto;">
-            <p>No proposals available at the moment.</p>
+            <img src="{{ asset('no-found.png') }}" alt="No Proposals" style="max-width: 100%; height: 500px;">
+            <h4>No proposals available at the moment.</h4>
         </div>
         @else
         <!-- Loop through proposals and display them if they exist -->
@@ -25,7 +25,6 @@
                     <h5 class="card-title mb-1">
                         {{ $ProposalStatus['jobDetails']->firstWhere('id', $proposal->job_id)->title }}
                     </h5> <!-- Job Title -->
-
                     <!-- Proposal's Cover Letter -->
                     <p>{{ $proposal->cover_letter }}</p>
 

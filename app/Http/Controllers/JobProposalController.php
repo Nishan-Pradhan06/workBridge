@@ -271,23 +271,5 @@ class JobProposalController extends Controller
 
         // Return the view with the filtered data
     }
-    // public function showProposalStatus($jobId)
-    // {
-    //     // Fetch the job post details
-    //     $jobPost = JobPost::find($jobId);
-
-    //     // Return an error page or redirect if the job post is not found
-    //     if (!$jobPost) {
-    //         return redirect()->back()->with('error', 'Job post not found.');
-    //     }
-
-    //     // Get the proposal status for the specific job and logged-in user
-    //     $ProposalStatus = JobProposal::where('job_id', $jobId)
-    //         ->where('user_id', Auth::id()) // Ensure filtering by the logged-in user
-    //         ->get();
-
-    //     // Return the view with the filtered data
-    //     return view('features.proposal.proposal_status', compact('ProposalStatus', 'jobPost'));
-    // }
 
 }
