@@ -98,7 +98,7 @@ Route::middleware(['auth', CheckUserStatus::class])->group(function () {
         Route::get('/settings', [AdminController::class, 'settings'])->name('admin.settings');
         Route::get('/payments', [AdminController::class, 'showPaymentsPage'])->name('admin.payments');
         //suspend and active
-        Route::post('/suspend/{user}',[AdminController::class, 'suspendUser'])->name('admin.suspend');
+        Route::post('/suspend/{user}', [AdminController::class, 'suspendUser'])->name('admin.suspend');
         Route::post('/activate/{user}', [AdminController::class, 'activateUser'])->name('admin.activate');
     });
 
@@ -108,7 +108,8 @@ Route::middleware(['auth', CheckUserStatus::class])->group(function () {
 
 
     //milestone
-    Route::get('/projects', [MilestoneController::class, 'showMileStonePage'])->name('milestones.index');
+    Route::get('/projects', [MilestoneController::class, 'showProjectsPage'])->name('projects.index');
+    Route::get('/project', [MilestoneController::class, 'showMileStonePage'])->name('milestones.index');
     Route::post('/save-milestones', [MilestoneController::class, 'store'])->name('milestones.store');
     Route::get('/milestones', [MilestoneController::class, 'show'])->name('milestones.show');
     // Route::patch('/milestones/{milestone}', [MilestoneController::class, 'update'])->name('milestones.update');

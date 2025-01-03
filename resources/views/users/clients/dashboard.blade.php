@@ -150,7 +150,7 @@
                         <p>Pending Proposals</p>
                     </div>
                     <div class="num">
-                        <p>{{$proposal->length}}</p>
+                        <p> {{ $pendingProposalsCount }}</p>
                     </div>
                 </div>
             </div>
@@ -182,6 +182,41 @@
             </div>
         </div>
 
+
+        <!-- proposals -->
+        <div class="project-status">
+            <h2>Proposals</h2>
+            @if($pendingProposals->isEmpty())
+            <div class="alert alert-info">
+                You have no pending proposals.
+            </div>
+            @endif
+            @foreach($pendingProposals as $proposal)
+            <div class="project-status-name">
+                <div class="text">
+                    <div class="head">
+                        <p>{{ $proposal->job->title }}</p> <!-- Job title -->
+                    </div>
+                    <div class="p-status-detail">
+                        <span>{{ $proposal->user->name }}</span> <!-- Freelancer name -->
+                        <span>{{ $proposal->created_at->format('Y-m-d') }}</span> <!-- Proposal date -->
+                    </div>
+                </div>
+                <div class="proposal-detail">
+                    <div class="price">
+                        <p>${{ number_format($proposal->amount, 2) }}</p> <!-- Proposal price -->
+                    </div>
+                    <div class="accept-btn">
+                        <button>Accept</button>
+                    </div>
+                    <div class="decline-btn">
+                        <button>Decline</button>
+                    </div>
+                </div>
+            </div>
+            @endforeach
+
+        </div>
         <!-- active projects -->
         <div class="project-status">
             <h2>Active Projects</h2>
@@ -235,58 +270,6 @@
             </div>
         </div>
 
-
-        <!-- proposals -->
-        <div class="project-status">
-            <h2>Proposals</h2>
-            <div class="project-status-name">
-                <div class="text">
-                    <div class="head">
-                        <p>Website Development</p>
-                    </div>
-                    <div class="p-status-detail">
-                        <span>Nabin Basnet</span>
-                        <span>2024-04-15</span>
-                    </div>
-                </div>
-                <div class="proposal-detail">
-                    <div class="price">
-                        <p>$2500</p>
-                    </div>
-                    <div class="accept-btn">
-                        <button>Accept</button>
-                    </div>
-                    <div class="decline-btn">
-                        <button>Decline</button>
-                    </div>
-
-                </div>
-            </div>
-
-            <div class="project-status-name">
-                <div class="text">
-                    <div class="head">
-                        <p>Logo Design</p>
-                    </div>
-                    <div class="p-status-detail">
-                        <span>Nishan Pradhan</span>
-                        <span>2024-04-15</span>
-                    </div>
-                </div>
-                <div class="proposal-detail">
-                    <div class="price">
-                        <p>$500</p>
-                    </div>
-                    <div class="accept-btn">
-                        <button>Accept</button>
-                    </div>
-                    <div class="decline-btn">
-                        <button>Decline</button>
-                    </div>
-
-                </div>
-            </div>
-        </div>
 
     </div>
     @include('components.footer')

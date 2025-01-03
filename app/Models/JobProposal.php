@@ -26,4 +26,9 @@ class JobProposal extends Model
      {
       return $this->belongsTo(ContractModel::class);
      }
+
+     public function job()
+     {
+      return $this->belongsTo(JobPost::class);
+     }
 }

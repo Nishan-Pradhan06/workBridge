@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\JobPost;
 use App\Models\Milestone;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -65,4 +66,26 @@ class MilestoneController extends Controller
 
         return view('features.projects.milestone', compact('milestones'));
     }
+
+    // public function showProjectsPage()
+    // {
+    //     $allJobs = JobPost::all();
+    //     dd($allJobs);
+    //     return view('features.projects.projects');
+    // }
+    public function showProjectsPage(Request $request)
+    {
+        $search = $request->input('search'); // Capture the search query
+
+        $allJobs = JobPost::query();
+
+        if ($search) {
+            $allJobs->where('title', 'LIKE', "%{$search}%"); // Assuming 'title' is the field you want to search
+        }
+
+        $allJobs = $allJobs->get(); // Fetch the jobs
+
+        return view('features.projects.projects', compact('allJobs'));
+    }
+
 }

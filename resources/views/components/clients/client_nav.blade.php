@@ -68,7 +68,7 @@
     <header class="bg-white header">
         <link rel="stylesheet" href="{{ asset('css/components/navbar.css') }}">
         <nav class="navbar navbar-expand-lg navbar-light">
-            <a class="navbar-brand" href="/">
+            <a class="navbar-brand" href="{{ route('client.dashboard',auth()->id()) }}">
                 <img src="{{asset('logo.png')}}" alt="logo" class="logo">
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -92,7 +92,7 @@
                             Projects
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="{{route('milestones.index')}}">Assign Progress</a>
+                            <a class="dropdown-item" href="/projects">Assign Progress</a>
                             <a class="dropdown-item" href="">All Projects</a>
                         </div>
                     </li>
@@ -164,7 +164,7 @@
             </div>
         </nav>
     </header>
-    <div class="dropdown-divider"></div>
+    <!-- <div class="dropdown-divider"></div> -->
     @yield('content')
 
 
