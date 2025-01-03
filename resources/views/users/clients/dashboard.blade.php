@@ -206,12 +206,20 @@
                     <div class="price">
                         <p>${{ number_format($proposal->amount, 2) }}</p> <!-- Proposal price -->
                     </div>
-                    <div class="accept-btn">
-                        <button>Accept</button>
-                    </div>
-                    <div class="decline-btn">
-                        <button>Decline</button>
-                    </div>
+                   
+                        <form action="{{ route('proposals.accept', $proposal->id) }}" method="POST">
+                            @csrf
+                            <div class="accept-btn">
+                                <button type="submit">Accept</button>
+                            </div>
+                        </form>
+                        <form action="{{ route('proposals.reject', $proposal->id) }}" method="POST">
+                            @csrf
+                            <div class="decline-btn">
+                                <button type="submit">Decline</button>
+                            </div>
+                        </form>
+                    
                 </div>
             </div>
             @endforeach

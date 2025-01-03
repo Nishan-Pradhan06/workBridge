@@ -27,14 +27,14 @@ class Client extends Controller
 
         // Fetch proposals related to these job posts and filter by pending status
         $pendingProposals = JobProposal::whereIn('job_id', $jobPosts->pluck('id'))
-        ->where('status', 'pending')  // Assuming 'status' is a column in JobProposal
-        ->get();  // Fetch the proposals
+            ->where('status', 'pending')->orderBy('amount', 'asc')  // Assuming 'status' is a column in JobProposal && Sort by amount in ascending order
+            ->get();  // Fetch the proposals
         // dd($pendingProposals);
         // Count the pending proposals
         $pendingProposalsCount = $pendingProposals->count();
         return view('users.clients.dashboard', compact('user', 'pendingProposals', 'pendingProposalsCount'));
     }
-    
+
 
     function ContractsPage()
     {

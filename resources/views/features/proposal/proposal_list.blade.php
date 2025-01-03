@@ -141,7 +141,7 @@
                     </div>
                     <div class="actions">
                         <a href="{{ url('/contract/' . $jobPost->id . '?user_id=' . $jobProposal->user->id) }}" class="btn btn-primary">View</a>
-
+                        @if($jobProposal->status === 'pending')
                         <form action="{{ route('proposals.accept', $jobProposal->id) }}" method="POST">
                             @csrf
                             <button type="submit" class="btn btn-primary">Accept</button>
@@ -150,6 +150,11 @@
                             @csrf
                             <button type="submit" class="btn btn-danger">Reject</button>
                         </form>
+                        @elseif($jobProposal->status === 'accepted')
+                        <button class="btn btn-success" disabled>Accepted</button>
+                        @elseif($jobProposal->status === 'rejected')
+                        <button class="btn btn-secondary" disabled>Rejected</button>
+                        @endif
                     </div>
 
                 </div>
