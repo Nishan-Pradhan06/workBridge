@@ -69,7 +69,6 @@
                             <th>Requested Amount</th>
                             <th>Service Fee</th>
                             <th>Final Amount</th>
-                            <th>Reason</th>
                             <th>Account Details</th>
                             <th>Date</th>
                             <th>Status</th>
@@ -82,7 +81,6 @@
                             <td>$100</td>
                             <td>$5</td>
                             <td>$95</td>
-                            <td>Project Completion</td>
 
                             <td>freelancer1@example.com</td>
                             <td>2024-12-28</td>
@@ -96,7 +94,6 @@
                             <td>$200</td>
                             <td>$10</td>
                             <td>$190</td>
-                            <td>Milestone Reached</td>
 
                             <td>1234567890</td>
                             <td>2024-12-28</td>
