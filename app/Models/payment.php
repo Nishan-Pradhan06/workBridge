@@ -44,4 +44,10 @@ class payment extends Model
     {
         return $this->belongsTo(JobPost::class, 'job_id');
     }
+
+    public function project()
+    {
+        return $this->belongsTo(Project::class);
+    }
+
 }

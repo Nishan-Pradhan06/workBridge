@@ -22,10 +22,10 @@ class JobProposal extends Model
       return $this->belongsTo(User::class);
      }
 
-     function contracts()
-     {
-      return $this->belongsTo(ContractModel::class);
-     }
+   //   function contracts()
+   //   {
+   //    return $this->belongsTo(ContractModel::class);
+   //   }
 
      public function job()
      {

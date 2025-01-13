@@ -120,8 +120,6 @@
     @forelse($jobProposals as $jobProposal)
 
     <div class="freelancer-card">
-
-
         <div class="container">
             <div class="row rows">
                 <div class="col-3">
@@ -181,9 +179,11 @@
             </div>
         </div>
     </div>
-
     @empty
-    <p>No proposals found.</p>
+    <div class="text-center">
+        <img src="{{ asset('no-found.png') }}" alt="No Proposals" style="max-width: 100%; height: 500px;">
+        <h4>No proposals available at the moment.</h4>
+    </div>
     @endforelse
 
 </div>

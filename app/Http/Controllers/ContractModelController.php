@@ -105,36 +105,4 @@ class ContractModelController extends Controller
     {
         //
     }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(ContractModel $contractModel)
-    {
-        //z
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(ContractModel $contractModel)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, ContractModel $contractModel)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(ContractModel $contractModel)
-    {
-        //
-    }
 }

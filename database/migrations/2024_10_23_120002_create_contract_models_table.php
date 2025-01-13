@@ -11,12 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('contract_models', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('job_id')->references('id')->on('job_posts');
-            $table->foreignId('user_id')->references('id')->on('users');
-            $table->timestamps();
-        });
+        // Schema::create('contract_models', function (Blueprint $table) {
+        //     $table->id();
+        //     $table->foreignId('job_id')->references('id')->on('job_posts');
+        //     $table->foreignId('user_id')->references('id')->on('users');
+        //     $table->timestamps();
+        // });
     }
 
     /**
