@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('budget');
             $table->date('deadline');
             $table->string('skills');
-            $table->enum('status', ['open', 'in_progress', 'completed'])->default('open');
+            $table->enum('status', ['open', 'close'])->default('open');
             $table->timestamps();
         });
     }

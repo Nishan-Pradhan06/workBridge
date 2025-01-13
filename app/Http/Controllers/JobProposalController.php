@@ -61,7 +61,7 @@ class JobProposalController extends Controller
             $jobProposal = new JobProposal();
             $jobProposal->job_id = $job->id;
             $jobProposal->user_id = Auth::id();
-            $jobProposal->due_date = $request->due_date;
+            // $jobProposal->due_date = $request->due_date;
             $jobProposal->amount = $request->amount;
             $jobProposal->project_duration = $request->project_duration;
             $jobProposal->cover_letter = $request->cover_letter;
@@ -142,7 +142,7 @@ class JobProposalController extends Controller
     {
         try {
             $jobProposal = JobProposal::find($id);
-            $jobProposal->due_date = $request->due_date;
+            // $jobProposal->due_date = $request->due_date;
             $jobProposal->amount = $request->amount;
             $jobProposal->project_duration = $request->project_duration;
             $jobProposal->cover_letter = $request->cover_letter;

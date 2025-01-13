@@ -16,7 +16,7 @@ return new class extends Migration
             $table->foreignId('job_id')->references('id')->on('job_posts');
             // $table->integer('user_id');
             $table->foreignId('user_id')->references('id')->on('users');
-            $table->date('due_date');
+            // $table->date('due_date');
             $table->decimal('amount', 10, 2);
             $table->date('project_duration');
             $table->string('cover_letter');

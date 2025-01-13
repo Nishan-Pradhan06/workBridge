@@ -67,8 +67,8 @@
 
     <form action="{{ route('proposal.post', $job) }}" method="post">
         @csrf
-        <label for="due_date">Due Date:</label>
-        <input type="date" id="due_date" name="due_date">
+        <!-- <label for="due_date">Due Date:</label>
+        <input type="date" id="due_date" name="due_date"> -->
 
         <label for="amount">Amount:</label>
         <input type="number" id="amount" name="amount" placeholder="Enter amount">

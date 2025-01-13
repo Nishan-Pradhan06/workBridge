@@ -84,7 +84,6 @@
                             <a class="dropdown-item" href="/job-post">Post a Job</a>
                             <a class="dropdown-item" href="{{ route('client.dashboard',auth()->id()) }}">Your Dashboard</a>
                             <a class="dropdown-item" href="/all-jobs">All Jobs Post</a>
-                            <a class="dropdown-item" href="/contracts">All Contracts</a>
                         </div>
                     </li>
                     <li class="nav-item dropdown">
@@ -148,7 +147,6 @@
                             <a class="dropdown-item" href="/job-post">Post a Job</a>
                             <a class="dropdown-item" href="{{ route('client.dashboard',auth()->id()) }}">Post a Job</a>
                             <a class="dropdown-item" href="/all-jobs">All Jobs Post</a>
-                            <a class="dropdown-item" href="">All Contracts</a>
                         </div>
                     </li>
                     <li class="nav-item dropdown">
