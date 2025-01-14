@@ -24,7 +24,7 @@
         </div>
         <div class="form-group">
             <label for="date">Date</label>
-            <input type="date" id="date" name="end_date" class="form-control">
+            <input type="date" id="date" name="date" class="form-control">
         </div>
         <div class="form-group">
             <label for="status">Status</label>

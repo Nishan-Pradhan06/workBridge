@@ -32,24 +32,16 @@ class ProjectController extends Controller
      */
     public function store(Request $request)
     {
-        // Validate the form input
-        $validated = $request->validate([
-            'job_post_id' => 'required|exists:job_posts,id',
-            'title' => 'required|string|max:255',
-            'date' => 'required|date',
-            'status' => 'required|in:pending,in_progress,completed',
-        ]);
 
-        // Create the project record in the database
-        $project = Project::create([
-            'job_post_id' => $validated['job_post_id'],
-            'title' => $validated['title'],
-            'date' => $validated['date'],
-            'status' => $validated['status'],
-        ]);
-        // Redirect back with a success message
-        return redirect()->route('features.projects.new_project')->with('success', 'Project created successfully.');
+        // Create a new project instance and save the data
+        $project = new Project();
+        $project->job_post_id = $request->job_post_id; // Correctly retrieve job_post_id from the request
+        $project->title = $request->title;
+        $project->date = $request->date;
+        $project->status = $request->status;
+        $project->save();
         dd($project);
+        return redirect()->back()->with('success', 'Project Created successfully');
     }
 
 
