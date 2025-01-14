@@ -15,6 +15,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\admin\AdminController;
+use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\ProjectModelController;
 use App\Http\Middleware\CheckUserStatus;
 
@@ -108,9 +109,10 @@ Route::middleware(['auth', CheckUserStatus::class])->group(function () {
 
 
     //milestone
-    Route::get('/projects', [MilestoneController::class, 'showProjectsPage'])->name('projects.index');
-    Route::get('/project', [MilestoneController::class, 'showMileStonePage'])->name('milestones.index');
-    Route::post('/save-milestones', [MilestoneController::class, 'store'])->name('milestones.store');
-    Route::get('/milestones', [MilestoneController::class, 'show'])->name('milestones.show');
+    Route::get('/new_projects', [ProjectController::class, 'index'])->name('projects.index');
+    Route::post('/project', [ProjectController::class, 'store'])->name('projects.store');
+    // Route::get('/projectssss', [MilestoneController::class, 'showMileStonePage'])->name('milestones.index');
+    // Route::post('/save-milestones', [MilestoneController::class, 'store'])->name('milestones.store');
+    // Route::get('/milestones', [MilestoneController::class, 'show'])->name('milestones.show');
     // Route::patch('/milestones/{milestone}', [MilestoneController::class, 'update'])->name('milestones.update');
 });

@@ -91,7 +91,7 @@
                             Projects
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="/projects">Assign Progress</a>
+                            <a class="dropdown-item" href="{{route('projects.index')}}">Assign Progress</a>
                             <a class="dropdown-item" href="">All Projects</a>
                         </div>
                     </li>
@@ -154,7 +154,7 @@
                             Projects
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="{{route('milestones.index')}}">Assign Progress</a>
+                            <a class="dropdown-item" href="{{route('projects.index')}}">Assign Progress</a>
                             <a class="dropdown-item" href="">All Projects</a>
                         </div>
                     </li>

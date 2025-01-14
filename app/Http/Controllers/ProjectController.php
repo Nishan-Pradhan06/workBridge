@@ -13,24 +13,26 @@ class ProjectController extends Controller
      */
     public function index()
     {
+        $jobPosts = JobPost::all();
         $projects = Project::with('jobPost')->get();
-        return view('projects.index', compact('projects'));
+        return view('features.projects.new_project', compact('projects', 'jobPosts'));
     }
 
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
-    {
-        $jobPosts = JobPost::select('id', 'title', 'date', 'status')->get();
-        return view('projects.create', compact('jobPosts'));
-    }
+    // public function create()
+    // {
+    //     $jobPosts = JobPost::select('id', 'title', 'date', 'status')->get();
+    //     return view('features.projects.new_project', compact('jobPosts'));
+    // }
 
     /**
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
     {
+        // Validate the form input
         $validated = $request->validate([
             'job_post_id' => 'required|exists:job_posts,id',
             'title' => 'required|string|max:255',
@@ -38,10 +40,18 @@ class ProjectController extends Controller
             'status' => 'required|in:pending,in_progress,completed',
         ]);
 
-        Project::create($validated);
-
-        return redirect()->route('projects.index')->with('success', 'Project created successfully.');
+        // Create the project record in the database
+        $project = Project::create([
+            'job_post_id' => $validated['job_post_id'],
+            'title' => $validated['title'],
+            'date' => $validated['date'],
+            'status' => $validated['status'],
+        ]);
+        // Redirect back with a success message
+        return redirect()->route('features.projects.new_project')->with('success', 'Project created successfully.');
+        dd($project);
     }
+
 
     /**
      * Display the specified resource.
