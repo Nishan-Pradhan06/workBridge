@@ -48,9 +48,11 @@ class ProjectController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Project $project)
+    public function show()
     {
-        return view('projects.show', compact('project'));
+        $projects = Project::all();
+        // dd($projects);
+        return view('features.projects.show_project', compact('projects'));
     }
 
     /**

@@ -111,6 +111,7 @@ Route::middleware(['auth', CheckUserStatus::class])->group(function () {
     //milestone
     Route::get('/new_projects', [ProjectController::class, 'index'])->name('projects.index');
     Route::post('/project', [ProjectController::class, 'store'])->name('projects.store');
+    Route::get('/project_list', [ProjectController::class, 'show'])->name('projects.shows');
     // Route::get('/projectssss', [MilestoneController::class, 'showMileStonePage'])->name('milestones.index');
     // Route::post('/save-milestones', [MilestoneController::class, 'store'])->name('milestones.store');
     // Route::get('/milestones', [MilestoneController::class, 'show'])->name('milestones.show');
