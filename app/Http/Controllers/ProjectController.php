@@ -17,6 +17,12 @@ class ProjectController extends Controller
         $projects = Project::with('jobPost')->get();
         return view('features.projects.new_project', compact('projects', 'jobPosts'));
     }
+    public function showProjectFreelancer()
+    {
+        $jobPosts = JobPost::all();
+        $projects = Project::with('jobPost')->get();
+        return view('users.freelancers.view_projects', compact('projects', 'jobPosts'));
+    }
 
     /**
      * Show the form for creating a new resource.
@@ -54,6 +60,25 @@ class ProjectController extends Controller
         // dd($projects);
         return view('features.projects.show_project', compact('projects'));
     }
+    public function setPending(Project $project)
+    {
+        $project->update(['status' => 'pending']);
+        return redirect()->back()->with('status', 'Project status updated to Pending.');
+    }
+
+    public function setInProgress(Project $project)
+    {
+        $project->update(['status' => 'in_progress']);
+        return redirect()->back()->with('status', 'Project status updated to In Progress.');
+    }
+
+    public function setCompleted(Project $project)
+    {
+        $project->update(['status' => 'completed']);
+        return redirect()->back()->with('status', 'Project status updated to Completed.');
+    }
+
+
 
     /**
      * Show the form for editing the specified resource.

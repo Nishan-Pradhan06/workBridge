@@ -1,4 +1,4 @@
-@extends('components.clients.client_nav') <!--IMPORT THE COMPONENTS-->
+@extends('components.freelancer.freelan_nav') <!--IMPORT THE COMPONENTS-->
 @section('content')
 <style>
     .project-card {
@@ -46,7 +46,7 @@
     <ol class="breadcrumb d-flex align-items-center" style="padding-left: 5em;">
         <li class="breadcrumb-item"><a href="#">Dashboard</a></li>
         <li class="breadcrumb-item"><a href="#">Projects</a></li>
-        <li class="breadcrumb-item active" aria-current="page">All Projects</li>
+        <li class="breadcrumb-item active" aria-current="page">View Your Projects</li>
     </ol>
 </nav>
 
@@ -66,18 +66,6 @@
                         @elseif ($project->status == 'in_progress')
                         <span class="badge bg-info text-white">In Progress</span>
                         @endif
-                        @if(auth()->user() && auth()->user()->role != 'freelancer')
-                        <div class="container">
-                            <form id="statusForm" method="POST">
-                                @csrf
-                                <select id="status" name="status" class="form-control" required onchange="changeStatus(this)">
-                                    <option value="pending" {{ $project->status == 'pending' ? 'selected' : '' }}>Pending</option>
-                                    <option value="in_progress" {{ $project->status == 'in_progress' ? 'selected' : '' }}>In Progress</option>
-                                    <option value="completed" {{ $project->status == 'completed' ? 'selected' : '' }}>Completed</option>
-                                </select>
-                            </form>
-                        </div>
-                        @endif
                     </div>
                 </div>
             </div>
@@ -91,24 +79,5 @@
 
     </div>
 </div>
-
-<script>
-    function changeStatus(select) {
-        let status = select.value;
-        let form = document.getElementById('statusForm');
-        let actionUrl;
-
-        if (status === 'pending') {
-            actionUrl = "{{ route('projects.setPending', $project) }}";
-        } else if (status === 'in_progress') {
-            actionUrl = "{{ route('projects.setInProgress', $project) }}";
-        } else if (status === 'completed') {
-            actionUrl = "{{ route('projects.setCompleted', $project) }}";
-        }
-
-        form.action = actionUrl;
-        form.submit();
-    }
-</script>
 @include('components.footer')
 @endsection

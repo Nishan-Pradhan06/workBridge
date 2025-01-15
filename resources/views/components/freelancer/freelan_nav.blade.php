@@ -126,7 +126,7 @@
                             Projects
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="/track-progress">View Progress</a>
+                            <a class="dropdown-item" href="{{route('projects.view')}}">View Your Projects</a>
                             <a class="dropdown-item" href="/">Submit Projects</a>
                         </div>
                     </li>
@@ -212,7 +212,6 @@
                     <li class="nav-item dropdown">
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item" href="/job-post">Find Work</a>
-                            <a class="dropdown-item" href="/find-job">Your Dashboard</a>
                             <a class="dropdown-item" href="/proposals">Proposal and offers</a>
                         </div>
                     </li>
@@ -221,7 +220,7 @@
                             Projects
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="/track-progress">View Progress</a>
+                            <a class="dropdown-item" href="{{route('projects.view')}}">View Your Projects</a>
                             <a class="dropdown-item" href="/">Submit Projects</a>
                         </div>
                     </li>
@@ -229,7 +228,6 @@
             </div>
         </nav>
     </header>
-    <div class="dropdown-divider"></div>
     @yield('content')
 
     <!-- js -->
