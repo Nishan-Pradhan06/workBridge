@@ -89,7 +89,13 @@
             Your account is suspended. You cannot access these features.
         </div>
         @else
-        <button type="submit" class="btn btn-primary">Hire</button>
+        <form action="{{ route('payment.khalti') }}" method="POST">
+            @csrf
+            <input type="hidden" name="amount" value="{{ $contractData['proposals'][0]->amount }}">
+            <input type="hidden" name="purchase_order_id" value="{{ $contractData['jobDetails']->id }}">
+            <!-- You can add more hidden inputs if needed, like name, email, phone, etc. -->
+            <button type="submit" class="btn btn-primary" id="payment-button">Hire</button>
+        </form>
         @endif
     </div>
 </div>

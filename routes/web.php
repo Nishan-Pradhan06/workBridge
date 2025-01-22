@@ -15,6 +15,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\admin\AdminController;
+use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\ProjectModelController;
 use App\Http\Middleware\CheckUserStatus;
@@ -110,6 +111,7 @@ Route::middleware(['auth', CheckUserStatus::class])->group(function () {
 
     //milestone
     Route::get('/new_projects', [ProjectController::class, 'index'])->name('projects.index');
+    Route::get('/submit', [ProjectController::class, 'project'])->name('projects.submit');
     Route::post('/project', [ProjectController::class, 'store'])->name('projects.store');
     Route::get('/view_projects', [ProjectController::class, 'showProjectFreelancer'])->name('projects.view');
     Route::get('/project_list', [ProjectController::class, 'show'])->name('projects.shows');
@@ -121,4 +123,11 @@ Route::middleware(['auth', CheckUserStatus::class])->group(function () {
     // Route::post('/save-milestones', [MilestoneController::class, 'store'])->name('milestones.store');
     // Route::get('/milestones', [MilestoneController::class, 'show'])->name('milestones.show');
     // Route::patch('/milestones/{milestone}', [MilestoneController::class, 'update'])->name('milestones.update');
+
+
+    //payment controller
+    Route::post('/payment', [PaymentController::class, 'khaltiPayment'])->name('payment.khalti');
+    Route::get('/epayment/verify', [PaymentController::class, 'verifyPayment']);
+    // Route::get('/payment/verify', [PaymentController::class, 'verifyPayment'])->name('payment.verify');
+    Route::post('/payment/freelancer', [PaymentController::class, 'payFreelancer'])->name('payment.freelancer');
 });

@@ -46,7 +46,7 @@ class ProjectController extends Controller
         $project->date = $request->date;
         $project->status = $request->status;
         $project->save();
-        dd($project);
+        // dd($project);
         return redirect()->back()->with('success', 'Project Created successfully');
     }
 
@@ -115,5 +115,14 @@ class ProjectController extends Controller
     {
         $project->delete();
         return redirect()->route('projects.index')->with('success', 'Project deleted successfully.');
+    }
+
+    public function project()
+    {
+        return view('features.projects.submit');
+    }
+    public function submitProject()
+    {
+
     }
 }
