@@ -9,6 +9,7 @@ use App\Models\Payment;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Http;
 
 class PaymentController extends Controller
@@ -36,7 +37,7 @@ class PaymentController extends Controller
                 "purchase_order_id" => "Order01",
                 "purchase_order_name" => "test",
                 "customer_info" => [
-                    "name" => $request->user()->name,
+                    "name" => Auth::user()->name,
                     "email" => $request->user()->email,
                     "phone" => "9800000001"
                 ]

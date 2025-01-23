@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\JobPost;
 use App\Models\JobProposal;
+use App\Models\payment;
 use App\Models\Profile;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -177,6 +178,8 @@ class JobProposalController extends Controller
         $proposal->update(['status' => 'pending']);
         return redirect()->back()->with('status', 'Pending successfully');
     }
+
+    //accpetProposal
     public function acceptProposal($id)
     {
         try {
@@ -186,6 +189,10 @@ class JobProposalController extends Controller
                 return redirect()->back()->with('error', 'Proposal not found.');
             }
 
+            // Check if payment has been made
+            if ($proposal->payment_status !== 'paid') {
+                return redirect()->back()->with('error', 'Payment must be made before accepting the proposal.');
+            }
             // Accept the selected proposal
             $proposal->status = 'accepted';
             $proposal->save();
@@ -271,5 +278,4 @@ class JobProposalController extends Controller
 
         // Return the view with the filtered data
     }
-
 }
