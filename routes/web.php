@@ -89,7 +89,7 @@ Route::middleware(['auth', CheckUserStatus::class])->group(function () {
     Route::post('/proposals/{id}/reject', [JobProposalController::class, 'rejectProposal'])->name('proposals.reject');
 
 
-    Route::get('/contract/{job}', [ContractModelController::class, 'showContractPage'])->name('contract.freelancer');
+    Route::get('/view-details/{job}', [PaymentController::class, 'showContractPage'])->name('view.freelancer_details');
     // Route::get('/contract', [Freelancer::class, 'contractProject']);
 
 

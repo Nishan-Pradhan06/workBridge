@@ -190,9 +190,9 @@ class JobProposalController extends Controller
             }
 
             // Check if payment has been made
-            if ($proposal->payment_status !== 'paid') {
-                return redirect()->back()->with('error', 'Payment must be made before accepting the proposal.');
-            }
+            // if ($proposal->payment_status !== 'paid') {
+            //     return redirect()->back()->with('error', 'Payment must be made before accepting the proposal.');
+            // }
             // Accept the selected proposal
             $proposal->status = 'accepted';
             $proposal->save();

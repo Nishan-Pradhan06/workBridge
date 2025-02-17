@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\admin\AdminController;
 use App\Http\Controllers\Controller;
+use App\Models\JobPost;
 use App\Models\JobProposal;
 use App\Models\Payment;
 use App\Models\User;
@@ -15,12 +16,45 @@ use Illuminate\Support\Facades\Http;
 class PaymentController extends Controller
 {
 
+    public function showContractPage($jobId)
+    {
+        try {
+            // Retrieve job details
+            $jobPost = JobPost::find($jobId);
+
+            $userid = request()->query('user_id');
+            // dd($userid);
+
+            // Retrieve job proposals with additional relations if needed
+            $jobProposals = JobProposal::where('job_id', $jobId)->where('user_id', $userid)->get();
+            // $jobProposals = JobProposal::with('user')->where('job_id', $jobId)->where('user_id', $userid)->get();
+
+            // Prepare data as an associative array
+            $contractData = [
+                'jobDetails' => $jobPost,
+                'proposals' => $jobProposals,
+            ];
+
+            // dd($contractData);
+            // Pass the prepared array to the view
+            return view('features.contracts.contract', compact('contractData'));
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error', 'Failed to load contract details');
+        }
+    }
     public function khaltiPayment(Request $request)
     {
-        $user = User::all();
-        // $proposal = JobProposal::all();
-        $curl = curl_init();
+        // Fetch proposal details
+        $proposal = JobProposal::where('id', $request->proposal_id)->first();
 
+        if (!$proposal) {
+            return back()->withErrors('Proposal not found.');
+        }
+
+        // Khalti expects the amount in paisa (multiply by 100)
+        // $amount = $proposal->amount * 100;
+
+        $curl = curl_init();
         curl_setopt_array($curl, array(
             CURLOPT_URL => 'https://a.khalti.com/api/v2/epayment/initiate/',
             CURLOPT_RETURNTRANSFER => true,
@@ -33,9 +67,9 @@ class PaymentController extends Controller
             CURLOPT_POSTFIELDS => json_encode([
                 "return_url" => "http://127.0.0.1:8000/epayment/verify",
                 "website_url" => "http://127.0.0.1:8000/",
-                "amount" => 1000,
-                "purchase_order_id" => "Order01",
-                "purchase_order_name" => "test",
+                "amount" => $proposal->amount * 100, // Use proposal amount
+                "purchase_order_id" => "Proposal_" . $proposal->id,
+                "purchase_order_name" => "Payment for Job Proposal",
                 "customer_info" => [
                     "name" => Auth::user()->name,
                     "email" => $request->user()->email,
@@ -49,9 +83,12 @@ class PaymentController extends Controller
         ));
 
         $response = curl_exec($curl);
+        // dd($response);
         curl_close($curl);
+        // dd($curl);
 
         $responseArray = json_decode($response, true);
+        // dd($responseArray); 
 
         if (isset($responseArray['payment_url'])) {
             return redirect($responseArray['payment_url']);
@@ -60,13 +97,57 @@ class PaymentController extends Controller
         return back()->withErrors('Failed to initiate payment.');
     }
 
+    // public function verifyPayment(Request $request)
+    // {
+    //     // Extract query parameters
+    //     $data = $request->all();
+
+
+    //     $client_id = Auth::user()->id; // Get logged-in client ID
+
+    //     // Store data in database
+    //     $payment = Payment::create([
+    //         'client_id' => $client_id,
+    //         // 'freelancer_id' => $freelancer_id,
+    //         'job_id' => $request->proposal_id,
+    //         'proposal_id' => $request->proposal_id,
+    //         'amount' => $data['amount'] ?? 0,  // Ensure to get the correct key
+    //         'status' => $data['status'] ?? 'pending',
+    //         'purchase_order_id' => $data['purchase_order_id'] ?? null,
+    //         'transaction_id' => $data['transaction_id'] ?? null,
+    //         'pidx' => $data['pidx'] ?? null,
+    //         'payment_url' => $data['payment_url'] ?? null,
+    //     ]);
+
+    //     // Return response or view
+    //     return view('verify.verify', compact('data'));
+    // }
 
     public function verifyPayment(Request $request)
     {
         // Extract query parameters
         $data = $request->all();
+        // dd($request)
+        $client_id = Auth::user()->id; // Get logged-in client ID
 
-        // Pass the data to the view
+        $proposalId = JobProposal::all();
+        // dd($proposalId[0]);
+
+        // Store data in database
+        $payment = Payment::create([
+            'client_id' => $client_id,
+            // 'job_id' => $request->purchase_order_i,
+            // 'proposal_id' => $proposalId['proposal_id'],
+            'amount' => $data['amount'] ?? 0,  // Ensure to get the correct key
+            'status' => $data['status'] ?? 'pending',
+            'purchase_order_id' => $data['purchase_order_id'] ?? null,
+            'transaction_id' => $data['transaction_id'] ?? null,
+            'pidx' => $data['pidx'] ?? null,
+            'payment_url' => $request->payment_url,
+        ]);
+        // dd($payment);
+
+        // Return response or view
         return view('verify.verify', compact('data'));
     }
 

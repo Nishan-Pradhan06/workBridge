@@ -138,7 +138,8 @@
                         </div>
                     </div>
                     <div class="actions">
-                        <a href="{{ url('/contract/' . $jobPost->id . '?user_id=' . $jobProposal->user->id) }}" class="btn btn-primary">View</a>
+                        <a href="{{ route('view.freelancer_details', ['job' => $jobPost->id, 'user_id' => $jobProposal->user->id]) }}" class="btn btn-primary">View</a>
+                        <!-- <a href="{{ url('/contract/' . $jobPost->id . '?user_id=' . $jobProposal->user->id) }}" class="btn btn-primary">View</a> -->
                         @if($jobProposal->status === 'pending')
                         <form action="{{ route('proposals.accept', $jobProposal->id) }}" method="POST">
                             @csrf
