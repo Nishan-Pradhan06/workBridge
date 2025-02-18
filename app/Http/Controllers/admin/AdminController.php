@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Payment;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -47,7 +48,9 @@ class AdminController extends Controller
     {
         // $users = User::whereIn('role', ['client', 'freelancer'])->paginate(8);
         // return view("users.admin.users", compact('users'));
-        return view("users.admin.payments");
+        $paymentDetails = Payment::all();
+        // dd($paymentDetails);
+        return view("users.admin.payments", compact('paymentDetails'));
     }
 
     // Suspended== user

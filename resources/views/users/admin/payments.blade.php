@@ -46,10 +46,10 @@
     <div class="card shadow-sm p-3">
         <ul class="nav nav-tabs">
             <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#freelancer-requests" data-bs-toggle="tab">Freelancer Requests</a>
+                <a class="nav-link active" aria-current="page" href="#payments-received" data-bs-toggle="tab">Payment Received</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#payments-received" data-bs-toggle="tab">Payments Received</a>
+                <a class="nav-link" href="#freelancer-requests" data-bs-toggle="tab">Release Amount</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="#transactions" data-bs-toggle="tab">Transactions</a>
@@ -59,91 +59,70 @@
             </li>
         </ul>
         <div class="tab-content mt-3">
-            <!-- Freelancer Requests Tab -->
-            <div class="tab-pane fade show active" id="freelancer-requests">
-                <h5 class="mb-3">Freelancer Payment Requests</h5>
-                <table class="table table-striped">
-                    <thead>
-                        <tr>
-                            <th>Freelancer</th>
-                            <th>Requested Amount</th>
-                            <th>Service Fee</th>
-                            <th>Final Amount</th>
-                            <th>Account Details</th>
-                            <th>Date</th>
-                            <th>Status</th>
-                            <th>Action</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>Freelancer 1</td>
-                            <td>$100</td>
-                            <td>$5</td>
-                            <td>$95</td>
-
-                            <td>freelancer1@example.com</td>
-                            <td>2024-12-28</td>
-                            <td>Pending</td>
-                            <td>
-                                <button class="btn btn-success btn-sm">Pay</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Freelancer 2</td>
-                            <td>$200</td>
-                            <td>$10</td>
-                            <td>$190</td>
-
-                            <td>1234567890</td>
-                            <td>2024-12-28</td>
-                            <td>Pending</td>
-                            <td>
-                                <button class="btn btn-success btn-sm">Pay</button>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
 
 
             <!-- Payments Received Tab -->
-            <div class="tab-pane fade" id="payments-received">
+            <div class="tab-pane fade show active" id="payments-received">
                 <h5 class="mb-3">Payments Received from Clients</h5>
                 <table class="table table-striped">
                     <thead>
                         <tr>
-                            <th>Client</th>
-                            <th>Project/Service</th>
-                            <th>Amount</th>
-
                             <th>Transaction ID</th>
+                            <th>Client ID</th>
+                            <th>Job ID</th>
+                            <th>Amount</th>
                             <th>Payment Method</th>
                             <th>Status</th>
                             <th>Date</th>
                         </tr>
                     </thead>
                     <tbody>
+                        @foreach($paymentDetails as $payment)
                         <tr>
-                            <td>Client 1</td>
-                            <td>Website Design</td>
-                            <td>$100</td>
-
-                            <td>TRX123456</td>
-                            <td>Credit Card</td>
-                            <td>Completed</td>
-                            <td>2024-12-28</td>
+                            <td>{{ $payment->transaction_id }}</td>
+                            <td>{{ $payment->client_id }}</td>
+                            <td>{{$payment->job_id}}</td>
+                            <td>NPR. {{ number_format($payment->amount/100, 2) }}</td>
+                            <td>Khalti/online</td>
+                            <td>{{ $payment->status }}</td>
+                            <td>{{ \Carbon\Carbon::parse($payment->created_at)->format('Y-m-d') }}</td>
                         </tr>
+                        @endforeach
+
+                    </tbody>
+                </table>
+            </div>
+            <!-- Freelancer Requests Tab -->
+            <div class="tab-pane fade " id="freelancer-requests">
+                <h5 class="mb-3">Freelancer Payment Requests</h5>
+                <table class="table table-striped">
+                    <thead>
                         <tr>
-                            <td>Client 2</td>
-                            <td>Mobile App Development</td>
-                            <td>$200</td>
-
-                            <td>TRX987654</td>
-                            <td>PayPal</td>
-                            <td>Completed</td>
-                            <td>2024-12-27</td>
+                            <th>Transacation Id</th>
+                            <th>Client Id</th>
+                            <th>Freelance Id</th>
+                            <th>Job Id</th>
+                            <th>Amount</th>
+                            <th>Date</th>
+                            <th>Status</th>
+                            <th>Action</th>
                         </tr>
+                    </thead>
+                    <tbody>
+                        @foreach($paymentDetails as $payment)
+                        <tr>
+                            <td>{{ $payment->transaction_id }}</td>
+                            <td>{{ $payment->client_id }}</td>
+                            <td>Freelancer 1</td>
+                            <td>Job 1</td>
+                            <td>NPR. {{ number_format($payment->amount/100, 2) }}</td>
+                            <td>{{ \Carbon\Carbon::parse($payment->created_at)->format('Y-m-d') }}</td>
+                            <td>{{ $payment->status }}</td>
+                            <td>
+                                <button class="btn btn-success btn-sm">Release</button>
+                            </td>
+                        </tr>
+                        @endforeach
                     </tbody>
                 </table>
             </div>

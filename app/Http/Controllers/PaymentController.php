@@ -125,12 +125,17 @@ class PaymentController extends Controller
 
     public function verifyPayment(Request $request)
     {
+        // $proposalId = JobProposal::all();
+        // dd($proposalId);
+        $proposal = JobProposal::where('id', $request->proposal_id)->first(); //CHANGED
+        // dd($proposal);   
         // Extract query parameters
         $data = $request->all();
         // dd($request)
         $client_id = Auth::user()->id; // Get logged-in client ID
 
-        $proposalId = JobProposal::all();
+
+
         // dd($proposalId[0]);
 
         // Store data in database
@@ -143,7 +148,7 @@ class PaymentController extends Controller
             'purchase_order_id' => $data['purchase_order_id'] ?? null,
             'transaction_id' => $data['transaction_id'] ?? null,
             'pidx' => $data['pidx'] ?? null,
-            'payment_url' => $request->payment_url,
+            'payment_url' => 'http://127.0.0.1:8000/epayment/verify',  //CHANGED
         ]);
         // dd($payment);
 
