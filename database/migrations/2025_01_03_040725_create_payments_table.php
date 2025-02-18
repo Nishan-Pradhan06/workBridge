@@ -28,7 +28,7 @@ return new class extends Migration
             $table->string('pidx')->nullable();
             $table->string('payment_url')->nullable();
             $table->string('release_amt')->nullable();
-            $table->string('release_status')->nullable();
+            $table->enum('release_status', ['pending', 'completed'])->default('pending');
 
             $table->timestamps();
         });

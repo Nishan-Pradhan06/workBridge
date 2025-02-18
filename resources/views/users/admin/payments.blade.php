@@ -117,7 +117,7 @@
                             <td>Job 1</td>
                             <td>NPR. {{ number_format($payment->amount/100, 2) }}</td>
                             <td>{{ \Carbon\Carbon::parse($payment->created_at)->format('Y-m-d') }}</td>
-                            <td>{{ $payment->status }}</td>
+                            <td>{{ $payment->release_status }}</td>
                             <td>
                                 <button class="btn btn-success btn-sm">Release</button>
                             </td>
