@@ -11,40 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-
-        // Schema::create('payments', function (Blueprint $table) {
-        //     $table->id();
-        //     $table->foreignId('user_id')->constrained()->onDelete('cascade'); // References users table
-        //     $table->foreignId('job_id')->constrained('job_posts')->onDelete('cascade'); // References job_posts table
-        //     $table->float('amount', 8, 2)->default(0); // Amount with two decimal places
-        //     $table->string('status')->default('pending'); // Payment status (e.g., pending, completed)
-        //     $table->string('purchase_order_id')->nullable(); // Purchase order ID
-        //     $table->string('transaction_id')->nullable(); // Transaction ID
-        //     $table->string('pidx')->nullable(); // Optional payment index field
-        //     $table->string('payment_url')->nullable(); // Payment URL
-        //     $table->timestamps(); // created_at and updated_at
-        // });
         Schema::create('payments', function (Blueprint $table) {
-            // $table->id();
-            // // $table->foreignId('client_id')->constrained('users')->onDelete('cascade');
-            // // $table->foreignId('admin_id')->constrained('users')->onDelete('cascade');
-            // // $table->foreignId('freelancer_id')->constrained('users')->onDelete('cascade');
-            // // $table->foreignId('job_id')->constrained('job_posts')->onDelete('cascade');
-            // // $table->foreignId('proposal_id')->constrained('job_proposals')->onDelete('cascade');
-            // $table->float('amount', 8, 2)->default(0);
-            // $table->string('status')->default('pending');
-            // $table->string('purchase_order_id')->nullable();
-            // $table->string('transaction_id')->nullable();
-            // $table->string('pidx')->nullable();
-            // $table->string('payment_url')->nullable();
-
-
-
             $table->id();
 
             // Foreign keys
             $table->foreignId('client_id')->nullable()->constrained('users')->onDelete('cascade');
-            $table->foreignId('admin_id')->nullable()->constrained('users')->onDelete('cascade');
             $table->foreignId('freelancer_id')->nullable()->constrained('users')->onDelete('cascade');
             $table->foreignId('job_id')->nullable()->constrained('job_posts')->onDelete('cascade');
             $table->foreignId('proposal_id')->nullable()->constrained('job_proposals')->onDelete('cascade');
@@ -56,6 +27,8 @@ return new class extends Migration
             $table->string('transaction_id')->nullable();
             $table->string('pidx')->nullable();
             $table->string('payment_url')->nullable();
+            $table->string('release_amt')->nullable();
+            $table->string('release_status')->nullable();
 
             $table->timestamps();
         });

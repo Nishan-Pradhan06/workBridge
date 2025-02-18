@@ -46,6 +46,7 @@ class PaymentController extends Controller
     {
         // Fetch proposal details
         $proposal = JobProposal::where('id', $request->proposal_id)->first();
+        // dd($proposal);
 
         if (!$proposal) {
             return back()->withErrors('Proposal not found.');
@@ -53,7 +54,19 @@ class PaymentController extends Controller
 
         // Khalti expects the amount in paisa (multiply by 100)
         // $amount = $proposal->amount * 100;
+        // $pay = route('payment.verify');
+        // dd($pay);
+        // $return_url = route('payment.verify') . '?' . http_build_query([
+        //     'pid' => $request->proposal_id,
 
+        // ]);
+        $return_url = route('payment.verify', [
+            // 'order_id' => $order_id,
+            'id' => $request->proposal_id,
+            'jId' => $proposal->job_id,
+            'uId' => $proposal->user_id,
+        ]);
+        // dd($return_url);
         $curl = curl_init();
         curl_setopt_array($curl, array(
             CURLOPT_URL => 'https://a.khalti.com/api/v2/epayment/initiate/',
@@ -65,7 +78,8 @@ class PaymentController extends Controller
             CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
             CURLOPT_CUSTOMREQUEST => 'POST',
             CURLOPT_POSTFIELDS => json_encode([
-                "return_url" => "http://127.0.0.1:8000/epayment/verify",
+                // "return_url" => "http://127.0.0.1:8000/epayment/verify/$request->proposal_id/",
+                "return_url" => "$return_url",
                 "website_url" => "http://127.0.0.1:8000/",
                 "amount" => $proposal->amount * 100, // Use proposal amount
                 "purchase_order_id" => "Proposal_" . $proposal->id,
@@ -97,6 +111,8 @@ class PaymentController extends Controller
         return back()->withErrors('Failed to initiate payment.');
     }
 
+
+
     // public function verifyPayment(Request $request)
     // {
     //     // Extract query parameters
@@ -123,15 +139,17 @@ class PaymentController extends Controller
     //     return view('verify.verify', compact('data'));
     // }
 
-    public function verifyPayment(Request $request)
+    public function verifyPayment(Request $request, $pid, $jid, $uId)
     {
         // $proposalId = JobProposal::all();
         // dd($proposalId);
-        $proposal = JobProposal::where('id', $request->proposal_id)->first(); //CHANGED
+        // $proposal = JobProposal::where('id', $request->proposal_id)->first(); //CHANGED
         // dd($proposal);   
         // Extract query parameters
+        // echo $pid;
+        // echo $jid;
         $data = $request->all();
-        // dd($request)
+        // dd($request);
         $client_id = Auth::user()->id; // Get logged-in client ID
 
 
@@ -141,8 +159,9 @@ class PaymentController extends Controller
         // Store data in database
         $payment = Payment::create([
             'client_id' => $client_id,
-            // 'job_id' => $request->purchase_order_i,
-            // 'proposal_id' => $proposalId['proposal_id'],
+            'freelancer_id' => $uId,
+            'job_id' => $jid,
+            'proposal_id' => $pid,
             'amount' => $data['amount'] ?? 0,  // Ensure to get the correct key
             'status' => $data['status'] ?? 'pending',
             'purchase_order_id' => $data['purchase_order_id'] ?? null,
