@@ -88,6 +88,8 @@
         <div class="alert alert-danger">
             Your account is suspended. You cannot access these features.
         </div>
+        @elseif ($contractData['is_pending'])
+        <button class="btn btn-warning" disabled>Proposal is Pending</button> <!-- Show if pending -->
         @elseif ($contractData['is_rejected'])
         <button class="btn btn-danger" disabled>Proposal Rejected</button> <!-- Show if rejected -->
         @elseif ($contractData['is_hired'])

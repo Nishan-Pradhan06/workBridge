@@ -37,6 +37,8 @@ class PaymentController extends Controller
 
             //check if the proposal is rejected
             $isRejected = $jobProposals[0]->status === 'rejected';
+            //check if the proposal is accepted
+            $isPending = $jobProposals[0]->status === 'pending';
 
             // Prepare data for the view
             $contractData = [
@@ -44,6 +46,7 @@ class PaymentController extends Controller
                 'proposals' => $jobProposals,
                 'is_hired' => $payment,
                 'is_rejected' => $isRejected,
+                'is_pending' => $isPending,
             ];
 
             return view('features.contracts.contract', compact('contractData'));
