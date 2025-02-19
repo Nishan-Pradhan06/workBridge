@@ -63,7 +63,7 @@
         color: black;
     }
 
-    .dropdown-toggle::after {
+    .right .dropdown-toggle::after {
         display: none !important;
         /* Hide the default arrow */
     }
@@ -86,6 +86,7 @@
 
         <!-- add some ui here -->
         @else
+        <h1>All Job Post</h1>
 
         @foreach($jobPost as $jobPosts)
         <div class="card mb-4 custom-card">
@@ -93,13 +94,18 @@
                 <div class="left">
                     <h5><a href="http://">{{$jobPosts->title}}</a></h5>
                     <p style="font-size: 12px;">Created {{ \Carbon\Carbon::parse($jobPosts->created_at)->diffForHumans() }} by You</p>
+                    @if($jobPosts->trashed())
+                    <span class="badge bg-warning text-dark">Private</span>
+                    @else
+                    <span class="badge bg-success text-white">Public</span>
+                    @endif
                 </div>
 
                 <div class="mid">
                     <!-- Safely check for the count -->
-                   
+
                     <p style="font-size: 24px;">{{ $jobPosts->jobProposals ? $jobPosts->jobProposals->count() : 0 }}</p>
-               
+
                     <h6>Proposals</h6>
                 </div>
 
@@ -111,8 +117,11 @@
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item" href="{{ url('/edit/' . $jobPosts->id) }}">Edit</a>
-                            <a class="dropdown-item" href="{{ url('/remove/' . $jobPosts->id) }}">Remove Posting</a>
+                            @if($jobPosts->trashed())
                             <a class="dropdown-item" href="{{ url('/restore/' . $jobPosts->id) }}">Reuse Posting</a>
+                            @else
+                            <a class="dropdown-item" href="{{ url('/remove/' . $jobPosts->id) }}">Remove Posting</a>
+                            @endif
                             <a class="dropdown-item" href="{{ url('/applicants/' . $jobPosts->id) }}">View Proposal</a>
                             <a class="dropdown-item" href="{{ url('/delete/' . $jobPosts->id) }}">Permanent Delete</a>
                         </div>

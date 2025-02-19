@@ -79,12 +79,6 @@ class JobProposalController extends Controller
     /**
      * Display the specified resource.
      */
-    // public function show($jobId)
-    // {
-    //         $jobProposals = JobProposal::where('job_id', $jobId)->get();
-    //         return view('features.proposal.proposal_list', compact('jobProposals'));
-
-    // }
     public function show($jobId)
     {
         try {
@@ -98,28 +92,6 @@ class JobProposalController extends Controller
             return redirect()->back()->with('error', 'Failed to load job proposals');
         }
     }
-    // public function show($jobId)
-    // {
-    //     try {
-    //         $jobProposals = JobProposal::where('job_id', $jobId)->get();
-    //         $jobPost = JobPost::find($jobId);
-
-    //         // Fetch profiles for each proposal
-    //         $proposalsWithProfiles = $jobProposals->map(function ($proposal) {
-    //             // Assuming each proposal has a user_id or freelancer_id
-    //             $profile = Profile::where('user_id', $proposal->user_id)->first();
-    //             $proposal->profile = $profile;
-    //             return $proposal;
-    //         });
-
-    //         return view('features.proposal.proposal_list', [
-    //             'jobProposals' => $proposalsWithProfiles,
-    //             'jobPost' => $jobPost
-    //         ]);
-    //     } catch (\Exception $e) {
-    //         return redirect()->back()->with('error', 'Failed to load job proposals');
-    //     }
-    // }
 
     /**
      * Show the form for editing the specified resource.
@@ -229,53 +201,100 @@ class JobProposalController extends Controller
             return redirect()->back()->with('error', 'Failed to reject proposal.');
         }
     }
-    // private function startProject(JobProposal $proposal)
-    // {
-    //     // Example: Create a new project using the proposal details
-    //     Project::create([
-    //         'job_id' => $proposal->job_id,
-    //         'freelancer_id' => $proposal->user_id,
-    //         'start_date' => now(),
-    //         'status' => 'in_progress',
-    //     ]);
-    // }
+
 
     public function showProposalStatus()
     {
 
-        $ProposalList = JobProposal::where('user_id', Auth::id())->get();  // Fetch proposals for the logged-in user
-        $jobPost = JobPost::all();  // Fetch job posts  
+        try {
+            // Fetch proposals for the logged-in user
+            $ProposalList = JobProposal::where('user_id', Auth::id())->get();
 
-        $ProposalStatus = [
-            'jobDetails' => $jobPost,
-            'proposals' => $ProposalList,
-        ];
-        // dd($ProposalStatus);
-        return view('features.proposal.proposal_status', compact('ProposalStatus'));
-        // $ProposalStatus = JobProposal::where('job_id', $jobId)->with('user_id', Auth::id())->get();
-        // $jobPost = JobPost::find($jobId);
-        // return view('features.proposal.proposal_status', compact('ProposalStatus', 'jobPost'));
+            // Fetch all job posts, including soft deleted ones
+            $jobPost = JobPost::withTrashed()->get();
 
-        // Get the proposal status for the specific job and logged-in user
-        // $ProposalStatus = JobProposal::where('job_id')
-        //     ->where('user_id', Auth::id()) // Ensure filtering by the logged-in user
-        //     ->get();
-        // $ProposalList = JobProposal::all();
-        // $jobPost = JobPost::all();
+            $ProposalStatus = [
+                'jobDetails' => $jobPost,
+                'proposals' => $ProposalList,
+            ];
 
-        // $ProposalStatus = [
-        //     'jobDetails' => $jobPost,
-        //     'proposals' => $ProposalList,
-        // ];
-
-        // return view('features.proposal.proposal_status', compact('ProposalStatus'));
-
-
-
-
-        // Fetch the job post details
-        // $jobPost = JobPost::all();
-
-        // Return the view with the filtered data
+            return view('features.proposal.proposal_status', compact('ProposalStatus'));
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error', 'Failed to load proposal status.');
+        }
     }
 }
+
+
+
+// private function startProject(JobProposal $proposal)
+// {
+//     // Example: Create a new project using the proposal details
+//     Project::create([
+//         'job_id' => $proposal->job_id,
+//         'freelancer_id' => $proposal->user_id,
+//         'start_date' => now(),
+//         'status' => 'in_progress',
+//     ]);
+// }
+
+
+// $ProposalStatus = JobProposal::where('job_id', $jobId)->with('user_id', Auth::id())->get();
+// $jobPost = JobPost::find($jobId);
+// return view('features.proposal.proposal_status', compact('ProposalStatus', 'jobPost'));
+
+// Get the proposal status for the specific job and logged-in user
+// $ProposalStatus = JobProposal::where('job_id')
+//     ->where('user_id', Auth::id()) // Ensure filtering by the logged-in user
+//     ->get();
+// $ProposalList = JobProposal::all();
+// $jobPost = JobPost::all();
+
+// $ProposalStatus = [
+//     'jobDetails' => $jobPost,
+//     'proposals' => $ProposalList,
+// ];
+
+// return view('features.proposal.proposal_status', compact('ProposalStatus'));
+
+
+
+
+// Fetch the job post details
+// $jobPost = JobPost::all();
+
+// Return the view with the filtered data
+
+
+// public function show($jobId)
+// {
+//     try {
+//         $jobProposals = JobProposal::where('job_id', $jobId)->get();
+//         $jobPost = JobPost::find($jobId);
+
+//         // Fetch profiles for each proposal
+//         $proposalsWithProfiles = $jobProposals->map(function ($proposal) {
+//             // Assuming each proposal has a user_id or freelancer_id
+//             $profile = Profile::where('user_id', $proposal->user_id)->first();
+//             $proposal->profile = $profile;
+//             return $proposal;
+//         });
+
+//         return view('features.proposal.proposal_list', [
+//             'jobProposals' => $proposalsWithProfiles,
+//             'jobPost' => $jobPost
+//         ]);
+//     } catch (\Exception $e) {
+//         return redirect()->back()->with('error', 'Failed to load job proposals');
+//     }
+// }
+
+/**
+ * Display the specified resource.
+ */
+    // public function show($jobId)
+    // {
+    //         $jobProposals = JobProposal::where('job_id', $jobId)->get();
+    //         return view('features.proposal.proposal_list', compact('jobProposals'));
+
+    // }
