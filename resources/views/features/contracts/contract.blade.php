@@ -79,32 +79,41 @@
     <div class="container payment">
         <section class="proposal-details">
             <h2>Payment</h2>
-            <p><strong>Amount:</strong> NPR: {{ $contractData['proposals'][0]->amount }}</p> <!-- Amount from proposal -->
-            <p><strong>Charge:</strong> NPR: 5%</p>
-            <p><strong>Total Amount:</strong> NPR: {{ $contractData['proposals'][0]->amount - ($contractData['proposals'][0]->amount * 0.05) }}</p> <!-- Total amount after 5% charge -->
+            <p><strong>Total Amount:</strong> NPR: {{ $contractData['proposals'][0]->amount }}</p> <!-- Amount from proposal -->
+            <!-- <p><strong>Charge:</strong> NPR: 5%</p>
+            <p><strong>Total Amount:</strong> NPR: {{ $contractData['proposals'][0]->amount - ($contractData['proposals'][0]->amount * 0.05) }}</p> Total amount after 5% charge -->
         </section>
 
         @if (auth()->user()->status === 'suspended')
         <div class="alert alert-danger">
             Your account is suspended. You cannot access these features.
         </div>
+        @elseif ($contractData['is_rejected'])
+        <button class="btn btn-danger" disabled>Proposal Rejected</button> <!-- Show if rejected -->
+        @elseif ($contractData['is_hired'])
+        <button class="btn btn-secondary" disabled>Hired</button> <!-- Show if hired -->
         @else
-        <!-- <form action="{{ route('payment.khalti') }}" method="POST">
-            @csrf
-            <input type="hidden" name="amount" value="{{ $contractData['proposals'][0]->amount }}">
-            <input type="hidden" name="purchase_order_id" value="{{ $contractData['jobDetails']->id }}">
-   
-            <button type="submit" class="btn btn-primary" id="payment-button">Hire</button>
-        </form> -->
-        <!-- <input type="hidden" name="amount" value="{{ $contractData['proposals'][0]->amount + ($contractData['proposals'][0]->amount * 0.05) }}"> -->
         <form action="{{ route('payment.khalti') }}" method="POST" target="_blank">
             @csrf
-            <input type="hidden" name="proposal_id" value="{{ $contractData['proposals'][0]->id }}">
-            <input type="hidden" name="purchase_order_id" value="{{ $contractData['jobDetails']->id }}">
-            <input type="hidden" name="freelancer_name" value="{{ $contractData['proposals'][0]->user->name }}">
             <button type="submit" class="btn btn-primary" id="payment-button">Hire Freelancer</button>
         </form>
         @endif
+
+
+
+        <!-- @if (auth()->user()->status === 'suspended')
+        <div class="alert alert-danger">
+            Your account is suspended. You cannot access these features.
+        </div>
+        @else
+        <form action="{{ route('payment.khalti') }}" method="POST" target="_blank">
+            @csrf -->
+        <input type="hidden" name="proposal_id" value="{{ $contractData['proposals'][0]->id }}">
+        <input type="hidden" name="purchase_order_id" value="{{ $contractData['jobDetails']->id }}">
+        <!-- <input type="hidden" name="freelancer_name" value="{{ $contractData['proposals'][0]->user->name }}"> -->
+        <!-- <button type="submit" class="btn btn-primary" id="payment-button">Hire Freelancer</button>
+        </form>
+        @endif -->
     </div>
 </div>
 @include('components.footer')

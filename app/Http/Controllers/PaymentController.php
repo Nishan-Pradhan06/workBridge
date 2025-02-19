@@ -15,7 +15,6 @@ use Illuminate\Support\Facades\Http;
 
 class PaymentController extends Controller
 {
-
     public function showContractPage($jobId)
     {
         try {
@@ -23,25 +22,37 @@ class PaymentController extends Controller
             $jobPost = JobPost::find($jobId);
 
             $userid = request()->query('user_id');
-            // dd($userid);
 
-            // Retrieve job proposals with additional relations if needed
-            $jobProposals = JobProposal::where('job_id', $jobId)->where('user_id', $userid)->get();
-            // $jobProposals = JobProposal::with('user')->where('job_id', $jobId)->where('user_id', $userid)->get();
+            // Retrieve job proposals
+            $jobProposals = JobProposal::where('job_id', $jobId)
+                ->where('user_id', $userid)
+                ->get();
 
-            // Prepare data as an associative array
+            // Check if a payment has been made and verified
+            $payment = Payment::where('job_id', $jobId)
+                ->where('proposal_id', $jobProposals[0]->id ?? null)
+                ->where('freelancer_id', $userid)
+                ->where('status', 'success') // Ensure payment was successful
+                ->exists();
+
+            //check if the proposal is rejected
+            $isRejected = $jobProposals[0]->status === 'rejected';
+
+            // Prepare data for the view
             $contractData = [
                 'jobDetails' => $jobPost,
                 'proposals' => $jobProposals,
+                'is_hired' => $payment,
+                'is_rejected' => $isRejected,
             ];
 
-            // dd($contractData);
-            // Pass the prepared array to the view
             return view('features.contracts.contract', compact('contractData'));
         } catch (\Exception $e) {
             return redirect()->back()->with('error', 'Failed to load contract details');
         }
     }
+
+
     public function khaltiPayment(Request $request)
     {
         // Fetch proposal details
@@ -112,68 +123,32 @@ class PaymentController extends Controller
     }
 
 
-
-    // public function verifyPayment(Request $request)
-    // {
-    //     // Extract query parameters
-    //     $data = $request->all();
-
-
-    //     $client_id = Auth::user()->id; // Get logged-in client ID
-
-    //     // Store data in database
-    //     $payment = Payment::create([
-    //         'client_id' => $client_id,
-    //         // 'freelancer_id' => $freelancer_id,
-    //         'job_id' => $request->proposal_id,
-    //         'proposal_id' => $request->proposal_id,
-    //         'amount' => $data['amount'] ?? 0,  // Ensure to get the correct key
-    //         'status' => $data['status'] ?? 'pending',
-    //         'purchase_order_id' => $data['purchase_order_id'] ?? null,
-    //         'transaction_id' => $data['transaction_id'] ?? null,
-    //         'pidx' => $data['pidx'] ?? null,
-    //         'payment_url' => $data['payment_url'] ?? null,
-    //     ]);
-
-    //     // Return response or view
-    //     return view('verify.verify', compact('data'));
-    // }
-
     public function verifyPayment(Request $request, $pid, $jid, $uId)
     {
-        // $proposalId = JobProposal::all();
-        // dd($proposalId);
-        // $proposal = JobProposal::where('id', $request->proposal_id)->first(); //CHANGED
-        // dd($proposal);   
-        // Extract query parameters
-        // echo $pid;
-        // echo $jid;
         $data = $request->all();
-        // dd($request);
-        $client_id = Auth::user()->id; // Get logged-in client ID
+        $client_id = Auth::user()->id;
 
+        // Create or update payment record
+        $payment = Payment::updateOrCreate(
+            [
+                'client_id' => $client_id,
+                'freelancer_id' => $uId,
+                'job_id' => $jid,
+                'proposal_id' => $pid,
+            ],
+            [
+                'amount' => $data['amount'] ?? 0,
+                'status' => 'success', // Mark payment as successful
+                'purchase_order_id' => $data['purchase_order_id'] ?? null,
+                'transaction_id' => $data['transaction_id'] ?? null,
+                'pidx' => $data['pidx'] ?? null,
+                'payment_url' => 'http://127.0.0.1:8000/epayment/verify',
+            ]
+        );
 
-
-        // dd($proposalId[0]);
-
-        // Store data in database
-        $payment = Payment::create([
-            'client_id' => $client_id,
-            'freelancer_id' => $uId,
-            'job_id' => $jid,
-            'proposal_id' => $pid,
-            'amount' => $data['amount'] ?? 0,  // Ensure to get the correct key
-            'status' => $data['status'] ?? 'pending',
-            'purchase_order_id' => $data['purchase_order_id'] ?? null,
-            'transaction_id' => $data['transaction_id'] ?? null,
-            'pidx' => $data['pidx'] ?? null,
-            'payment_url' => 'http://127.0.0.1:8000/epayment/verify',  //CHANGED
-        ]);
-        // dd($payment);
-
-        // Return response or view
         return view('verify.verify', compact('data'));
     }
+
 
     public function payFreelancer(Request $request)
     {
@@ -201,3 +176,67 @@ class PaymentController extends Controller
         return response()->json(['transaction_id' => 'FREELANCER_TXN12345'], 200);
     }
 }
+
+
+
+    // public function verifyPayment(Request $request)
+    // {
+    //     // Extract query parameters
+    //     $data = $request->all();
+
+
+    //     $client_id = Auth::user()->id; // Get logged-in client ID
+
+    //     // Store data in database
+    //     $payment = Payment::create([
+    //         'client_id' => $client_id,
+    //         // 'freelancer_id' => $freelancer_id,
+    //         'job_id' => $request->proposal_id,
+    //         'proposal_id' => $request->proposal_id,
+    //         'amount' => $data['amount'] ?? 0,  // Ensure to get the correct key
+    //         'status' => $data['status'] ?? 'pending',
+    //         'purchase_order_id' => $data['purchase_order_id'] ?? null,
+    //         'transaction_id' => $data['transaction_id'] ?? null,
+    //         'pidx' => $data['pidx'] ?? null,
+    //         'payment_url' => $data['payment_url'] ?? null,
+    //     ]);
+
+    //     // Return response or view
+    //     return view('verify.verify', compact('data'));
+    // }
+
+    // public function verifyPayment(Request $request, $pid, $jid, $uId)
+    // {
+    //     // $proposalId = JobProposal::all();
+    //     // dd($proposalId);
+    //     // $proposal = JobProposal::where('id', $request->proposal_id)->first(); //CHANGED
+    //     // dd($proposal);   
+    //     // Extract query parameters
+    //     // echo $pid;
+    //     // echo $jid;
+    //     $data = $request->all();
+    //     // dd($request);
+    //     $client_id = Auth::user()->id; // Get logged-in client ID
+
+
+
+    //     // dd($proposalId[0]);
+
+    //     // Store data in database
+    //     $payment = Payment::create([
+    //         'client_id' => $client_id,
+    //         'freelancer_id' => $uId,
+    //         'job_id' => $jid,
+    //         'proposal_id' => $pid,
+    //         'amount' => $data['amount'] ?? 0,  // Ensure to get the correct key
+    //         'status' => $data['status'] ?? 'pending',
+    //         'purchase_order_id' => $data['purchase_order_id'] ?? null,
+    //         'transaction_id' => $data['transaction_id'] ?? null,
+    //         'pidx' => $data['pidx'] ?? null,
+    //         'payment_url' => 'http://127.0.0.1:8000/epayment/verify',  //CHANGED
+    //     ]);
+    //     // dd($payment);
+
+    //     // Return response or view
+    //     return view('verify.verify', compact('data'));
+    // }
