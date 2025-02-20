@@ -66,7 +66,7 @@ Route::middleware(['auth', CheckUserStatus::class])->group(function () {
     Route::post('/password-and-security', [Client::class, 'clientInfo']);
 
     //route for job
-    Route::get('/job-post', [JobPostController::class, 'index']);
+    Route::get('/job-post', [JobPostController::class, 'index'])->name('job.post');
     Route::post('/save-job', [JobPostController::class, 'store'])->middleware('auth');
     Route::get('/all-jobs', [JobPostController::class, 'showAllJobs'])->name('all-jobs');
     Route::get('/edit/{id}', [JobPostController::class, 'edit']);

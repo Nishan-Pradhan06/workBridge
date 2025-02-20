@@ -86,7 +86,7 @@
                             <a class="dropdown-item" href="/all-jobs">All Jobs Post</a>
                         </div>
                     </li>
-                    <li class="nav-item dropdown">
+                    <!-- <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Projects
                         </a>
@@ -94,7 +94,7 @@
                             <a class="dropdown-item" href="{{route('projects.index')}}">Create Project</a>
                             <a class="dropdown-item" href="{{route('projects.shows')}}">All Projects</a>
                         </div>
-                    </li>
+                    </li> -->
                 </ul>
                 <div class="nab-btn">
                     <a class="nav-link profle-dropdown-toggle profile" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true">
@@ -127,12 +127,13 @@
                         </div>
                         <div class="items dropdown-item">
                             <i class="fas fa-sign-out-alt icons" style="font-size: 20px;"></i>
-                            <form action="{{ route('logout') }}" method="POST">
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                 @csrf
-                                <button submit="submit" class="btn btn-link">Logout</button>
                             </form>
 
-                            <!-- <a class="dropdown-item" href="" {{ route('logout') }}">Logout</a> -->
+                            <a class="dropdown-item" href="#" onclick="document.getElementById('logout-form').submit();">
+                                Logout
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -149,7 +150,7 @@
                             <a class="dropdown-item" href="/all-jobs">All Jobs Post</a>
                         </div>
                     </li>
-                    <li class="nav-item dropdown">
+                    <!-- <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Projects
                         </a>
@@ -157,7 +158,7 @@
                             <a class="dropdown-item" href="{{route('projects.index')}}">Create Project</a>
                             <a class="dropdown-item" href="{{route('projects.shows')}}">All Projects</a>
                         </div>
-                    </li>
+                    </li> -->
                 </ul>
             </div>
         </nav>

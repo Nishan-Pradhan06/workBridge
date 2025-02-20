@@ -78,4 +78,5 @@
         height: 300
     });
 </script>
+@include('components.footer')
 @endsection <!--END THE CONTENT FROM HERE-->

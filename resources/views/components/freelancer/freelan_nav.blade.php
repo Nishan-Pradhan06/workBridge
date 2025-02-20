@@ -121,7 +121,7 @@
                             <a class="dropdown-item" href="{{route('proposal.status')}}">Proposal and offers</a>
                         </div>
                     </li>
-                    <li class="nav-item dropdown">
+                    <!-- <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Projects
                         </a>
@@ -129,7 +129,7 @@
                             <a class="dropdown-item" href="{{route('projects.view')}}">View Your Projects</a>
                             <a class="dropdown-item" href="/">Submit Projects</a>
                         </div>
-                    </li>
+                    </li> -->
                 </ul>
                 <div class="nab-btn">
                     <div class="notification-icons">
@@ -195,10 +195,14 @@
                             </div>
                             <div class="items dropdown-item">
                                 <i class="fas fa-sign-out-alt icons" style="font-size: 20px;"></i>
-                                <form action="{{ route('logout') }}" method="POST">
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                     @csrf
-                                    <button type="submit" class="dropdown-item">Sign out</button>
                                 </form>
+
+                                <a class="dropdown-item" href="#" onclick="document.getElementById('logout-form').submit();">
+                                    Logout
+                                </a>
+
                             </div>
                         </div>
                     </div>
@@ -215,7 +219,7 @@
                             <a class="dropdown-item" href="/proposals">Proposal and offers</a>
                         </div>
                     </li>
-                    <li class="nav-item dropdown">
+                    <!-- <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Projects
                         </a>
@@ -223,7 +227,7 @@
                             <a class="dropdown-item" href="{{route('projects.view')}}">View Your Projects</a>
                             <a class="dropdown-item" href="/">Submit Projects</a>
                         </div>
-                    </li>
+                    </li> -->
                 </ul>
             </div>
         </nav>

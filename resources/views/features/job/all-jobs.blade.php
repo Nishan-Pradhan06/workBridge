@@ -4,7 +4,7 @@
 <style>
     /* for job not found css */
     .button {
-        text-align: end;
+        text-align: center;
     }
 
     .main {
@@ -14,24 +14,6 @@
         border-radius: 8px;
         height: 60vh;
         box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    }
-
-    .no-job {
-        margin-top: 20vh;
-    }
-
-    h2 {
-        font-size: 24px;
-        color: #333;
-    }
-
-    p {
-        font-size: 18px;
-        color: #666;
-    }
-
-    .main-part {
-        height: 70vh;
     }
 
     /* ui for job post */
@@ -69,24 +51,23 @@
     }
 </style>
 <div class="container">
+    <h1>All Job Post</h1>
     <div class="px-5">
         <br>
         @if($jobPost->isEmpty())
 
-        <div class=main>
-            <div class="button">
-                <a href="/job-post" class="btn btn-primary">Post a Job</a>
-            </div>
 
-            <div class="no-job">
-                <h2>No Jobs Posted Yet</h2>
-                <p>It looks like there are currently no job postings. You need to create a job!</p>
-            </div>
+        <div class="text-center">
+            <img src="{{ asset('no-found.png') }}" alt="No Proposals" style="max-width: 100%; height: 500px;">
+            <h4>No Jobs Posted Yet!</h4>
         </div>
+        <div class="button">
+            <a href="{{route('job.post')}}" class="btn btn-primary">Post a Job</a>
+        </div>
+
 
         <!-- add some ui here -->
         @else
-        <h1>All Job Post</h1>
 
         @foreach($jobPost as $jobPosts)
         <div class="card mb-4 custom-card">
