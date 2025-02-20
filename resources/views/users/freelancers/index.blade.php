@@ -11,7 +11,10 @@
         <h3>Discover Jobs</h3>
 
         @if($jobPost->isEmpty())
-        <h3>jobs are comming soon</h3>
+        <div class="text-center">
+            <img src="{{ asset('no-found.png') }}" alt="No job" style="max-width: 100%; height: 500px;">
+            <h4>No Jobs available at the moment.</h4>
+        </div>
         @else
         @foreach($jobPost as $jobPosts)
         <div class="card mb-4">
