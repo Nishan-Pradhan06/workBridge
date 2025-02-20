@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('projects', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('job_post_id')->constrained('job_posts')->cascadeOnDelete();
+            // $table->foreignId('job_post_id')->constrained('job_posts')->cascadeOnDelete();
             $table->string('title');
             $table->date('date');
             $table->enum('status', ['pending', 'in_progress', 'completed'])->default('pending');

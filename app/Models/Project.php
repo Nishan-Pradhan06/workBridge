@@ -9,25 +9,25 @@ class Project extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'job_post_id',
+        // 'job_post_id',
         'title',
         'date',
         'status',
     ];
 
-    public function jobPost()
-    {
-        return $this->belongsTo(JobPost::class, 'job_post_id');
-    }
+    // public function jobPost()
+    // {
+    //     return $this->belongsTo(JobPost::class, 'job_post_id');
+    // }
 
-    public function payments()
-    {
-        return $this->hasMany(Payment::class);
-    }
+    // public function payments()
+    // {
+    //     return $this->hasMany(Payment::class);
+    // }
 
-    public function client()
-    {
-        return $this->belongsTo(User::class, 'client_id');
-    }
+    // public function client()
+    // {
+    //     return $this->belongsTo(User::class, 'client_id');
+    // }
 
 }
