@@ -122,5 +122,8 @@ Route::middleware(['auth', CheckUserStatus::class])->group(function () {
     //payment controller
     Route::post('/payment', [PaymentController::class, 'khaltiPayment'])->name('payment.khalti');
     Route::get('/epayment/verify/{id}/{jId}/{uId}', [PaymentController::class, 'verifyPayment'])->name('payment.verify');
-    Route::post('/payment/freelancer', [PaymentController::class, 'payFreelancer'])->name('payment.freelancer');
+    // Route::post('/payment/freelancer', [PaymentController::class, 'payFreelancer'])->name('payment.freelancer');
+    Route::post('/admin/pay-freelancer', [PaymentController::class, 'payFreelancer'])->name('admin.payFreelancer');
+    Route::post('/release-payment', [PaymentController::class, 'releasePayment'])->name('release.payment');
+
 });

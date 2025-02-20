@@ -152,31 +152,19 @@ class PaymentController extends Controller
         return view('verify.verify', compact('data'));
     }
 
-
-    public function payFreelancer(Request $request)
+    public function releasePayment(Request $request)
     {
-        $payment = Payment::find($request->payment_id);
+        // Validate the request
 
-        // Implement logic to pay the freelancer using your preferred payment gateway
-        $response = $this->processFreelancerPayment($payment);
+        // Find the payment record
+        $payment = Payment::findOrFail($request->payment_id);
 
-        if ($response->successful()) {
-            $payment->update([
-                'admin_paid' => true,
-                'freelancer_transaction_id' => $response['transaction_id'],
-            ]);
+        // Update the release_status to 'success'
+        $payment->release_status = 'completed';
+        $payment->save();
 
-            return back()->with('success', 'Freelancer has been paid successfully.');
-        }
-
-        return back()->withErrors('Freelancer payment failed.');
-    }
-
-    private function processFreelancerPayment($payment)
-    {
-        // Placeholder for actual payment gateway logic
-        // Example: return Http::post('https://paymentgateway.com/api/pay', [...]);
-        return response()->json(['transaction_id' => 'FREELANCER_TXN12345'], 200);
+        // Redirect back with a success message
+        return redirect()->back()->with('success', 'Payment released successfully!');
     }
 }
 

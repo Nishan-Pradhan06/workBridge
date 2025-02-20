@@ -119,7 +119,11 @@
                             <td>{{ \Carbon\Carbon::parse($payment->created_at)->format('Y-m-d') }}</td>
                             <td>{{ $payment->release_status }}</td>
                             <td>
-                                <button class="btn btn-success btn-sm">Release</button>
+                                <form action="{{ route('release.payment') }}" method="POST" style="display: inline;">
+                                    @csrf
+                                    <input type="hidden" name="payment_id" value="{{ $payment->id }}">
+                                    <button type="submit" class="btn btn-success btn-sm">Release</button>
+                                </form>
                             </td>
                         </tr>
                         @endforeach
@@ -177,3 +181,33 @@
 
 </div>
 </div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $('.release-btn').click(function() {
+            var paymentId = $(this).data('payment-id');
+
+            $.ajax({
+                url: '/release-payment',
+                type: 'POST',
+                data: {
+                    _token: '{{ csrf_token() }}',
+                    payment_id: paymentId
+                },
+                success: function(response) {
+                    if (response.success) {
+                        alert('Payment released successfully!');
+                        // Optionally, update the button or row to reflect the new status
+                        $(this).prop('disabled', true).text('Released');
+                    } else {
+                        alert('Failed to release payment.');
+                    }
+                },
+                error: function() {
+                    alert('An error occurred while releasing the payment.');
+                }
+            });
+        });
+    });
+</script>

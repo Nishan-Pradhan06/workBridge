@@ -73,6 +73,8 @@ class Payment extends Model
         'transaction_id',
         'pidx',
         'payment_url',
+        'release_amt',
+        'release_status',
     ];
 
     protected $casts = [
