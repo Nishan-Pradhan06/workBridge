@@ -32,6 +32,10 @@
             <div class="input-group">
                 <button type="submit">Login</button>
             </div>
+            <!-- Sign-up link -->
+            <div class="input-group">
+                <p>Don't have an account? <a href="{{route('get-started')}}">Sign up</a></p>
+            </div>
             <!-- Success Alert -->
             @if(session('success'))
             <div class="alert alert-success" style="color: green; background-color: #d4edda; padding: 10px; border-radius: 5px;">

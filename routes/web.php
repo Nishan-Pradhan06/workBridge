@@ -1,28 +1,22 @@
 <?php
 
-use App\Http\Controllers\auth;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Client;
 use App\Http\Controllers\Freelancer;
 use App\Http\Controllers\JobPostController;
 use App\Http\Controllers\JobProposalController;
-use App\Http\Controllers\MilestoneController;
 use App\Http\Controllers\PageController;
-use App\Http\Controllers\ContractModelController;
-use App\Http\Controllers\UserProfileController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
-
 use App\Http\Controllers\admin\AdminController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ProjectController;
-use App\Http\Controllers\ProjectModelController;
 use App\Http\Middleware\CheckUserStatus;
 
 Route::get('/', [PageController::class, 'index']);
-Route::get('/signup-freelancer', [PageController::class, 'signupAsFreelancer']);
-Route::get('/get-started', [PageController::class, 'getStarted']);
+// Route::get('/signup-freelancer', [PageController::class, 'signupAsFreelancer']);
+Route::get('/get-started', [PageController::class, 'getStarted'])->name('get-started');
 
 //register
 
@@ -128,6 +122,5 @@ Route::middleware(['auth', CheckUserStatus::class])->group(function () {
     //payment controller
     Route::post('/payment', [PaymentController::class, 'khaltiPayment'])->name('payment.khalti');
     Route::get('/epayment/verify/{id}/{jId}/{uId}', [PaymentController::class, 'verifyPayment'])->name('payment.verify');
-    // Route::get('/payment/verify', [PaymentController::class, 'verifyPayment'])->name('payment.verify');
     Route::post('/payment/freelancer', [PaymentController::class, 'payFreelancer'])->name('payment.freelancer');
 });
