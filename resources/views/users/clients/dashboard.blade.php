@@ -204,7 +204,7 @@
                 </div>
                 <div class="proposal-detail">
                     <div class="price">
-                        <p>${{ number_format($proposal->amount, 2) }}</p> <!-- Proposal price -->
+                        <p>NPR:. {{ number_format($proposal->amount, 2) }}</p> <!-- Proposal price -->
                     </div>
                    
                         <form action="{{ route('proposals.accept', $proposal->id) }}" method="POST">
@@ -226,7 +226,7 @@
 
         </div>
         <!-- active projects -->
-        <div class="project-status">
+        <!-- <div class="project-status">
             <h2>Active Projects</h2>
             <div class="project-status-name">
                 <div class="text">
@@ -242,10 +242,10 @@
                     <button>in progress</button>
                 </div>
             </div>
-        </div>
+        </div> -->
 
         <!-- completed projects -->
-        <div class="project-status">
+        <!-- <div class="project-status">
             <h2>Completed Projects</h2>
             <div class="project-status-name">
                 <div class="text">
@@ -276,7 +276,7 @@
                     <button>Invoice</button>
                 </div>
             </div>
-        </div>
+        </div> -->
 
 
     </div>
