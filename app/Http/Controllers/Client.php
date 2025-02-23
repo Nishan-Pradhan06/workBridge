@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\JobPost;
 use App\Models\JobProposal;
+use App\Models\Payment;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -32,7 +33,13 @@ class Client extends Controller
         // dd($pendingProposals);
         // Count the pending proposals
         $pendingProposalsCount = $pendingProposals->count();
-        return view('users.clients.dashboard', compact('user', 'pendingProposals', 'pendingProposalsCount'));
+        $jobPostsCount = $jobPosts->count();
+
+        $totalSpend = Payment::where('client_id', $user->id)->sum('amount');
+
+
+
+        return view('users.clients.dashboard', compact('user', 'pendingProposals', 'pendingProposalsCount', 'jobPostsCount', 'totalSpend'));
     }
 
 

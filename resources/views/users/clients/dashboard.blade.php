@@ -132,10 +132,10 @@
                 </div>
                 <div class="content">
                     <div class="text">
-                        <p>Active Projects</p>
+                        <p>Total Projects</p>
                     </div>
                     <div class="num">
-                        <p>12</p>
+                        <p>{{$jobPostsCount}}</p>
 
                     </div>
                 </div>
@@ -163,20 +163,7 @@
                         <p>Total Spent</p>
                     </div>
                     <div class="num">
-                        <p>$24,500</p>
-                    </div>
-                </div>
-            </div>
-            <div class="status">
-                <div class="logo">
-                    <img src="{{asset('av-balance.png')}}" alt="">
-                </div>
-                <div class="content">
-                    <div class="text">
-                        <p>Available Balance</p>
-                    </div>
-                    <div class="num">
-                        <p>$8,750</p>
+                        <p>NPR:. {{$totalSpend/100}}</p>
                     </div>
                 </div>
             </div>
@@ -206,20 +193,20 @@
                     <div class="price">
                         <p>NPR:. {{ number_format($proposal->amount, 2) }}</p> <!-- Proposal price -->
                     </div>
-                   
-                        <form action="{{ route('proposals.accept', $proposal->id) }}" method="POST">
-                            @csrf
-                            <div class="accept-btn">
-                                <button type="submit">Accept</button>
-                            </div>
-                        </form>
-                        <form action="{{ route('proposals.reject', $proposal->id) }}" method="POST">
-                            @csrf
-                            <div class="decline-btn">
-                                <button type="submit">Decline</button>
-                            </div>
-                        </form>
-                    
+
+                    <form action="{{ route('proposals.accept', $proposal->id) }}" method="POST">
+                        @csrf
+                        <div class="accept-btn">
+                            <button type="submit">Accept</button>
+                        </div>
+                    </form>
+                    <form action="{{ route('proposals.reject', $proposal->id) }}" method="POST">
+                        @csrf
+                        <div class="decline-btn">
+                            <button type="submit">Decline</button>
+                        </div>
+                    </form>
+
                 </div>
             </div>
             @endforeach
