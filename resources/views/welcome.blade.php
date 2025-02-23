@@ -257,13 +257,6 @@
         </div>
     </div>
 
-    <!--Subscription section -->
-    <div class="subscription-container">
-        <p id="s-top">Newsletter Subscription</p>
-        <p id="s-down">Susribe to our newsletter to get new freelencer work and project</p>
-        <input id="email" type="email" placeholder="Enter your address"></br>
-        <button id="subscribe">subscribe</button>
-    </div>
 
 
     <!-- statatics started here -->
