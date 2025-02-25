@@ -118,6 +118,7 @@
 
 <body>
     <div class="container">
+        <!-- auth() le currently login vhako userko id linxa and if their status is suspended the.. -->
         @if (auth()->user()->status === 'suspended')
         <div class="alert alert-danger">
             Your account is suspended. You may not access some features.
