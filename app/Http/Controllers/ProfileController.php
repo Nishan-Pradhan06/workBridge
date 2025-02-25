@@ -31,9 +31,9 @@ class ProfileController extends Controller
             'skillLevel' => 'required|string|in:beginner,intermediate,expert',
             'jobTitle' => 'nullable|string|max:255',
             'jobDesc' => 'nullable|string',
-            'portfolio' => 'nullable|url',
+            'portfolio' => 'nullable|string',
             'hoursPerWeek' => 'nullable|integer|min:0',
-            'certificationFiles.*' => 'nullable|mimes:pdf,jpg,png|max:2048',
+            'certificationFiles.*' => 'nullable',
         ]);
 
         // Create a new profile for the logged-in freelancer
