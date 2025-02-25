@@ -25,8 +25,11 @@ class LoginController extends Controller
     {
         // Validate the request data
         $request->validate([
-            'email' => 'required|email',
-            'password' => 'required',
+            'email' => ['required', 'email'],
+            'password' => [
+                'required',
+                'min:8',
+            ],
         ]);
 
         // Attempt to log in the user

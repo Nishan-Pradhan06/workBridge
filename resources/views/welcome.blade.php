@@ -9,9 +9,10 @@
     <title>WorkBridge - Freelancing</title>
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     <style>
-        body{
+        body {
             background-color: white;
         }
+
         .stats-section {
             background-color: #00A4EF;
             color: white;
@@ -33,14 +34,15 @@
         }
 
         .hero-sections {
-            
+
             background-image: url(Rectangle.png);
             display: flex;
             align-items: center;
             justify-content: center;
-            padding:10vh;
+            padding: 10vh;
         }
-        .ways{
+
+        .ways {
             background-color: white;
             display: flex;
             padding: 5vh;
@@ -48,40 +50,46 @@
             /* box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); */
             border-radius: 1vh;
         }
-        .ways img{
+
+        .ways img {
             width: 70vh;
             margin-left: 7vh;
         }
-        .ways-text{
+
+        .ways-text {
             margin-top: 3vh;
             text-align: right;
             align-items: right;
             margin-left: 30vh;
 
         }
-        .portfolio-container{
+
+        .portfolio-container {
             text-align: center;
             align-items: center;
         }
 
-        #p-top{
+        #p-top {
             font-size: 30px;
             opacity: 0.5;
         }
-        #p-down{
+
+        #p-down {
             font-size: 40px;
             font-weight: 500;
         }
-        .portfolios{
+
+        .portfolios {
             background-color: white;
             display: flex;
             text-align: center;
             align-items: center;
             padding: 3vh;
             justify-content: center;
-            
+
         }
-        .portfolio{
+
+        .portfolio {
             margin: 3vh;
             height: 50vh;
             width: 50vh;
@@ -90,7 +98,8 @@
             border-radius: 10px;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
         }
-        .portfolio .image-box{
+
+        .portfolio .image-box {
             height: 40vh;
             align-items: center;
             justify-content: center;
@@ -98,45 +107,53 @@
             background-color: red;
             overflow: hidden;
         }
-        .image-box img{
+
+        .image-box img {
             width: 50vh;
 
         }
-        .portfolio .text{
-           text-align: center;
-           margin-top: 10px;
-           line-height: 0.75;
+
+        .portfolio .text {
+            text-align: center;
+            margin-top: 10px;
+            line-height: 0.75;
         }
-        #name{
+
+        #name {
             font-size: 25px;
             font-weight: bold;
             font-family: Arial, Helvetica, sans-serif;
         }
-        #job{
+
+        #job {
             font-size: 20px;
             font-weight: 500;
             opacity: 0.5;
-            color: rgb(37,37,37);
-            
+            color: rgb(37, 37, 37);
+
         }
-        .subscription-container{
-            background-color: rgb(242,250,250);
+
+        .subscription-container {
+            background-color: rgb(242, 250, 250);
             text-align: center;
             align-items: center;
             justify-content: center;
             line-height: 1.5;
-            margin-top:15vh;
+            margin-top: 15vh;
             padding: 5vh;
         }
-        #s-top{
+
+        #s-top {
             font-size: 50px;
 
         }
-        #s-down{
+
+        #s-down {
             font-size: 20px;
             opacity: 0.5;
         }
-        #email{
+
+        #email {
             border: 2px solid #ccc;
             border-radius: 4px;
             font-size: 25px;
@@ -148,10 +165,11 @@
             margin-top: 5vh;
             font-weight: 400;
         }
-        #subscribe{
+
+        #subscribe {
             background-color: #00A4EF;
             border: none;
-            padding: 1.5vh  7vh;
+            padding: 1.5vh 7vh;
             color: #ccc;
             font-size: 20px;
             margin-top: 3vh;
@@ -203,14 +221,14 @@
 
     <div class="ways">
         <div class="ways-image">
-        <img src="landingGirl.png" alt="">
+            <img src="landingGirl.png" alt="">
         </div>
 
         <div class="ways-text">
             <h1>Find The Best <br><span style="color:blue;">Freelancers</span> Here</h1>
             <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Corporis veniam perferendis animi voluptatum dolorum hic, porro et vitae. Quam corrupti sint incidunt accusamus asperiores quisquam officiis est sapiente quod odit?</p>
         </div>
-        
+
     </div>
 
     <!-- portfolios card -->
@@ -253,21 +271,21 @@
                     <p id="job">Graphic Desiner</p>
                 </div>
             </div>
-            
+
         </div>
     </div>
 
     <!--Subscription section -->
-    <div class="subscription-container">
+    <!-- <div class="subscription-container">
         <p id="s-top">Newsletter Subscription</p>
         <p id="s-down">Susribe to our newsletter to get new freelencer work and project</p>
         <input id="email" type="email" placeholder="Enter your address"></br>
         <button id="subscribe">subscribe</button>
-    </div>
+    </div> -->
 
 
     <!-- statatics started here -->
-    <h2 class="text-center my-4">Our Platform's Achievements</h2>
+    <!-- <h2 class="text-center my-4">Our Platform's Achievements</h2>
     <div class="container-fluid stats-section">
         <div class="container">
             <div class="row text-center">
@@ -289,7 +307,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
 
     <script src="https://unpkg.com/@lottiefiles/lottie-player@2.0.8/dist/lottie-player.js"></script>
     <!-- footer components -->

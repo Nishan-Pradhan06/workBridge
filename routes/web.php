@@ -50,6 +50,8 @@ Route::middleware(['auth', CheckUserStatus::class])->group(function () {
     Route::post('/setup-profile', [ProfileController::class, 'store'])->name('profiles.store');
     // Route::get('/freelancer/setting/profile', [Freelancer::class, 'profile']);
     Route::get('/freelancer/setting/profile', [ProfileController::class, 'show'])->name('freelancer.profile');
+    Route::get('/freelancer/setting/edit_profile/{id}', [ProfileController::class, 'edit'])->name('freelancer.edit_profile');
+    Route::post('/freelancer/setting/update_profile/{id}', [ProfileController::class, 'update'])->name('freelancer.edit_update');
     Route::get('/freelancer/setting/contactInfo', [Freelancer::class, 'contactInfo'])->name('freelancer.accountSetting');
     Route::get('/freelancer/setting/billing-and-payments', [Freelancer::class, 'billingAndPayment']);
     Route::get('/freelancer/setting/password-and-security', [Freelancer::class, 'PasswordAndSecurity'])->name('freelancer.password-security');

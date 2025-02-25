@@ -11,7 +11,7 @@
         <div class="content-wrapper">
             <div class="content-header">
                 <h5>Edit Profile</h5>
-                <a href="" class="btn btn-primary">Update</a>
+                <!-- <a href="{{ route('freelancer.edit_profile', ['id' => $profile->id]) }}">Edit</a> -->
             </div>
             <form>
                 <section>

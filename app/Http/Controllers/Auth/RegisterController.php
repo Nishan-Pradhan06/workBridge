@@ -17,12 +17,12 @@ class RegisterController extends Controller
     public function clientRegister(Request $request)
     {
         // Validate the request data
-        // $request->validate([
-        //     'name' => 'required|string|max:255',
-        //     'email' => 'required|string|email|max:255|unique:users',
-        //     'phone' => 'required|string|regex:/^[0-9]{10,15}$/',
-        //     'password' => 'required|string|min:8',
-        // ]);
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255|unique:users',
+            'phone' => 'required|string|',
+            'password' => 'required|string|min:8',
+        ]);
 
         // Create the user
         User::create([
