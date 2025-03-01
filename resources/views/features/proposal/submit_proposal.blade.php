@@ -73,7 +73,7 @@
         <label for="amount">Amount:</label>
         <input type="number" id="amount" name="amount" placeholder="Enter amount">
 
-        <label for="project_duration">Project Duration:</label>
+        <label for="project_duration">End Date:</label>
         <input type="date" id="project_duration" name="project_duration">
 
         <label for="cover_letter">Cover Letter:</label>
