@@ -77,14 +77,14 @@
   <div class="card shadow-sm p-3">
     <div class="d-flex justify-content-between mb-3">
       <h5>Recent Users</h5>
-      <form method="GET" action="{{ route('admin.dashboard') }}">
+      <!-- <form method="GET" action="{{ route('admin.dashboard') }}">
         <input
           type="text"
           name="search"
           value="{{ request('search') }}"
           class="form-control w-100"
           placeholder="Search users...">
-      </form>
+      </form> -->
     </div>
     <table class="table table-hover">
       <thead>

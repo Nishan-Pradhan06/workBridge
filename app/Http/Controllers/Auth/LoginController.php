@@ -28,7 +28,7 @@ class LoginController extends Controller
             'email' => ['required', 'email'],
             'password' => [
                 'required',
-                'min:8',
+                
             ],
         ]);
 
