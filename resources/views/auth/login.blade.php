@@ -13,6 +13,12 @@
             margin-top: 10px;
             transition: opacity 0.2s ease-out;
         }
+
+        .error-message {
+            color: red;
+            font-size: 0.9em;
+            margin-top: 5px;
+        }
     </style>
 </head>
 
@@ -23,12 +29,19 @@
             @csrf
             <div class="input-group">
                 <label for="email">Email</label>
-                <input type="email" id="email" name="email" placeholder="Enter your email" required>
+                <input type="email" id="email" name="email" placeholder="Enter your email">
             </div>
+            @error('email')
+            <span class="error-message">{{ $message }}</span>
+            <br>
+            @enderror
             <div class="input-group">
                 <label for="password">Password</label>
-                <input type="password" id="password" name="password" placeholder="Enter your password" required>
+                <input type="password" id="password" name="password" placeholder="Enter your password">
             </div>
+            @error('password')
+            <span class="error-message">{{ $message }}</span>
+            @enderror
             <div class="input-group">
                 <button type="submit">Login</button>
             </div>
