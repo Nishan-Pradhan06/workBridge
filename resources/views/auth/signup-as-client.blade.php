@@ -37,25 +37,28 @@
                 <label for="name">Full Name</label>
                 <input type="text" id="name" name="name" value="{{ old('name') }}" required>
                 @error('name')
-                <div class="alert alert-danger">{{ $message }}</div>
+                <span class="error-message">{{ $message }}</span>
+                <br>
                 @enderror
 
                 <label for="email">Email</label>
                 <input type="email" id="email" name="email" value="{{ old('email') }}" required>
                 @error('email')
-                <div class="alert alert-danger">{{ $message }}</div>
+                <span class="error-message">{{ $message }}</span>
+                <br>
                 @enderror
 
                 <label for="phone">Phone Number</label>
                 <input type="tel" id="phone" name="phone" value="{{ old('phone') }}" required>
                 @error('phone')
-                <div class="alert alert-danger">{{ $message }}</div>
+                <span class="error-message">{{ $message }}</span>
+                <br>
                 @enderror
 
                 <label for="password">Password</label>
                 <input type="password" id="password" name="password" required>
                 @error('password')
-                <div class="alert alert-danger">{{ $message }}</div>
+                <span class="error-message">{{ $message }}</span>
                 @enderror
 
                 <input type="hidden" name="role" value="client">
@@ -63,10 +66,11 @@
 
             <!-- Success Alert -->
             @if(session('success'))
-            <div class="alert alert-success">
+            <div class="alert alert-success" style="color: green; background-color: #d4edda; padding: 10px; border-radius: 5px;">
                 {{ session('success') }}
             </div>
             @endif
+
 
             <!-- Error Alert -->
             @if(session('error'))

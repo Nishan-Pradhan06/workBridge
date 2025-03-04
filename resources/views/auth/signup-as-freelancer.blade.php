@@ -13,6 +13,12 @@
             margin-top: 10px;
             transition: opacity 0.2s ease-out;
         }
+
+        .error-message {
+            color: red;
+            font-size: 0.9em;
+            margin-top: 5px;
+        }
     </style>
 </head>
 
@@ -23,45 +29,65 @@
             @csrf
             <h1>Freelancer Registration</h1>
             <section>
+                <!-- Name Field -->
                 <label for="name">Full Name</label>
-                <input type="text" id="name" name="name" required>
-
+                <input type="text" id="name" name="name" value="{{ old('name') }}" required>
+                @error('name')
+                <span class="error-message">{{ $message }}</span>
+                <br>
+                @enderror
+                <!-- Email Field -->
                 <label for="email">Email</label>
-                <input type="email" id="email" name="email" required>
+                <input type="email" id="email" name="email" value="{{ old('email') }}" required>
+                @error('email')
+                <span class="error-message">{{ $message }}</span>
+                <br>
+                @enderror
 
+                <!-- Phone Field -->
                 <label for="phone">Phone Number</label>
-                <input type="tel" id="phone" name="phone" required>
-
+                <input type="tel" id="phone" name="phone" value="{{ old('phone') }}" required>
+                @error('phone')
+                <span class="error-message">{{ $message }}</span>
+                <br>
+                @enderror
+                <!-- Password Field -->
                 <label for="password">Password</label>
                 <input type="password" id="password" name="password" required>
+                @error('password')
+                <span class="error-message">{{ $message }}</span>
+                @enderror
 
                 <input type="hidden" name="role" value="freelancer">
             </section>
+
             <!-- Success Alert -->
             @if(session('success'))
             <div class="alert alert-success" style="color: green; background-color: #d4edda; padding: 10px; border-radius: 5px;">
                 {{ session('success') }}
             </div>
             @endif
-
             <!-- Error Alert -->
             @if(session('error'))
-            <div class="alert alert-danger" style="color: red; background-color: #f8d7da; padding: 10px; border-radius: 5px;">
+            <div class="alert alert-danger">
                 {{ session('error') }}
             </div>
             @endif
+
+
             <button type="submit" class="btn btn-primary">Create my account</button>
         </form>
     </div>
+
     <script>
         // Automatically remove alerts after 10 seconds
         setTimeout(() => {
             const alerts = document.querySelectorAll('.alert');
             alerts.forEach(alert => {
                 alert.style.opacity = '0'; // Fade out
-                setTimeout(() => alert.remove(), 10); // Remove after fade out
+                setTimeout(() => alert.remove(), 200); // Remove after fade out
             });
-        }, 2000); // 10 seconds
+        }, 10000); // 10 seconds
     </script>
 </body>
 
