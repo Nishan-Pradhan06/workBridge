@@ -31,14 +31,14 @@
             <section>
                 <!-- Name Field -->
                 <label for="name">Full Name</label>
-                <input type="text" id="name" name="name" value="{{ old('name') }}" required>
+                <input type="text" id="name" name="name" value="{{ old('name') }}" placeholder="Full Name" required>
                 @error('name')
                 <span class="error-message">{{ $message }}</span>
                 <br>
                 @enderror
                 <!-- Email Field -->
                 <label for="email">Email</label>
-                <input type="email" id="email" name="email" value="{{ old('email') }}" required>
+                <input type="email" id="email" name="email" value="{{ old('email') }}" placeholder="example@gmail.com" required>
                 @error('email')
                 <span class="error-message">{{ $message }}</span>
                 <br>
@@ -46,14 +46,14 @@
 
                 <!-- Phone Field -->
                 <label for="phone">Phone Number</label>
-                <input type="tel" id="phone" name="phone" value="{{ old('phone') }}" required>
+                <input type="tel" id="phone" name="phone" value="{{ old('phone') }}" placeholder="9800000000" required>
                 @error('phone')
                 <span class="error-message">{{ $message }}</span>
                 <br>
                 @enderror
                 <!-- Password Field -->
                 <label for="password">Password</label>
-                <input type="password" id="password" name="password" required>
+                <input type="password" id="password" name="password" placeholder="Password Must be at least 8 characters." required>
                 @error('password')
                 <span class="error-message">{{ $message }}</span>
                 @enderror
